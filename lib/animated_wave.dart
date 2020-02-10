@@ -1,20 +1,21 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:simple_animations/simple_animations.dart';
-import 'dart:math';
 
 class AnimatedWave extends StatelessWidget {
   final Color color;
-  final double height;
+  final int height;
+  final double strength;
   final double speed;
   final double offset;
 
-  AnimatedWave({this.color, this.height, this.speed, this.offset = 0.0});
+  AnimatedWave({this.color, this.height = 0, this.strength, this.speed, this.offset = 0.0});
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return Container(
-        height: height,
+        height: strength,
         width: constraints.biggest.width,
         child: ControlledAnimation(
             playback: Playback.LOOP,
@@ -22,7 +23,7 @@ class AnimatedWave extends StatelessWidget {
             tween: Tween(begin: 0.0, end: 2 * pi),
             builder: (context, value) {
               return CustomPaint(
-                foregroundPainter: CurvePainter(color: color, value: value + offset),
+                foregroundPainter: CurvePainter(color: color, height: height, value: value + offset),
               );
             }),
       );
@@ -32,9 +33,10 @@ class AnimatedWave extends StatelessWidget {
 
 class CurvePainter extends CustomPainter {
   final Color color;
+  final int height;
   final double value;
 
-  CurvePainter({this.color, this.value});
+  CurvePainter({this.color, this.height, this.value});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -45,9 +47,9 @@ class CurvePainter extends CustomPainter {
     final y2 = sin(value + pi / 2);
     final y3 = sin(value + pi);
 
-    final startPointY = size.height * (0.5 + 0.4 * y1);
-    final controlPointY = size.height * (0.5 + 0.4 * y2);
-    final endPointY = size.height * (0.5 + 0.4 * y3);
+    final startPointY = size.height * (0.5 + 0.4 * y1) - height;
+    final controlPointY = size.height * (0.5 + 0.4 * y2) - height;
+    final endPointY = size.height * (0.5 + 0.4 * y3) - height;
 
     path.moveTo(size.width * 0, startPointY);
     path.quadraticBezierTo(
