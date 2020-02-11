@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
       ),
       home: FancyBackgroundApp(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -39,10 +38,7 @@ class FancyBackgroundApp extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             Positioned.fill(
-              child: PageView.builder(
-                controller: PageController(),
-                itemBuilder: (_, int index) => pages[index % 2],
-              ),
+              child: Test(),
             ),
             onBottom(AnimatedWave(
               color: Colors.blue.withAlpha(30),
@@ -66,8 +62,9 @@ class FancyBackgroundApp extends StatelessWidget {
       ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.lightBlue,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
+        unselectedItemColor: Colors.lightBlue,
+        selectedFontSize: 12,
+        unselectedFontSize: 12,
         currentIndex: 0,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -75,14 +72,14 @@ class FancyBackgroundApp extends StatelessWidget {
               Icons.account_balance_wallet,
               color: Colors.lightBlue,
             ),
-            title: Text(''),
+            title: Text('test1'),
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.title,
+              Icons.account_balance_wallet,
               color: Colors.lightBlue,
             ),
-            title: Text(''),
+            title: Text('test2'),
           ),
         ],
       ),
@@ -98,10 +95,36 @@ class FancyBackgroundApp extends StatelessWidget {
     );
   }
 
-  onBottom(Widget child) => Positioned.fill(
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: child,
+  Positioned onBottom(Widget child) {
+    return Positioned.fill(
+      child: Align(
+        alignment: Alignment.bottomCenter,
+        child: child,
+      ),
+    );
+  }
+}
+
+class Test extends StatefulWidget {
+  Test({Key key}) : super(key: key);
+
+  @override
+  TestState createState() => TestState();
+}
+
+class TestState extends State<Test> {
+  @override
+  Widget build(BuildContext context) {
+    return Dismissible(
+      key: ValueKey(''),
+      direction: DismissDirection.startToEnd,
+      onDismissed: (DismissDirection direction) {},
+      background: Test(),
+      child: Center(
+        child: Text(
+          '새로운 글을 가져오는 중입니다.',
         ),
-      );
+      ),
+    );
+  }
 }
