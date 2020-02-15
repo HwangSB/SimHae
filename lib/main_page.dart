@@ -17,7 +17,6 @@ class MainPage extends StatelessWidget {
               height: 120,
               strength: 100,
               speed: 1.0,
-              offset: 0,
             )),
             onBottom(AnimatedWave(
               color: Colors.cyan.withAlpha(30),
