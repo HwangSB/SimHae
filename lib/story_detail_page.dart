@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ReplyPage extends StatelessWidget {
+class StoryDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -4,14 +4,14 @@ import 'package:simple_animations/simple_animations.dart';
 
 class AnimatedWave extends StatelessWidget {
   final Color color;
-  final int height;
+  final double height;
   final double strength;
   final double speed;
   final double offset;
 
   AnimatedWave(
       {this.color,
-      this.height = 0,
+      this.height = 0.0,
       this.strength,
       this.speed,
       this.offset = 0.0});
@@ -42,7 +42,7 @@ class AnimatedWave extends StatelessWidget {
 
 class CurvePainter extends CustomPainter {
   final Color color;
-  final int height;
+  final double height;
   final double value;
 
   CurvePainter({this.color, this.height, this.value});
