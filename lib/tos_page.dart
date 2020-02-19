@@ -4,6 +4,8 @@ import 'package:solution_challenge/main_page.dart';
 import 'package:solution_challenge/tos_detail_page.dart';
 
 class TosPage extends StatefulWidget {
+  TosPage({Key key}) : super(key: key);
+
   @override
   TosPageState createState() => TosPageState();
 }
@@ -213,12 +215,12 @@ class TosPageState extends State<TosPage> {
   }
 
   bool _isAcceptAllTerms() {
-    // 동의하지 않은 항목이 없을경우 true 반환
     return termsOfService.where((term) => !term['agree']).isEmpty;
   }
 
   void _continueButtonPressed() {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage()));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => MainPage()));
   }
 }
 

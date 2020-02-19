@@ -5,7 +5,7 @@ import 'package:solution_challenge/tos_page.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {s
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {s
       theme: ThemeData(
         brightness: Brightness.light,
       ),
-      home: WritePage(),
+      home: TosPage(),
       debugShowCheckedModeBanner: false,
     );
     

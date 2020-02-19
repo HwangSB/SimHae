@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-//import 'story_detail_page.dart';
-import 'animated_wave.dart';
-import 'dart:math';
 
 class StoryPage extends StatefulWidget {
   StoryPage({Key key}) : super(key: key);
@@ -17,7 +14,6 @@ class StoryPageState extends State<StoryPage> {
   double storyDetailPageOpacity = 0.0;
   ScrollPhysics scrollPhysics = BouncingScrollPhysics();
   double paddingTop = 350.0;
-  double waveHeight = 130.0;
   int cardUpHeight = 0;
 
   @override
@@ -25,41 +21,6 @@ class StoryPageState extends State<StoryPage> {
     return GestureDetector(
       child: Stack(
         children: <Widget>[
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedWave(
-                color: Colors.blue.withAlpha(30),
-                height: waveHeight,
-                strength: 100,
-                speed: 1.0,
-              ),
-            ),
-          ),
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedWave(
-                color: Colors.cyan.withAlpha(30),
-                height: waveHeight,
-                strength: 80,
-                speed: 0.9,
-                offset: pi,
-              ),
-            ),
-          ),
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedWave(
-                color: Colors.lightBlue.withAlpha(30),
-                height: waveHeight,
-                strength: 120,
-                speed: 1.2,
-                offset: pi / 2,
-              ),
-            ),
-          ),
           Container(
             child: Column(
               children: <Widget>[
@@ -164,9 +125,9 @@ class StoryPageState extends State<StoryPage> {
           if (paddingTop < 50.0) paddingTop = 50.0;
           if (paddingTop > 350.0) paddingTop = 350.0;
 
-          waveHeight -= details.delta.dy / 300.0 * 800.0;
-          if (waveHeight > 800.0) waveHeight = 800.0;
-          if (waveHeight < 130.0) waveHeight = 130.0;
+          // waveHeight -= details.delta.dy / 300.0 * 800.0;
+          // if (waveHeight > 800.0) waveHeight = 800.0;
+          // if (waveHeight < 130.0) waveHeight = 130.0;
 
           if (cumulativeValue < -100 || cumulativeValue > 0) {
             storyDetailPageOpacity -= details.delta.dy / 150.0;

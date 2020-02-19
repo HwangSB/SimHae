@@ -1,14 +1,50 @@
 import 'package:flutter/material.dart';
-import 'story_page.dart';
+import 'package:solution_challenge/animated_wave.dart';
+// import 'package:solution_challenge/story_page.dart';
 
 class MainPage extends StatelessWidget {
+  final double waveHeight = 130.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Stack(
           children: <Widget>[
-            StoryPage(),
+            // StoryPage(),
+            Positioned.fill(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: AnimatedWave(
+                  color: Colors.blue.withAlpha(30),
+                  height: waveHeight,
+                  strength: 100,
+                  speed: 1.0,
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: AnimatedWave(
+                  color: Colors.cyan.withAlpha(30),
+                  height: waveHeight,
+                  strength: 80,
+                  speed: 0.9,
+                ),
+              ),
+            ),
+            Positioned.fill(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: AnimatedWave(
+                  color: Colors.lightBlue.withAlpha(30),
+                  height: waveHeight,
+                  strength: 120,
+                  speed: 1.2,
+                ),
+              ),
+            ),
           ],
         ),
       ),
