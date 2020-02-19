@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'story_detail_page.dart';
+//import 'story_detail_page.dart';
 import 'animated_wave.dart';
 import 'dart:math';
 
@@ -179,7 +179,7 @@ class StoryPageState extends State<StoryPage> {
   }
 }
 
-Route _createRoute() {
+/*Route _createRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) {
       return StoryDetailPage();
@@ -197,7 +197,7 @@ Route _createRoute() {
       );
     },
   );
-}
+}*/
 
 // class StoryPage extends StatefulWidget {
 //   StoryPage({Key key}) : super(key: key);

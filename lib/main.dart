@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:solution_challenge/tos_page.dart';
-import 'main_page.dart';
+//import 'package:solution_challenge/tos_page.dart';
+//import 'main_page.dart';
+import 'write_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,7 +13,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         brightness: Brightness.light,
       ),
-      home: TosPage(),
+      home: WritePage(),
+      debugShowCheckedModeBanner: false,
     );
+    
   }
 }
