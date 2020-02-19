@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-//import 'package:solution_challenge/tos_page.dart';
-//import 'main_page.dart';
-import 'write_page.dart';
+import 'package:solution_challenge/write_page.dart';
 import 'package:solution_challenge/main_page.dart';
 import 'package:solution_challenge/tos_page.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget {s
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
