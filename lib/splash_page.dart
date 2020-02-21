@@ -1,6 +1,31 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-class SplashPage extends StatelessWidget {
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:solution_challenge/tos_page.dart';
+import 'package:solution_challenge/main_page.dart';
+
+class SplashPage extends StatefulWidget {
+  @override
+  _SplashPageState createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  startTimer() async {
+    var _duration = Duration(seconds: 2);
+    return Timer(_duration, navigationPage);
+  }
+
+  navigationPage() {
+    Navigator.pushReplacement(context, FadePageRoute(page: MainPage()));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,4 +116,20 @@ class SplashPage extends StatelessWidget {
           color: Color(0xFF707070)),
     ];
   }
+}
+
+class FadePageRoute extends PageRouteBuilder {
+  final Widget page;
+
+  FadePageRoute({this.page})
+      : super(
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: Duration(milliseconds: 500),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        );
 }
