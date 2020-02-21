@@ -211,7 +211,9 @@ class TosPageState extends State<TosPage> {
       ),
     );
 
-    termsOfService[index]['agree'] = result;
+    if (result != null) {
+      termsOfService[index]['agree'] = result;
+    }
   }
 
   bool _isAcceptAllTerms() {
