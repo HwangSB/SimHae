@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:solution_challenge/main_page.dart';
+import 'package:solution_challenge/settings_database.dart';
 import 'package:solution_challenge/tos_detail_page.dart';
+import 'package:solution_challenge/main_page.dart';
 
 class TosPage extends StatefulWidget {
   TosPage({Key key}) : super(key: key);
@@ -220,7 +221,10 @@ class TosPageState extends State<TosPage> {
     return termsOfService.where((term) => !term['agree']).isEmpty;
   }
 
-  void _continueButtonPressed() {
+  void _continueButtonPressed() async {
+    SettingsDatabase settings = SettingsDatabase();
+    settings.update(AppSetting(key: 'accept_all_tos', value: 'true'));
+
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => MainPage()));
   }

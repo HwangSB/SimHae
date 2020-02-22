@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:solution_challenge/tos_page.dart';
+import 'package:solution_challenge/settings_database.dart';
 import 'package:solution_challenge/main_page.dart';
+import 'package:solution_challenge/tos_page.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -11,19 +11,10 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  startTimer() async {
-    var _duration = Duration(seconds: 2);
-    return Timer(_duration, navigationPage);
-  }
-
-  navigationPage() {
-    Navigator.pushReplacement(context, FadePageRoute(page: MainPage()));
-  }
-
   @override
   void initState() {
     super.initState();
-    startTimer();
+    _startTimer();
   }
 
   @override
@@ -110,11 +101,29 @@ class _SplashPageState extends State<SplashPage> {
           offset: Offset((size / 2.0), -(size / 2.0)),
           color: Color(0xFF707070)),
       Shadow(
-          offset: Offset((size / 2.0), (size / 2.0)), color: Color(0xFF707070)),
+        offset: Offset((size / 2.0), (size / 2.0)),
+        color: Color(0xFF707070),
+      ),
       Shadow(
           offset: Offset(-(size / 2.0), (size / 2.0)),
           color: Color(0xFF707070)),
     ];
+  }
+
+  _startTimer() async {
+    var _duration = Duration(seconds: 2);
+    return Timer(_duration, _navigationPage);
+  }
+
+  _navigationPage() async {
+    Widget page = await _checkAllTosAccept() ? MainPage() : TosPage();
+    Navigator.pushReplacement(context, FadePageRoute(page: page));
+  }
+
+  Future<bool> _checkAllTosAccept() async {
+    SettingsDatabase settings = SettingsDatabase();
+    String acceptAllTos = await settings.valueOf('accept_all_tos');
+    return acceptAllTos == 'true';
   }
 }
 
