@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:solution_challenge/my_page.dart';
 
@@ -12,7 +13,10 @@ class StoryPage extends StatefulWidget {
 }
 
 class _StoryPageState extends State<StoryPage> {
-  PageController _pageController = PageController(
+  PageController _inducedPhrasePageController = PageController(
+    initialPage: 0,
+  );
+  PageController _storyPageController = PageController(
     initialPage: 0,
   );
 
@@ -20,8 +24,8 @@ class _StoryPageState extends State<StoryPage> {
   void initState() {
     super.initState();
     Timer.periodic(Duration(seconds: 10), (timer) {
-      if (_pageController.hasClients) {
-        _pageController.nextPage(
+      if (_inducedPhrasePageController.hasClients) {
+        _inducedPhrasePageController.nextPage(
           duration: Duration(milliseconds: 350),
           curve: Curves.easeIn,
         );
@@ -84,7 +88,7 @@ class _StoryPageState extends State<StoryPage> {
               Flexible(
                 flex: 2,
                 child: PageView.builder(
-                  controller: _pageController,
+                  controller: _inducedPhrasePageController,
                   physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
                     return Column(
@@ -128,8 +132,9 @@ class _StoryPageState extends State<StoryPage> {
               Flexible(
                 flex: 5,
                 child: PageView.builder(
-                  physics: ClampingScrollPhysics(),
-                  controller: PageController(),
+                  reverse: true,
+                  physics: BouncingScrollPhysics(),
+                  controller: _storyPageController,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: EdgeInsets.only(top: 64.0),
@@ -139,13 +144,18 @@ class _StoryPageState extends State<StoryPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Image(
-                                  image: AssetImage(
-                                      'assets/images/left_quote.png')),
+                                image: AssetImage(
+                                  'assets/images/left_quote.png',
+                                ),
+                              ),
                               Padding(
                                 padding: const EdgeInsets.only(
-                                    left: 4.0, top: 16.0, right: 4.0),
+                                  left: 4.0,
+                                  top: 16.0,
+                                  right: 4.0,
+                                ),
                                 child: Text(
-                                  '먼저 간 딸아이가 자꾸 꿈에 나오네요',
+                                  '먼저 간 딸아이가 자꾸 꿈에 나오네요${Random().nextInt(100)}',
                                   style: TextStyle(
                                     fontFamily: 'MapoFlowerIsland',
                                     fontSize: 16,
@@ -156,8 +166,10 @@ class _StoryPageState extends State<StoryPage> {
                               Padding(
                                 padding: const EdgeInsets.only(top: 4.0),
                                 child: Image(
-                                    image: AssetImage(
-                                        'assets/images/right_quote.png')),
+                                  image: AssetImage(
+                                    'assets/images/right_quote.png',
+                                  ),
+                                ),
                               ),
                             ],
                           ),
