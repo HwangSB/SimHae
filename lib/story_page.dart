@@ -58,23 +58,23 @@ class _StoryPageState extends State<StoryPage> {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
                             Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 16, right: 16),
-                                child: InkResponse(
-                                  onTap: () {},
-                                  child: Container(
-                                    width: 48.0,
-                                    height: 48.0,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF8CDDD5),
-                                      shape: BoxShape.circle,
-                                    ),
-                                    child: Icon(
-                                      Icons.person,
-                                      color: Colors.white,
-                                    ),
+                              padding: const EdgeInsets.only(top: 16, right: 16),
+                              child: InkResponse(
+                                onTap: () {},
+                                child: Container(
+                                  width: 48.0,
+                                  height: 48.0,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF8CDDD5),
+                                    shape: BoxShape.circle,
                                   ),
-                                )),
+                                  child: Icon(
+                                    Icons.person,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       ],
