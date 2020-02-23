@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:solution_challenge/delete_story_page.dart';
+import 'package:solution_challenge/story_detail_page.dart';
+import 'package:solution_challenge/settings_page.dart';
 
 class MyPage extends StatelessWidget {
   @override
@@ -6,111 +10,8 @@ class MyPage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: Column(
-              children: <Widget>[
-                Padding(padding: EdgeInsets.only(top: 290.0)),
-                Padding(
-                  padding: const EdgeInsets.only(left: 24.0, bottom: 8.0),
-                  child: Row(
-                    children: <Widget>[
-                      Text(
-                        '건너간 편지',
-                        style: TextStyle(
-                          fontFamily: 'MapoFlowerIsland',
-                          fontSize: 18,
-                          color: Color(0xFF81CCC6),
-                        ),
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        size: 14,
-                        color: Color(0xFF81CCC6),
-                      ),
-                    ],
-                  ),
-                ),
-                StoryCardBuilder(
-                  itemCount: 7,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(16.0),
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0x29000000),
-                              blurRadius: 6.0,
-                              offset: Offset(0.0, 3.0),
-                            ),
-                          ],
-                        ),
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Text(
-                              'hello',
-                              style: TextStyle(
-                                fontFamily: 'MapoFlowerIsland',
-                                fontSize: 16,
-                                height: 1.75,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ],
-            ),
-          ),
-          // Padding(
-          //   padding: const EdgeInsets.only(top: 320.0),
-          //   child: ListView.builder(
-          //     physics: BouncingScrollPhysics(),
-          //     padding: EdgeInsets.all(16.0),
-          //     itemCount: 7,
-          //     itemBuilder: (context, index) {
-          //       return Padding(
-          //         padding: const EdgeInsets.only(bottom: 20.0),
-          //         child: Container(
-          //           decoration: BoxDecoration(
-          //             shape: BoxShape.rectangle,
-          //             borderRadius: BorderRadius.circular(16.0),
-          //             color: Colors.white,
-          //             boxShadow: [
-          //               BoxShadow(
-          //                 color: Color(0x29000000),
-          //                 blurRadius: 6.0,
-          //                 offset: Offset(0.0, 3.0),
-          //               ),
-          //             ],
-          //           ),
-          //           child: Center(
-          //             child: Padding(
-          //               padding: const EdgeInsets.all(16.0),
-          //               child: Text(
-          //                 'hello',
-          //                 style: TextStyle(
-          //                   fontFamily: 'MapoFlowerIsland',
-          //                   fontSize: 16,
-          //                   height: 1.75,
-          //                 ),
-          //               ),
-          //             ),
-          //           ),
-          //         ),
-          //       );
-          //     },
-          //   ),
-          // ),
           ShadowedWave(
-            height: 300.0,
+            height: 350.0,
             strength: 70.0,
             child: Container(
               decoration: BoxDecoration(
@@ -131,47 +32,61 @@ class MyPage extends StatelessWidget {
           SafeArea(
             child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      IconButton(
-                        icon: Icon(
-                          Icons.arrow_back_ios,
-                          color: Colors.white,
-                        ),
-                        iconSize: 28,
-                        onPressed: () {
-                          print('click');
-                        },
-                      ),
-                      InkResponse(
-                        onTap: () {
-                          print('click');
-                        },
-                        child: Container(
-                          width: 40.0,
-                          height: 40.0,
-                          decoration: BoxDecoration(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Material(
+                      color: Colors.transparent,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.arrow_back_ios,
                             color: Colors.white,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x29000000),
-                                blurRadius: 6.0,
-                                offset: Offset(0.0, 3.0),
-                              ),
-                            ],
                           ),
-                          child: Icon(
-                            Icons.more_vert,
-                            color: Color(0xFF8CD4D5),
+                          iconSize: 28.0,
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ),
+                    ),
+                    Material(
+                      color: Colors.transparent,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: InkResponse(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SettingsPage(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: 40.0,
+                            height: 40.0,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x29000000),
+                                  blurRadius: 6.0,
+                                  offset: Offset(0.0, 3.0),
+                                ),
+                              ],
+                            ),
+                            child: Icon(
+                              Icons.more_vert,
+                              color: Color(0xFF8CD4D5),
+                            ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 28.0),
@@ -199,7 +114,8 @@ class MyPage extends StatelessWidget {
                 Divider(
                   indent: 128.0,
                   endIndent: 128.0,
-                  color: Color(0xFF5D5D5D),
+                  color: Color(0x339D9D9D),
+                  thickness: 1.5,
                 ),
                 RichText(
                   text: TextSpan(
@@ -239,26 +155,156 @@ class MyPage extends StatelessWidget {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(top: 320.0),
+            child: Column(
+              children: <Widget>[
+                CupertinoButton(
+                  padding: EdgeInsets.only(left: 20.0),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DeleteStoryPage(),
+                      ),
+                    );
+                  },
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text(
+                        '건너간 편지',
+                        style: TextStyle(
+                          fontFamily: 'MapoFlowerIsland',
+                          fontSize: 18,
+                          color: Color(0xFF81CCC6),
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        size: 14,
+                        color: Color(0xFF81CCC6),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Stack(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 360.0),
+                child: ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  padding: EdgeInsets.all(16.0),
+                  itemCount: 7,
+                  itemBuilder: (context, index) {
+                    return CupertinoButton(
+                      padding: EdgeInsets.all(0.0),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Scaffold(
+                              backgroundColor: Color(0xFF8CDDD5),
+                              body: StoryDetailPage(
+                                value: 1.0,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(16.0),
+                            color: Colors.white,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x29000000),
+                                blurRadius: 6.0,
+                                offset: Offset(0.0, 3.0),
+                              ),
+                            ],
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 32.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Image(
+                                      image: AssetImage(
+                                          'assets/images/left_quote.png'),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 4.0,
+                                        top: 16.0,
+                                        right: 4.0,
+                                      ),
+                                      child: Text(
+                                        '먼저 간 딸아이가 자꾸 꿈에 나오네요',
+                                        style: TextStyle(
+                                          fontFamily: 'MapoFlowerIsland',
+                                          fontSize: 16,
+                                          color: Color(0xFF3B514F),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 4.0),
+                                      child: Image(
+                                        image: AssetImage(
+                                            'assets/images/right_quote.png'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Divider(
+                                  indent: 48.0,
+                                  endIndent: 48.0,
+                                  color: Color(0xFF707070),
+                                  thickness: 0.6,
+                                  height: 16.0,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              Positioned(
+                top: 360,
+                height: 16.0,
+                width: 500,
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.0, 1.0],
+                      colors: [
+                        Theme.of(context).scaffoldBackgroundColor,
+                        Theme.of(context)
+                            .scaffoldBackgroundColor
+                            .withOpacity(0.0),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
-      ),
-    );
-  }
-}
-
-class StoryCardBuilder extends StatelessWidget {
-  final int itemCount;
-  final IndexedWidgetBuilder itemBuilder;
-
-  StoryCardBuilder(
-      {Key key, @required this.itemCount, @required this.itemBuilder})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: List.generate(
-        this.itemCount,
-        (index) => this.itemBuilder(context, index),
       ),
     );
   }
@@ -304,7 +350,7 @@ class WavePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 
   @override
   bool hitTest(Offset position) {
@@ -341,5 +387,5 @@ class WaveClipper extends CustomClipper<Path> {
   }
 
   @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => false;
+  bool shouldReclip(CustomClipper<Path> oldClipper) => true;
 }

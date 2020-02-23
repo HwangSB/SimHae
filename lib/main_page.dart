@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:solution_challenge/notifying_page_view.dart';
 import 'package:solution_challenge/story_page.dart';
 import 'package:solution_challenge/story_detail_page.dart';
+import 'package:solution_challenge/animated_wave.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -21,20 +22,80 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: NotifyingPageView(
-          notifier: _notifier,
+        child: Stack(
           children: <Widget>[
             AnimatedBuilder(
               animation: _notifier,
               builder: (context, _) {
-                return StoryPage(value: _notifier.value);
+                return Align(
+                  alignment: Alignment.bottomCenter,
+                  child: AnimatedWave(
+                    color: Color(0xAA8CDDD5),
+                    height: 130.0 + 700.0 * _notifier.value,
+                    strength: 150,
+                    speed: 1.0,
+                  ),
+                );
               },
             ),
             AnimatedBuilder(
               animation: _notifier,
               builder: (context, _) {
-                return StoryDetailPage(value: _notifier.value);
+                return Align(
+                  alignment: Alignment.bottomCenter,
+                  child: AnimatedWave(
+                    color: Color(0xAA8CDDD5),
+                    height: 130.0 + 700.0 * _notifier.value,
+                    strength: 100,
+                    speed: 1.0,
+                  ),
+                );
               },
+            ),
+            AnimatedBuilder(
+              animation: _notifier,
+              builder: (context, _) {
+                return Align(
+                  alignment: Alignment.bottomCenter,
+                  child: AnimatedWave(
+                    color: Color(0xAA8CDDD5),
+                    height: 130.0 + 700.0 * _notifier.value,
+                    strength: 80,
+                    speed: 0.9,
+                  ),
+                );
+              },
+            ),
+            AnimatedBuilder(
+              animation: _notifier,
+              builder: (context, _) {
+                return Align(
+                  alignment: Alignment.bottomCenter,
+                  child: AnimatedWave(
+                    color: Color(0xAA8CDDD5),
+                    height: 130.0 + 700.0 * _notifier.value,
+                    strength: 120,
+                    speed: 1.2,
+                  ),
+                );
+              },
+            ),
+            NotifyingPageView(
+              notifier: _notifier,
+              children: <Widget>[
+                AnimatedBuilder(
+                  animation: _notifier,
+                  builder: (context, _) {
+                    return StoryPage(value: _notifier.value);
+                  },
+                ),
+                AnimatedBuilder(
+                  animation: _notifier,
+                  builder: (context, _) {
+                    return StoryDetailPage(value: _notifier.value);
+                  },
+                ),
+              ],
             ),
           ],
         ),
