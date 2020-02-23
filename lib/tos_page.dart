@@ -254,10 +254,13 @@ class ShadowedWave extends StatelessWidget {
 
 class WavePainter extends CustomPainter {
   final CustomClipper<Path> clipper;
+  final Shadow shadow = Shadow(
+    blurRadius: 6.0,
+    offset: Offset(0, 3.0),
+    color: Color(0x29000000),
+  );
 
   WavePainter({@required this.clipper});
-  Shadow shadow =
-      Shadow(blurRadius: 6.0, offset: Offset(0, 3.0), color: Color(0x29000000));
 
   @override
   void paint(Canvas canvas, Size size) {

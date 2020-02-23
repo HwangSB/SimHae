@@ -92,24 +92,6 @@ class _SplashPageState extends State<SplashPage> {
     );
   }
 
-  outlineShadow(double size) {
-    return [
-      Shadow(
-          offset: Offset(-(size / 2.0), -(size / 2.0)),
-          color: Color(0xFF707070)),
-      Shadow(
-          offset: Offset((size / 2.0), -(size / 2.0)),
-          color: Color(0xFF707070)),
-      Shadow(
-        offset: Offset((size / 2.0), (size / 2.0)),
-        color: Color(0xFF707070),
-      ),
-      Shadow(
-          offset: Offset(-(size / 2.0), (size / 2.0)),
-          color: Color(0xFF707070)),
-    ];
-  }
-
   _startTimer() async {
     var _duration = Duration(seconds: 2);
     return Timer(_duration, _navigationPage);

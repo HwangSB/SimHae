@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:solution_challenge/write_page.dart';
-import 'package:solution_challenge/main_page.dart';
-import 'package:solution_challenge/tos_page.dart';
 import 'package:solution_challenge/splash_page.dart';
 
 void main() => runApp(MyApp());
