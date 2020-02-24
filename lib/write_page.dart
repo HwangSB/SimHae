@@ -37,6 +37,8 @@ class WritePageState extends State<WritePage>{
             Flexible(
               child: TextField(
                 controller: myController,
+                maxLength: 10,
+                decoration: new InputDecoration(contentPadding: const EdgeInsets.only(left: 20.0)),
               ))
             
             ]
