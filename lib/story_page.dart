@@ -40,50 +40,47 @@ class _StoryPageState extends State<StoryPage> {
         SafeArea(
           child: Column(
             children: <Widget>[
-              Flexible(
-                flex: 1,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: <Widget>[
-                          InkResponse(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => MyPage(),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        InkResponse(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MyPage(),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            width: 40.0,
+                            height: 40.0,
+                            decoration: BoxDecoration(
+                              color: Color(0xFF8CDDD5),
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x29000000),
+                                  blurRadius: 6.0,
+                                  offset: Offset(0.0, 3.0),
                                 ),
-                              );
-                            },
-                            child: Container(
-                              width: 40.0,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF8CDDD5),
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0x29000000),
-                                    blurRadius: 6.0,
-                                    offset: Offset(0.0, 3.0),
-                                  ),
-                                ],
-                              ),
-                              child: Icon(
-                                Icons.person,
-                                color: Colors.white,
-                              ),
+                              ],
+                            ),
+                            child: Icon(
+                              Icons.person,
+                              color: Colors.white,
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               Flexible(
                 flex: 2,

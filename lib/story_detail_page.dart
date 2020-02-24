@@ -20,7 +20,6 @@ class _StoryDetailPageState extends State<StoryDetailPage> {
           Flexible(
             flex: 2,
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Row(
                   children: <Widget>[
@@ -84,7 +83,7 @@ class _StoryDetailPageState extends State<StoryDetailPage> {
             ),
           ),
           Flexible(
-            flex: 9,
+            flex: 8,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Card(
