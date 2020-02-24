@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>708176750285-umctapb65phlqu3qobdo1a73g6fjqgnb.apps.googleusercontent.com</string>
+	<string>708176750285-ce9tc1qlpbosq6l9trd5dqgnome4g06o.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.708176750285-umctapb65phlqu3qobdo1a73g6fjqgnb</string>
+	<string>com.googleusercontent.apps.708176750285-ce9tc1qlpbosq6l9trd5dqgnome4g06o</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBH9Ulfv5ARhNObTSSDuUntFngg5wnMA1I</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.SolutionChallenge</string>
+	<string>com.example.solutionChallenge</string>
 	<key>PROJECT_ID</key>
 	<string>flutter-globalchallenge</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:708176750285:ios:e0b1099d1c09641d75ab84</string>
+	<string>1:708176750285:ios:d3a0877a2db8ccab75ab84</string>
 	<key>DATABASE_URL</key>
 	<string>https://flutter-globalchallenge.firebaseio.com</string>
 </dict>
