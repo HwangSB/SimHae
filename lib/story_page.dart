@@ -1,224 +1,195 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-//import 'story_detail_page.dart';
-import 'animated_wave.dart';
+import 'dart:async';
 import 'dart:math';
+import 'package:flutter/material.dart';
+import 'package:solution_challenge/my_page.dart';
 
 class StoryPage extends StatefulWidget {
-  StoryPage({Key key}) : super(key: key);
+  final double value;
+
+  StoryPage({this.value});
 
   @override
-  StoryPageState createState() => StoryPageState();
+  _StoryPageState createState() => _StoryPageState();
 }
 
-class StoryPageState extends State<StoryPage> {
-  double cumulativeValue = 0.0;
-  double storyPageOpacity = 1.0;
-  double storyDetailPageOpacity = 0.0;
-  ScrollPhysics scrollPhysics = BouncingScrollPhysics();
-  double paddingTop = 350.0;
-  double waveHeight = 130.0;
-  int cardUpHeight = 0;
+class _StoryPageState extends State<StoryPage> {
+  PageController _inducedPhrasePageController = PageController(
+    initialPage: 0,
+  );
+  PageController _storyPageController = PageController(
+    initialPage: 0,
+  );
+
+  @override
+  void initState() {
+    super.initState();
+    Timer.periodic(Duration(seconds: 10), (timer) {
+      if (_inducedPhrasePageController.hasClients) {
+        _inducedPhrasePageController.nextPage(
+          duration: Duration(milliseconds: 350),
+          curve: Curves.easeIn,
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      child: Stack(
-        children: <Widget>[
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedWave(
-                color: Colors.blue.withAlpha(30),
-                height: waveHeight,
-                strength: 100,
-                speed: 1.0,
-              ),
-            ),
-          ),
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedWave(
-                color: Colors.cyan.withAlpha(30),
-                height: waveHeight,
-                strength: 80,
-                speed: 0.9,
-                offset: pi,
-              ),
-            ),
-          ),
-          Positioned.fill(
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedWave(
-                color: Colors.lightBlue.withAlpha(30),
-                height: waveHeight,
-                strength: 120,
-                speed: 1.2,
-                offset: pi / 2,
-              ),
-            ),
-          ),
-          Container(
-            child: Column(
-              children: <Widget>[
-                Flexible(
-                  flex: 1,
-                  child: Align(
-                    alignment: Alignment.topRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 16, right: 16),
-                      child: Opacity(
-                        opacity: storyPageOpacity,
-                        child: SizedBox(
-                          height: 50,
-                          width: 50,
-                          child: FloatingActionButton(
-                            backgroundColor: Colors.lightBlue,
-                            child: Icon(Icons.person),
-                            onPressed: () {},
+    return Stack(
+      children: <Widget>[
+        SafeArea(
+          child: Column(
+            children: <Widget>[
+              Flexible(
+                flex: 1,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          InkResponse(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MyPage(),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              width: 40.0,
+                              height: 40.0,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF8CDDD5),
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x29000000),
+                                    blurRadius: 6.0,
+                                    offset: Offset(0.0, 3.0),
+                                  ),
+                                ],
+                              ),
+                              child: Icon(
+                                Icons.person,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                  ),
+                  ],
                 ),
-                Flexible(
-                  flex: 4,
-                  child: Opacity(
-                    opacity: storyPageOpacity,
-                    child: PageView(
-                      physics: scrollPhysics,
-                      controller: PageController(),
+              ),
+              Flexible(
+                flex: 2,
+                child: PageView.builder(
+                  controller: _inducedPhrasePageController,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(left: 32),
-                          child: Text(
-                            '유도 문구를\n넣을 생각입니다.1',
-                            style: TextStyle(
-                              fontSize: 28,
+                        Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.only(left: 32),
+                              child: Stack(
+                                children: <Widget>[
+                                  Text(
+                                    '유도 문구를\n넣을 생각입니다.${index % 5}',
+                                    style: TextStyle(
+                                      fontFamily: 'MapoFlowerIsland',
+                                      fontSize: 26,
+                                      foreground: Paint()
+                                        ..style = PaintingStyle.stroke
+                                        ..strokeWidth = 0.3
+                                        ..color = Color(0xFF707070),
+                                    ),
+                                  ),
+                                  Text(
+                                    '유도 문구를\n넣을 생각입니다.${index % 5}',
+                                    style: TextStyle(
+                                      fontFamily: 'MapoFlowerIsland',
+                                      fontSize: 26,
+                                      color: Color(0xFF3B514F),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 32),
-                          child: Text(
-                            '유도 문구를\n넣을 생각입니다.2',
-                            style: TextStyle(
-                              fontSize: 28,
-                            ),
-                          ),
+                          ],
                         ),
                       ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Padding(
-                padding: EdgeInsets.only(top: paddingTop),
-                child: Text(
-                  '"사연을 넣을 생각입니다."',
-                  style: TextStyle(fontSize: 18),
+                    );
+                  },
                 ),
               ),
-            ),
-          ),
-          Positioned.fill(
-            child: Opacity(
-              opacity: storyDetailPageOpacity,
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    left: 32.0, top: 128.0, right: 32.0, bottom: 32.0),
-                child: Card(
-                  child: Center(
-                    child: Text('hello'),
-                  ),
+              Flexible(
+                flex: 5,
+                child: PageView.builder(
+                  reverse: true,
+                  physics: BouncingScrollPhysics(),
+                  controller: _storyPageController,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(top: 64.0),
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Image(
+                                image: AssetImage(
+                                  'assets/images/left_quote.png',
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 4.0,
+                                  top: 16.0,
+                                  right: 4.0,
+                                ),
+                                child: Text(
+                                  '먼저 간 딸아이가 자꾸 꿈에 나오네요${Random().nextInt(100)}',
+                                  style: TextStyle(
+                                    fontFamily: 'MapoFlowerIsland',
+                                    fontSize: 16,
+                                    color: Color(0xFF3B514F),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 4.0),
+                                child: Image(
+                                  image: AssetImage(
+                                    'assets/images/right_quote.png',
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Divider(
+                            indent: 64.0,
+                            endIndent: 64.0,
+                            color: Color(0xFF707070),
+                            thickness: 0.6,
+                            height: 16.0,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
-      onPanStart: (details) {
-        cumulativeValue = 0.0;
-      },
-      onPanUpdate: (details) {
-        setState(() {
-          cumulativeValue += details.delta.dy;
-
-          storyPageOpacity += details.delta.dy / 150.0;
-          if (storyPageOpacity < 0.0) storyPageOpacity = 0.0;
-          if (storyPageOpacity > 1.0) storyPageOpacity = 1.0;
-          if (storyPageOpacity <= 0.0)
-            scrollPhysics = NeverScrollableScrollPhysics();
-          else
-            scrollPhysics = BouncingScrollPhysics();
-
-          paddingTop += details.delta.dy / 300.0 * 350.0;
-          if (paddingTop < 50.0) paddingTop = 50.0;
-          if (paddingTop > 350.0) paddingTop = 350.0;
-
-          waveHeight -= details.delta.dy / 300.0 * 800.0;
-          if (waveHeight > 800.0) waveHeight = 800.0;
-          if (waveHeight < 130.0) waveHeight = 130.0;
-
-          if (cumulativeValue < -100 || cumulativeValue > 0) {
-            storyDetailPageOpacity -= details.delta.dy / 150.0;
-            if (storyDetailPageOpacity < 0.0) storyDetailPageOpacity = 0.0;
-            if (storyDetailPageOpacity > 1.0) storyDetailPageOpacity = 1.0;
-          }
-        });
-      },
+        ),
+      ],
     );
   }
 }
-
-/*Route _createRoute() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) {
-      return StoryDetailPage();
-    },
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      var begin = Offset(0.0, 1.0);
-      var end = Offset.zero;
-      var curve = Curves.ease;
-
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
-}*/
-
-// class StoryPage extends StatefulWidget {
-//   StoryPage({Key key}) : super(key: key);
-
-//   @override
-//   StoryPageState createState() => StoryPageState();
-// }
-
-// class StoryPageState extends State<StoryPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Dismissible(
-//       key: ValueKey(''),
-//       direction: DismissDirection.startToEnd,
-//       onDismissed: (DismissDirection direction) {},
-//       background: StoryPage(),
-//       child: Center(
-//         child: Text(
-//           '새로운 글을 가져오는 중입니다.',
-//         ),
-//       ),
-//     );
-//   }
-// }

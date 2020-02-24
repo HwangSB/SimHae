@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:solution_challenge/main_page.dart';
+import 'package:solution_challenge/settings_database.dart';
 import 'package:solution_challenge/tos_detail_page.dart';
+import 'package:solution_challenge/main_page.dart';
 
 class TosPage extends StatefulWidget {
+  TosPage({Key key}) : super(key: key);
+
   @override
   TosPageState createState() => TosPageState();
 }
@@ -209,16 +212,21 @@ class TosPageState extends State<TosPage> {
       ),
     );
 
-    termsOfService[index]['agree'] = result;
+    if (result != null) {
+      termsOfService[index]['agree'] = result;
+    }
   }
 
   bool _isAcceptAllTerms() {
-    // 동의하지 않은 항목이 없을경우 true 반환
     return termsOfService.where((term) => !term['agree']).isEmpty;
   }
 
-  void _continueButtonPressed() {
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainPage()));
+  void _continueButtonPressed() async {
+    SettingsDatabase settings = SettingsDatabase();
+    settings.update(AppSetting(key: 'accept_all_tos', value: 'true'));
+
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => MainPage()));
   }
 }
 
@@ -246,10 +254,13 @@ class ShadowedWave extends StatelessWidget {
 
 class WavePainter extends CustomPainter {
   final CustomClipper<Path> clipper;
+  final Shadow shadow = Shadow(
+    blurRadius: 6.0,
+    offset: Offset(0, 3.0),
+    color: Color(0x29000000),
+  );
 
   WavePainter({@required this.clipper});
-  Shadow shadow =
-      Shadow(blurRadius: 6.0, offset: Offset(0, 3.0), color: Color(0x29000000));
 
   @override
   void paint(Canvas canvas, Size size) {
