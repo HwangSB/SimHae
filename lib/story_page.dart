@@ -176,28 +176,40 @@ class _MainPageState extends State<MainPage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Color(0xFF8CDDD5),
-        unselectedItemColor: Color(0xFF8CDDD5),
-        selectedFontSize: 12,
-        unselectedFontSize: 12,
-        currentIndex: 0,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_balance_wallet,
-              color: Color(0xFF8CDDD5),
-            ),
-            title: Text('test1'),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 50.0,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  CupertinoButton(
+                    padding: EdgeInsets.all(0.0),
+                    child: Image(
+                      image: AssetImage(
+                        'assets/images/hand_shake.png',
+                      ),
+                      height: 48.0,
+                    ),
+                    onPressed: () {},
+                  ),
+                  CupertinoButton(
+                    padding: EdgeInsets.all(0.0),
+                    child: Image(
+                      image: AssetImage(
+                        'assets/images/ribbon.png',
+                      ),
+                      height: 48.0,
+                    ),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_balance_wallet,
-              color: Color(0xFF8CDDD5),
-            ),
-            title: Text('test2'),
-          ),
-        ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
