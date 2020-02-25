@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:solution_challenge/settings_database.dart';
-import 'package:solution_challenge/main_page.dart';
+import 'package:solution_challenge/story_page.dart';
 import 'package:solution_challenge/tos_page.dart';
 
 class SplashPage extends StatefulWidget {
