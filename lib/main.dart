@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.light,
       ),
       home: SplashPage(),
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
     );
     
   }
