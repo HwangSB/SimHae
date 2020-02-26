@@ -90,7 +90,7 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
           Flexible(
-            flex: 8,
+            flex: 7,
             child: Container(
               color: Color(0xFFFFFFFF),
               child: ListView.separated(

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:solution_challenge/shadowed_wave.dart';
 import 'package:solution_challenge/settings_database.dart';
 import 'package:solution_challenge/tos_detail_page.dart';
-import 'package:solution_challenge/main_page.dart';
+import 'package:solution_challenge/story_page.dart';
 
 class TosPage extends StatefulWidget {
   TosPage({Key key}) : super(key: key);
@@ -31,7 +32,7 @@ class TosPageState extends State<TosPage> {
       'name': '사이버 폭력',
       'summary': '사이버 폭력(악성 댓글)에 의한 피해자의 심리적 피해',
       'detail':
-          '사이버폭력의 피해자들은 사건 이후, 극심한 우울증을 보이고 극단적으로는 자살을 하는 등 심각한 결과를 초래한다.\n사이버폭력으로 인한 학생 피해자의 심리적인 영향은 학교를 결석하거나, 낮은 성적을 받고, 낮은 집중력을 보이는 것과 유의미한 상관이 나타났고 또한 사회 불안을 유의미하게 증가시킨다는 결과를 나타냈다. \n사이버폭력의 가해자를 아는 경우와 모르는 경우로 구분하여 심리사회적인 문제를 측정하였다. 그 결과 가해자를 아는 경우에는 공격적인 행동이나 사회적 문제에서 유의미한 결과가 나타났고, 가해자를 모르는 경우에는 사회적 문제와 우울에서 유의미한 결과를 나타냈다. 결국 가해자가 아는 사람이든 모르는 사람이든 피해자의 심리에 상당한 부정적 영향을 미치는 것으로 나타났다.',
+          '- 사이버폭력의 피해자들은 사건 이후, 극심한 우울증을 보이고 극단적으로는 자살을 하는 등 심각한 결과를 초래한다.\n사이버폭력으로 인한 학생 피해자의 심리적인 영향은 학교를 결석하거나, 낮은 성적을 받고, 낮은 집중력을 보이는 것과 유의미한 상관이 나타났고 또한 사회 불안을 유의미하게 증가시킨다는 결과를 나타냈다. \n사이버폭력의 가해자를 아는 경우와 모르는 경우로 구분하여 심리사회적인 문제를 측정하였다. 그 결과 가해자를 아는 경우에는 공격적인 행동이나 사회적 문제에서 유의미한 결과가 나타났고, 가해자를 모르는 경우에는 사회적 문제와 우울에서 유의미한 결과를 나타냈다. 결국 가해자가 아는 사람이든 모르는 사람이든 피해자의 심리에 상당한 부정적 영향을 미치는 것으로 나타났다.',
       'agree': false,
     },
     {
@@ -228,81 +229,4 @@ class TosPageState extends State<TosPage> {
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => MainPage()));
   }
-}
-
-class ShadowedWave extends StatelessWidget {
-  final Widget child;
-  final double height;
-  final double strength;
-
-  ShadowedWave(
-      {@required this.child, @required this.height, @required this.strength});
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: WavePainter(
-        clipper: WaveClipper(height: height, strength: strength),
-      ),
-      child: ClipPath(
-        child: child,
-        clipper: WaveClipper(height: height, strength: strength),
-      ),
-    );
-  }
-}
-
-class WavePainter extends CustomPainter {
-  final CustomClipper<Path> clipper;
-  final Shadow shadow = Shadow(
-    blurRadius: 6.0,
-    offset: Offset(0, 3.0),
-    color: Color(0x29000000),
-  );
-
-  WavePainter({@required this.clipper});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    var paint = shadow.toPaint();
-    var clipPath = clipper.getClip(size).shift(shadow.offset);
-    canvas.drawPath(clipPath, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return true;
-  }
-}
-
-class WaveClipper extends CustomClipper<Path> {
-  double height = 0.0;
-  double strength = 0.0;
-
-  WaveClipper({@required this.height, @required this.strength});
-
-  @override
-  Path getClip(Size size) {
-    var path = new Path();
-    path.lineTo(0.0, height - strength / 2.0);
-
-    var firstControlPoint = Offset(size.width / 4.0, height - strength);
-    var firstGivenPoint = Offset(size.width / 2.0, height - strength / 2.0);
-    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
-        firstGivenPoint.dx, firstGivenPoint.dy);
-
-    var secondControlPoint = Offset(size.width - size.width / 4.0, height);
-    var secondGivenPoint = Offset(size.width, height - strength / 2.0);
-    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
-        secondGivenPoint.dx, secondGivenPoint.dy);
-
-    path.lineTo(size.width, height - strength / 2.0);
-    path.lineTo(size.width, 0.0);
-    path.close();
-
-    return path;
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) => true;
 }
