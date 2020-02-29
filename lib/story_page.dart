@@ -4,178 +4,182 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:solution_challenge/animated_wave.dart';
 import 'package:infinity_page_view/infinity_page_view.dart';
+import 'package:solution_challenge/memorial_space_pgae.dart';
 import 'package:solution_challenge/story_detail_page.dart';
 import 'package:solution_challenge/my_page.dart';
 
-class MainPage extends StatefulWidget {
+class StoryPage extends StatefulWidget {
   @override
-  _MainPageState createState() => _MainPageState();
+  _StoryPageState createState() => _StoryPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _StoryPageState extends State<StoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Stack(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedWave(
-                color: Color(0xB3F6FFFE),
-                height: 200.0,
-                strength: 100,
-                speed: 1.0,
-              ),
+      body: Stack(
+        children: <Widget>[
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: AnimatedWave(
+              color: Color(0xB3F6FFFE),
+              height: 250.0,
+              strength: 50,
+              speed: 1.0,
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedWave(
-                color: Color(0xE6F3FEFD),
-                height: 190.0,
-                strength: 100,
-                speed: 1.3,
-              ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: AnimatedWave(
+              color: Color(0xE6F3FEFD),
+              height: 240.0,
+              strength: 50,
+              speed: 1.3,
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedWave(
-                color: Color(0xE6C8F0D5),
-                height: 160.0,
-                strength: 80,
-                speed: 0.9,
-                offset: 3.14,
-              ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: AnimatedWave(
+              color: Color(0xE6C8F0D5),
+              height: 210.0,
+              strength: 40,
+              speed: 0.9,
+              offset: 3.14,
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedWave(
-                color: Color(0xB380C9F6),
-                height: 130.0,
-                strength: 120,
-                speed: 1.2,
-                offset: 1.67,
-              ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: AnimatedWave(
+              color: Color(0xB380C9F6),
+              height: 180.0,
+              strength: 60,
+              speed: 1.2,
+              offset: 1.67,
             ),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: AnimatedWave(
-                color: Color(0xB382CCC6),
-                height: 130.0,
-                strength: 120,
-                speed: 1.2,
-                offset: 1.0,
-              ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: AnimatedWave(
+              color: Color(0xB382CCC6),
+              height: 180.0,
+              strength: 60,
+              speed: 1.2,
+              offset: 1.0,
             ),
-            SafeArea(
-              child: Column(
-                children: <Widget>[
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            InkResponse(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => MyPage(),
+          ),
+          SafeArea(
+            child: Column(
+              children: <Widget>[
+                Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Image(
+                            image: AssetImage('assets/images/logo_sm.png'),
+                            width: 68.0,
+                            height: 68.0,
+                          ),
+                          InkResponse(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MyPage(),
+                                ),
+                              );
+                            },
+                            child: Container(
+                              width: 40.0,
+                              height: 40.0,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF8CDDD5),
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0x29000000),
+                                    blurRadius: 6.0,
+                                    offset: Offset(0.0, 3.0),
                                   ),
-                                );
-                              },
-                              child: Container(
-                                width: 40.0,
-                                height: 40.0,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF8CDDD5),
-                                  shape: BoxShape.circle,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0x29000000),
-                                      blurRadius: 6.0,
-                                      offset: Offset(0.0, 3.0),
+                                ],
+                              ),
+                              child: Icon(
+                                Icons.person,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                Flexible(
+                  flex: 2,
+                  child: PageView.builder(
+                    controller: PageController(),
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Row(
+                            children: <Widget>[
+                              Padding(
+                                padding: EdgeInsets.only(left: 32),
+                                child: Stack(
+                                  children: <Widget>[
+                                    Text(
+                                      '유도 문구를\n넣을 생각입니다.${index % 5}',
+                                      style: TextStyle(
+                                        fontFamily: 'MapoFlowerIsland',
+                                        fontSize: 26,
+                                        foreground: Paint()
+                                          ..style = PaintingStyle.stroke
+                                          ..strokeWidth = 0.3
+                                          ..color = Color(0xFF707070),
+                                      ),
+                                    ),
+                                    Text(
+                                      '유도 문구를\n넣을 생각입니다.${index % 5}',
+                                      style: TextStyle(
+                                        fontFamily: 'MapoFlowerIsland',
+                                        fontSize: 26,
+                                        color: Color(0xFF3B514F),
+                                      ),
                                     ),
                                   ],
                                 ),
-                                child: Icon(
-                                  Icons.person,
-                                  color: Colors.white,
-                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                            ],
+                          ),
+                        ],
+                      );
+                    },
                   ),
-                  Flexible(
-                    flex: 2,
-                    child: PageView.builder(
-                      controller: PageController(),
-                      physics: NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) {
-                        return Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                Padding(
-                                  padding: EdgeInsets.only(left: 32),
-                                  child: Stack(
-                                    children: <Widget>[
-                                      Text(
-                                        '유도 문구를\n넣을 생각입니다.${index % 5}',
-                                        style: TextStyle(
-                                          fontFamily: 'MapoFlowerIsland',
-                                          fontSize: 26,
-                                          foreground: Paint()
-                                            ..style = PaintingStyle.stroke
-                                            ..strokeWidth = 0.3
-                                            ..color = Color(0xFF707070),
-                                        ),
-                                      ),
-                                      Text(
-                                        '유도 문구를\n넣을 생각입니다.${index % 5}',
-                                        style: TextStyle(
-                                          fontFamily: 'MapoFlowerIsland',
-                                          fontSize: 26,
-                                          color: Color(0xFF3B514F),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        );
-                      },
-                    ),
+                ),
+                Flexible(
+                  flex: 2,
+                  child: InfinityPageView(
+                    controller: InfinityPageController(initialPage: 0),
+                    itemCount: 3,
+                    itemBuilder: (builder, index) {
+                      return OneLineStory();
+                    },
                   ),
-                  Flexible(
-                    flex: 2,
-                    child: InfinityPageView(
-                      controller: InfinityPageController(initialPage: 0),
-                      itemCount: 3,
-                      itemBuilder: (builder, index) {
-                        return OneLineStory();
-                      },
-                    ),
-                  ),
-                  Flexible(
-                    flex: 3,
-                    child: Container(),
-                  ),
-                ],
-              ),
+                ),
+                Flexible(
+                  flex: 3,
+                  child: Container(),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
+      extendBody: true,
       bottomNavigationBar: BottomAppBar(
         child: Container(
           height: 50.0,
@@ -203,7 +207,14 @@ class _MainPageState extends State<MainPage> {
                       ),
                       height: 48.0,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MemorialSpacePage(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -217,6 +228,7 @@ class _MainPageState extends State<MainPage> {
         child: Icon(
           Icons.edit,
           color: Color(0xFF8CDDD5),
+          size: 28.0,
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

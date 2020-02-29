@@ -94,6 +94,7 @@ class _SettingsPageState extends State<SettingsPage> {
             child: Container(
               color: Color(0xFFFFFFFF),
               child: ListView.separated(
+                physics: BouncingScrollPhysics(),
                 padding: EdgeInsets.all(0.0),
                 itemBuilder: (context, index) {
                   return CupertinoButton(

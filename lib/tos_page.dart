@@ -227,6 +227,6 @@ class TosPageState extends State<TosPage> {
     settings.update(AppSetting(key: 'accept_all_tos', value: 'true'));
 
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => MainPage()));
+        context, MaterialPageRoute(builder: (context) => StoryPage()));
   }
 }

@@ -25,65 +25,76 @@ class _SplashPageState extends State<SplashPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Text(
-                    '심해(心海)',
-                    style: TextStyle(
-                      fontFamily: 'MapoFlowerIsland',
-                      fontSize: 24,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 0.3
-                        ..color = Color(0xFF707070),
-                    ),
-                  ),
-                  Text(
-                    '심해(心海)',
-                    style: TextStyle(
-                      fontFamily: 'MapoFlowerIsland',
-                      fontSize: 24,
-                      color: Color(0x91191919),
-                      shadows: [
-                        Shadow(
-                          blurRadius: 6.0,
-                          offset: Offset(3.0, 3.0),
-                          color: Color(0xFF81F8F0),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+              Image(
+                image: AssetImage('assets/images/logo_lg.png'),
+                width: 200.0,
+                height: 200.0,
               ),
-              Stack(
-                children: <Widget>[
-                  Text(
-                    '우리의 마음이 머무는 바다.',
-                    style: TextStyle(
-                      fontFamily: 'MapoFlowerIsland',
-                      fontSize: 18,
-                      foreground: Paint()
-                        ..style = PaintingStyle.stroke
-                        ..strokeWidth = 0.3
-                        ..color = Color(0xFF707070),
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0),
+                child: Stack(
+                  children: <Widget>[
+                    Text(
+                      '심해(心海)',
+                      style: TextStyle(
+                        fontFamily: 'MapoFlowerIsland',
+                        fontSize: 24,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 0.3
+                          ..color = Color(0xFF707070),
+                      ),
                     ),
-                  ),
-                  Text(
-                    '우리의 마음이 머무는 바다.',
-                    style: TextStyle(
-                      fontFamily: 'MapoFlowerIsland',
-                      fontSize: 18,
-                      color: Color(0x91191919),
-                      shadows: [
-                        Shadow(
-                          blurRadius: 6.0,
-                          offset: Offset(3.0, 3.0),
-                          color: Color(0xFF81F8F0),
-                        ),
-                      ],
+                    Text(
+                      '심해(心海)',
+                      style: TextStyle(
+                        fontFamily: 'MapoFlowerIsland',
+                        fontSize: 24,
+                        color: Color(0x91191919),
+                        shadows: [
+                          Shadow(
+                            blurRadius: 6.0,
+                            offset: Offset(3.0, 3.0),
+                            color: Color(0xFF81F8F0),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 30.0),
+                child: Stack(
+                  children: <Widget>[
+                    Text(
+                      '우리의 마음이 머무는 바다.',
+                      style: TextStyle(
+                        fontFamily: 'MapoFlowerIsland',
+                        fontSize: 18,
+                        foreground: Paint()
+                          ..style = PaintingStyle.stroke
+                          ..strokeWidth = 0.3
+                          ..color = Color(0xFF707070),
+                      ),
+                    ),
+                    Text(
+                      '우리의 마음이 머무는 바다.',
+                      style: TextStyle(
+                        fontFamily: 'MapoFlowerIsland',
+                        fontSize: 18,
+                        color: Color(0x91191919),
+                        shadows: [
+                          Shadow(
+                            blurRadius: 6.0,
+                            offset: Offset(3.0, 3.0),
+                            color: Color(0xFF81F8F0),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -98,7 +109,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _navigationPage() async {
-    Widget page = await _checkAllTosAccept() ? MainPage() : TosPage();
+    Widget page = await _checkAllTosAccept() ? StoryPage() : TosPage();
     Navigator.pushReplacement(context, FadePageRoute(page: page));
   }
 
