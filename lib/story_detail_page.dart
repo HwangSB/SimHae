@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-class StoryDetailPage extends StatefulWidget {
+class StoryDetailPage extends StatelessWidget {
   final String title;
-  final String summary;
+  final String detail;
   final Color backgroundColor;
 
-  StoryDetailPage({@required this.title, @required this.summary, this.backgroundColor = const Color(0xFF8CDDD5)});
+  StoryDetailPage(
+      {Key key,
+      @required this.title,
+      @required this.detail,
+      this.backgroundColor = const Color(0xFF8CDDD5)})
+      : super(key: key);
 
-  @override
-  _StoryDetailPageState createState() => _StoryDetailPageState();
-}
-
-class _StoryDetailPageState extends State<StoryDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: widget.backgroundColor,
+      backgroundColor: backgroundColor,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -58,7 +58,7 @@ class _StoryDetailPageState extends State<StoryDetailPage> {
                           right: 4.0,
                         ),
                         child: Text(
-                          widget.title,
+                          title,
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             fontSize: 16,
@@ -92,12 +92,14 @@ class _StoryDetailPageState extends State<StoryDetailPage> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(32.0),
                   ),
-                  child: Center(
+                  child: Container(
+                    width: double.infinity,
+                    height: double.infinity,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: SingleChildScrollView(
                         child: Text(
-                          widget.summary,
+                          detail,
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             fontSize: 16,

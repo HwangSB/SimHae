@@ -27,14 +27,14 @@ class StoryDeletePage extends StatelessWidget {
                           builder: (BuildContext context) {
                             return CupertinoAlertDialog(
                               title: const Text("사연 삭제"),
-                              content: const Text(
-                                  "정말 삭제하시겠습니까?"),
+                              content: const Text("정말 삭제하시겠습니까?"),
                               actions: <Widget>[
-                                FlatButton(
-                                    onPressed: () =>
-                                        Navigator.of(context).pop(true),
-                                    child: const Text("삭제")),
-                                FlatButton(
+                                CupertinoButton(
+                                  onPressed: () =>
+                                      Navigator.of(context).pop(true),
+                                  child: const Text("삭제"),
+                                ),
+                                CupertinoButton(
                                   onPressed: () =>
                                       Navigator.of(context).pop(false),
                                   child: const Text("취소"),
@@ -134,7 +134,7 @@ class StoryDeletePage extends StatelessWidget {
                         ),
                       ),
                       onDismissed: (direction) {
-                        // TODO
+                        // TODO: delete to DB
                       },
                     );
                   },

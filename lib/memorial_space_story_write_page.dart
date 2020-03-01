@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:solution_challenge/memorial_space_loading_page.dart';
 
-class WriteMemorialStoryPage extends StatelessWidget {
+class MemorialSpaceStoryWritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,7 +77,7 @@ class WriteMemorialStoryPage extends StatelessWidget {
                 Row(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(left: 32.0),
+                      padding: const EdgeInsets.only(left: 36.0),
                       child: Text(
                         '당신의 이야기를 나눠주세요',
                         style: TextStyle(
@@ -95,13 +97,54 @@ class WriteMemorialStoryPage extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 14.0),
                   child: Image(
-                    image: AssetImage('assets/images/write_memorial_story_card.png'),
+                    image: AssetImage(
+                      'assets/images/write_memorial_story_card.png',
+                    ),
                   ),
                 ),
-                Image(
-                  image: AssetImage('assets/images/write_memorial_story_button.png'),
+                CupertinoButton(
+                  padding: EdgeInsets.all(0.0),
+                  child: Stack(
+                    children: <Widget>[
+                      Image(
+                        image: AssetImage(
+                          'assets/images/write_memorial_story_button.png',
+                        ),
+                      ),
+                      Positioned.fill(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              '등록',
+                              style: TextStyle(
+                                fontFamily: 'MapoFlowerIsland',
+                                color: Colors.white,
+                                shadows: [
+                                  Shadow(
+                                    blurRadius: 3.0,
+                                    offset: Offset(0.0, 0.0),
+                                    color: Color(0xFF52A7C6),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      FadePageRoute(
+                        page: MemorialSpaceLoadingPage(),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
@@ -110,4 +153,20 @@ class WriteMemorialStoryPage extends StatelessWidget {
       ),
     );
   }
+}
+
+class FadePageRoute extends PageRouteBuilder {
+  final Widget page;
+
+  FadePageRoute({this.page})
+      : super(
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: Duration(milliseconds: 500),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        );
 }

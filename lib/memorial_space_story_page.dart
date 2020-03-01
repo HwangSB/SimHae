@@ -2,9 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:solution_challenge/write_memorial_story_page.dart';
+import 'package:solution_challenge/memorial_space_story_detail_page.dart';
+import 'package:solution_challenge/memorial_space_story_write_page.dart';
 
-class MemorialSpacePage extends StatelessWidget {
+class MemorialSpaceStoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,7 +83,13 @@ class MemorialSpacePage extends StatelessWidget {
                               padding: const EdgeInsets.all(16.0),
                               child: InkResponse(
                                 onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => WriteMemorialStoryPage()));
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          MemorialSpaceStoryWritePage(),
+                                    ),
+                                  );
                                 },
                                 child: Container(
                                   width: 40.0,
@@ -245,7 +252,14 @@ class MemorialSpacePage extends StatelessWidget {
                               ),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MemorialSpaceStoryDetailPage(detail: '안녕하세요', empathy: 100,),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),

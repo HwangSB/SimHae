@@ -27,6 +27,9 @@ class MyPage extends StatelessWidget {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
+                          Image(
+                            image: AssetImage('assets/images/sent_story.png'),
+                          ),
                           Text(
                             '건너간 편지',
                             style: TextStyle(
@@ -130,7 +133,7 @@ class MyPage extends StatelessWidget {
                           MaterialPageRoute(
                             builder: (context) => StoryDetailPage(
                               title: '',
-                              summary: '',
+                              detail: '',
                             ),
                           ),
                         );

@@ -59,6 +59,8 @@ flutter:
     # MyPage
     - assets/images/sent_story.png
     - assets/images/delete_sent_story.png
+    # MemorialStoryDetailPage
+    - assets/images/memorial_space_background.png
     # WriteMemorialStoryPage
     - assets/images/write_memorial_story_card.png
     - assets/images/write_memorial_story_button.png
