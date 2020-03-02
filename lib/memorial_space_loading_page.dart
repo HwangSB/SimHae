@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/Material.dart';
-import 'package:solution_challenge/memorial_space_story_page.dart';
 
 class MemorialSpaceLoadingPage extends StatefulWidget {
   @override

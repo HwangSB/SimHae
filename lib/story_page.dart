@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:solution_challenge/animated_wave.dart';
 import 'package:infinity_page_view/infinity_page_view.dart';
+import 'package:solution_challenge/information_map_page.dart';
 import 'package:solution_challenge/memorial_space_story_page.dart';
 import 'package:solution_challenge/story_detail_page.dart';
 import 'package:solution_challenge/my_page.dart';
@@ -14,6 +15,8 @@ class StoryPage extends StatefulWidget {
 }
 
 class _StoryPageState extends State<StoryPage> {
+  dynamic l = ['먼저 간 딸아이가 자꾸 꿈에 나오네요', '돌아가신 엄마가 너무 보고싶어요'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -164,9 +167,9 @@ class _StoryPageState extends State<StoryPage> {
                   flex: 2,
                   child: InfinityPageView(
                     controller: InfinityPageController(initialPage: 0),
-                    itemCount: 3,
+                    itemCount: 2,
                     itemBuilder: (builder, index) {
-                      return OneLineStory();
+                      return OneLineStory(text: l[index]);
                     },
                   ),
                 ),
@@ -197,7 +200,14 @@ class _StoryPageState extends State<StoryPage> {
                       ),
                       height: 48.0,
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => InformationMapPage(),
+                        ),
+                      );
+                    },
                   ),
                   CupertinoButton(
                     padding: EdgeInsets.all(0.0),
@@ -237,7 +247,9 @@ class _StoryPageState extends State<StoryPage> {
 }
 
 class OneLineStory extends StatefulWidget {
-  OneLineStory({Key key}) : super(key: key);
+  final String text;
+
+  OneLineStory({Key key, @required this.text}) : super(key: key);
 
   @override
   _OneLineStoryState createState() => _OneLineStoryState();
@@ -288,7 +300,7 @@ class _OneLineStoryState extends State<OneLineStory> {
                   right: 4.0,
                 ),
                 child: Text(
-                  '먼저 간 딸아이가 자꾸 꿈에 나오네요$randomValue',
+                  widget.text,
                   style: TextStyle(
                     fontFamily: 'MapoFlowerIsland',
                     fontSize: 16,
