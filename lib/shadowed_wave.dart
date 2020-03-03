@@ -1,22 +1,30 @@
 import 'package:flutter/material.dart';
 
 class ShadowedWave extends StatelessWidget {
-  final Widget child;
   final double height;
   final double strength;
+  final bool reverse;
+  final Widget child;
 
   ShadowedWave(
-      {@required this.child, @required this.height, @required this.strength});
+      {@required this.height,
+      @required this.strength,
+      this.reverse = false,
+      @required this.child});
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
       painter: WavePainter(
-        clipper: WaveClipper(height: height, strength: strength),
+        clipper: reverse
+            ? ReverseWaveClipper(height: height, strength: strength)
+            : WaveClipper(height: height, strength: strength),
       ),
       child: ClipPath(
         child: child,
-        clipper: WaveClipper(height: height, strength: strength),
+        clipper: reverse
+            ? ReverseWaveClipper(height: height, strength: strength)
+            : WaveClipper(height: height, strength: strength),
       ),
     );
   }
@@ -46,6 +54,43 @@ class WavePainter extends CustomPainter {
   bool hitTest(Offset position) {
     return false;
   }
+}
+
+class ReverseWaveClipper extends CustomClipper<Path> {
+  double height = 0.0;
+  double strength = 0.0;
+
+  ReverseWaveClipper({@required this.height, @required this.strength});
+
+  @override
+  Path getClip(Size size) {
+    var path = new Path();
+    path.moveTo(0.0, size.height);
+    path.lineTo(0.0, size.height - height + strength / 2.0);
+
+    var firstControlPoint =
+        Offset(size.width / 4.0, size.height - height + strength);
+    var firstGivenPoint =
+        Offset(size.width / 2.0, size.height - height + strength / 2.0);
+    path.quadraticBezierTo(firstControlPoint.dx, firstControlPoint.dy,
+        firstGivenPoint.dx, firstGivenPoint.dy);
+
+    var secondControlPoint =
+        Offset(size.width - size.width / 4.0, size.height - height);
+    var secondGivenPoint =
+        Offset(size.width, size.height - height + strength / 2.0);
+    path.quadraticBezierTo(secondControlPoint.dx, secondControlPoint.dy,
+        secondGivenPoint.dx, secondGivenPoint.dy);
+
+    path.lineTo(size.width, height + strength / 2.0);
+    path.lineTo(size.width, size.height);
+    path.close();
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) => true;
 }
 
 class WaveClipper extends CustomClipper<Path> {

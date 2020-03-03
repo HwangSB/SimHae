@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import 'package:solution_challenge/animated_wave.dart';
 import 'package:infinity_page_view/infinity_page_view.dart';
 import 'package:solution_challenge/information_map_page.dart';
 import 'package:solution_challenge/memorial_space_story_page.dart';
-import 'package:solution_challenge/story_detail_page.dart';
+import 'package:solution_challenge/story_detail_loading_page.dart';
 import 'package:solution_challenge/my_page.dart';
 
 class StoryPage extends StatefulWidget {
@@ -16,6 +17,23 @@ class StoryPage extends StatefulWidget {
 
 class _StoryPageState extends State<StoryPage> {
   dynamic l = ['먼저 간 딸아이가 자꾸 꿈에 나오네요', '돌아가신 엄마가 너무 보고싶어요'];
+  PageController _pageController = PageController();
+
+  @override
+  void initState() {
+    Timer.periodic(
+      Duration(seconds: 10),
+      (timer) {
+        if (_pageController.hasClients) {
+          _pageController.nextPage(
+            duration: Duration(milliseconds: 350),
+            curve: Curves.easeIn,
+          );
+        }
+      },
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +140,7 @@ class _StoryPageState extends State<StoryPage> {
                 Flexible(
                   flex: 2,
                   child: PageView.builder(
-                    controller: PageController(),
+                    controller: _pageController,
                     physics: NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Column(
@@ -271,17 +289,6 @@ class _OneLineStoryState extends State<OneLineStory> {
   Widget build(BuildContext context) {
     return CupertinoButton(
       padding: EdgeInsets.all(0.0),
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => StoryDetailPage(
-              title: title,
-              detail: detail,
-            ),
-          ),
-        );
-      },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -327,6 +334,30 @@ class _OneLineStoryState extends State<OneLineStory> {
           ),
         ],
       ),
+      onPressed: () {
+        Navigator.push(
+          context,
+          FadePageRoute(
+            page: StoryDetailLoadingPage(title: title, detail: detail),
+          ),
+        );
+      },
     );
   }
+}
+
+class FadePageRoute extends PageRouteBuilder {
+  final Widget page;
+
+  FadePageRoute({this.page})
+      : super(
+          pageBuilder: (context, animation, secondaryAnimation) => page,
+          transitionDuration: Duration(milliseconds: 500),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        );
 }

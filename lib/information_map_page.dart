@@ -7,100 +7,28 @@ class InformationMapPage extends StatelessWidget {
     topLeft: Radius.circular(24.0),
     topRight: Radius.circular(24.0),
   );
-  final PanelController _panelController = PanelController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SlidingUpPanel(
-        controller: _panelController,
+        controller: PanelController(),
         minHeight: 300.0,
         maxHeight: 850.0,
         color: Colors.transparent,
         boxShadow: [],
-        panelBuilder: _test,
-        body: SafeArea(
-          child: Stack(
-            children: <Widget>[
-              Positioned.fill(
-                child: Image(
-                  image: AssetImage('assets/images/information_map.png'),
-                  alignment: Alignment.topCenter,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Material(
-                    color: Colors.transparent,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: IconButton(
-                        icon: Icon(
-                          Icons.arrow_back_ios,
-                          color: Color(0xFF8CD4D5),
-                        ),
-                        iconSize: 28.0,
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      ),
-                    ),
-                  ),
-                  Material(
-                    color: Colors.transparent,
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: InkResponse(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => InformationMapHelpPage(),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          width: 40.0,
-                          height: 40.0,
-                          decoration: BoxDecoration(
-                            color: Color(0xFF8CD4D5),
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Color(0x29000000),
-                                blurRadius: 6.0,
-                                offset: Offset(0.0, 3.0),
-                              ),
-                            ],
-                          ),
-                          child: Icon(
-                            Icons.help,
-                            color: Colors.white,
-                            size: 40.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+        panelBuilder: _pageViewPage,
+        body: _bodyPage(context),
       ),
     );
   }
 
-  Widget _test(ScrollController scrollController) {
-    return PageView(
+  Widget _pageViewPage(ScrollController scrollController) {
+    return PageView.builder(
       controller: PageController(),
-      physics: ClampingScrollPhysics(),
-      children: <Widget>[
-        _scrollingPage(scrollController),
-        _scrollingPage(scrollController),
-      ],
+      itemCount: 3,
+      itemBuilder: (context, index) => _scrollingPage(scrollController),
     );
   }
 
@@ -201,6 +129,7 @@ class InformationMapPage extends StatelessWidget {
             SizedBox(
               height: 180.0,
               child: PageView.builder(
+                physics: BouncingScrollPhysics(),
                 controller: PageController(viewportFraction: 0.9),
                 itemCount: 3,
                 itemBuilder: (context, index) {
@@ -258,6 +187,78 @@ class InformationMapPage extends StatelessWidget {
                 ),
               ),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _bodyPage(BuildContext context) {
+    return SafeArea(
+      child: Stack(
+        children: <Widget>[
+          Positioned.fill(
+            child: Image(
+              image: AssetImage('assets/images/information_map.png'),
+              alignment: Alignment.topCenter,
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Material(
+                color: Colors.transparent,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.arrow_back_ios,
+                      color: Color(0xFF8CD4D5),
+                    ),
+                    iconSize: 28.0,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+              ),
+              Material(
+                color: Colors.transparent,
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: InkResponse(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => InformationMapHelpPage(),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      width: 40.0,
+                      height: 40.0,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF8CD4D5),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x29000000),
+                            blurRadius: 6.0,
+                            offset: Offset(0.0, 3.0),
+                          ),
+                        ],
+                      ),
+                      child: Icon(
+                        Icons.help,
+                        color: Colors.white,
+                        size: 40.0,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

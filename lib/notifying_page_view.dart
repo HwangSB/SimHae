@@ -25,7 +25,7 @@ class _NotifyingPageViewState extends State<NotifyingPageView> {
   @override
   Widget build(BuildContext context) {
     return PageView(
-      scrollDirection: Axis.vertical,
+      physics: ClampingScrollPhysics(),
       children: widget.children,
       controller: _pageController,
     );

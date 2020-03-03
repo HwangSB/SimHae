@@ -86,19 +86,3 @@ class _MemorialSpaceLoadingPageState extends State<MemorialSpaceLoadingPage> {
     Navigator.pop(context);
   }
 }
-
-class FadePageRoute extends PageRouteBuilder {
-  final Widget page;
-
-  FadePageRoute({this.page})
-      : super(
-          pageBuilder: (context, animation, secondaryAnimation) => page,
-          transitionDuration: Duration(milliseconds: 500),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: animation,
-              child: child,
-            );
-          },
-        );
-}
