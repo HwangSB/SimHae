@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:solution_challenge/settings_database.dart';
 import 'package:solution_challenge/story_page.dart';
+//import 'package:solution_challenge/tos_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:solution_challenge/tos_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -16,6 +18,8 @@ class _SplashPageState extends State<SplashPage> {
     _startTimer();
     super.initState();
   }
+
+  Firestore firestore = Firestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -109,15 +113,18 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _navigationPage() async {
-    Widget page = await _checkAllTosAccept() ? StoryPage() : TosPage();
+
+    Widget page = await _checkAllTosAccept() ? StoryPage() : TosPage(); //아마도 처음에 다 확인해승면 Story고 아니면 Tos인듯
     Navigator.pushReplacement(context, FadePageRoute(page: page));
+   
   }
 
   Future<bool> _checkAllTosAccept() async {
     SettingsDatabase settings = SettingsDatabase();
     String acceptAllTos = await settings.valueOf('accept_all_tos');
     return acceptAllTos == 'true';
-  }
+  } 
+
 }
 
 class FadePageRoute extends PageRouteBuilder {
