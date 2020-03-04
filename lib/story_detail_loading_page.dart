@@ -7,8 +7,9 @@ import 'package:solution_challenge/story_detail_page.dart';
 class StoryDetailLoadingPage extends StatefulWidget {
   final String title;
   final String detail;
+  final Color color;
 
-  StoryDetailLoadingPage({Key key, @required this.title, @required this.detail})
+  StoryDetailLoadingPage({Key key, @required this.title, @required this.detail, @required this.color})
       : super(key: key);
 
   @override
@@ -89,7 +90,7 @@ class _StoryDetailLoadingPageState extends State<StoryDetailLoadingPage> {
   }
 
   _startTimer() async {
-    var _duration = Duration(seconds: 2);
+    var _duration = Duration(seconds: 1);
     return Timer(_duration, _navigationPage);
   }
 
@@ -97,7 +98,7 @@ class _StoryDetailLoadingPageState extends State<StoryDetailLoadingPage> {
     Navigator.pushReplacement(
       context,
       FadePageRoute(
-        page: StoryDetailPage(title: widget.title, detail: widget.detail),
+        page: StoryDetailPage(title: widget.title, detail: widget.detail, color: widget.color),
       ),
     );
   }

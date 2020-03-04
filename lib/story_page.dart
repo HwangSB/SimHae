@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:solution_challenge/animated_wave.dart';
@@ -16,7 +17,6 @@ class StoryPage extends StatefulWidget {
 }
 
 class _StoryPageState extends State<StoryPage> {
-  dynamic l = ['먼저 간 딸아이가 자꾸 꿈에 나오네요', '돌아가신 엄마가 너무 보고싶어요'];
   PageController _pageController = PageController();
 
   @override
@@ -187,7 +187,7 @@ class _StoryPageState extends State<StoryPage> {
                     controller: InfinityPageController(initialPage: 0),
                     itemCount: 2,
                     itemBuilder: (builder, index) {
-                      return OneLineStory(text: l[index]);
+                      return StoryStream();
                     },
                   ),
                 ),
@@ -264,26 +264,12 @@ class _StoryPageState extends State<StoryPage> {
   }
 }
 
-class OneLineStory extends StatefulWidget {
-  final String text;
+class Story extends StatelessWidget {
+  final String title;
+  final String detail;
+  final String color;
 
-  OneLineStory({Key key, @required this.text}) : super(key: key);
-
-  @override
-  _OneLineStoryState createState() => _OneLineStoryState();
-}
-
-class _OneLineStoryState extends State<OneLineStory> {
-  final String title = '먼저 간 딸아이가 자꾸 꿈에 나오네요';
-  final String detail =
-      '언니 언니가 죽은 지 벌써 3개월이나 됐더라. 난 한달밖에 안된줄 알았어. 언니가 죽고 하루 만에 언니 방에 언니가 사놓고 한번도 못입어 본 옷더미들 언니가 마음에 안 들어했던 언니 방 가구들 언니 앨범 자격증증서 사진들까지 다 전부 갖다버리고 깨끗하게 치웠는데 유일 하게 컴퓨터에 옮겨져있는 언니사진들만은 못 지우겠어.\n 이제와서 내가 어떻게 무슨수로 그걸 지울수 가 있어 그걸 지우면 언닌 이제 이 세상에 없 었던 사람이 되어 흔적하나 없게 되는데... 기 억하는 사람도 없어지면 어쩌지? 나라도 기억 해야하는걸까 요즘은 언니가 존재했었는지도 가물가물하고 계속 기억을 되짚으며 언니 흔 적을 찾으며 헤매고 그렇게 살고있어...... 우리집 강아지 호두는 언니를 가장 잘 따랐 는데 호두는 언니가 죽은걸 옆에서 지켜봤을 텐데 언니가 죽었다고 알고있을까? 내가 좋아 하는 음식이 뭔지도 모르겠어. 딸기케이크 치 즈케이크 생크림 모찌롤 다 언니가 좋아해서 내가 따라 좋아한 음식이잖아.';
-  int randomValue = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    randomValue = Random().nextInt(100);
-  }
+  Story({Key key, @required this.title, this.detail = '', this.color}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -307,7 +293,7 @@ class _OneLineStoryState extends State<OneLineStory> {
                   right: 4.0,
                 ),
                 child: Text(
-                  widget.text,
+                  this.title,
                   style: TextStyle(
                     fontFamily: 'MapoFlowerIsland',
                     fontSize: 16,
@@ -338,7 +324,8 @@ class _OneLineStoryState extends State<OneLineStory> {
         Navigator.push(
           context,
           FadePageRoute(
-            page: StoryDetailLoadingPage(title: title, detail: detail),
+            page:
+                StoryDetailLoadingPage(title: this.title, detail: this.detail, color: Color(int.parse(this.color))),
           ),
         );
       },
@@ -360,4 +347,60 @@ class FadePageRoute extends PageRouteBuilder {
             );
           },
         );
+}
+
+class StoryStream extends StatelessWidget {
+  final Random random = Random();
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('Users').where('hasStory', isEqualTo: true).snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Story(title: '편지를 가져오는중 오류가 발생했습니다');
+        }
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return Story(title: '편지를 가져오는 중...');
+          default:
+            List<DocumentSnapshot> documents = snapshot.data.documents;
+            if (documents.isNotEmpty) {
+              DocumentSnapshot document =
+                  documents[random.nextInt(documents.length)];
+              return _storyStream(document);
+            } else {
+              return Story(
+                title: '인터넷 연결을 확인해주세요',
+                detail: '인터넷에 연결되어있지 않아 편지를 불러올 수 없습니다.',
+              );
+            }
+        }
+      },
+    );
+  }
+
+  _storyStream(DocumentSnapshot document) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: document.reference.collection('Stories').snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Story(title: '편지를 가져오는중 오류가 발생했습니다');
+        }
+        switch (snapshot.connectionState) {
+          case ConnectionState.waiting:
+            return Story(title: '편지를 가져오는 중...');
+          default:
+            List<DocumentSnapshot> documents = snapshot.data.documents;
+            DocumentSnapshot document =
+                documents[random.nextInt(documents.length)];
+            return Story(
+              title: document['title'],
+              detail: document['detail'],
+              color: document['color'],
+            );
+        }
+      },
+    );
+  }
 }

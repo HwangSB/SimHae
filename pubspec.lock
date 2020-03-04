@@ -101,6 +101,8 @@ packages:
     version: "1.1.7"
   firebase_auth_web:
     dependency: transitive
+  firebase_core:
+    dependency: "direct overridden"
     description:
       name: firebase_auth_web
       url: "https://pub.dartlang.org"
@@ -112,7 +114,7 @@ packages:
       name: firebase_core
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.4+2"
+    version: "0.4.4"
   firebase_core_platform_interface:
     dependency: transitive
     description:
