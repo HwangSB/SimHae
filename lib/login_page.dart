@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/settings_database.dart';
@@ -132,10 +133,19 @@ class LoginPage extends StatelessWidget {
   }
 
   _navigatePage(BuildContext context) async {
-    GoogleSignInAccount googleSignInAccount;
-    googleSignInAccount = await googleSignIn.signIn();
+    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
     if (googleSignInAccount != null) {
-      GlobalUserAccount.instance.connect(googleSignInAccount);
+      await GlobalUserAccount.instance.connect(googleSignInAccount);
+      final snapshot = await Firestore.instance
+          .collection('Users')
+          .document(GlobalUserAccount.instance.uid)
+          .get();
+      if (snapshot == null || !snapshot.exists) {
+        Firestore.instance
+            .collection('Users')
+            .document(GlobalUserAccount.instance.uid)
+            .setData({'hasStory': false});
+      }
     }
 
     if (googleSignInAccount != null) {

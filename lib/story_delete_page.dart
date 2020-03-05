@@ -1,6 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:solution_challenge/global_user_account.dart';
 
 class StoryDeletePage extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class StoryDeletePage extends StatelessWidget {
                 SizedBox(
                   height: 230.0,
                 ),
-                MyStoryStream(user: 'user1'),
+                MyStoryStream(user: GlobalUserAccount.instance.uid),
                 SizedBox(
                   height: 32.0,
                 ),

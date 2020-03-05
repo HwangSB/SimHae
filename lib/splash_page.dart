@@ -134,9 +134,20 @@ class _SplashPageState extends State<SplashPage> {
     GoogleSignIn googleSignIn = new GoogleSignIn();
     bool isSignedIn = await googleSignIn.isSignedIn();
     if (isSignedIn) {
-      GoogleSignInAccount googleSignInAccount = await googleSignIn.signInSilently();
+      GoogleSignInAccount googleSignInAccount =
+          await googleSignIn.signInSilently();
       if (googleSignInAccount != null) {
-        GlobalUserAccount.instance.connect(googleSignInAccount);
+        await GlobalUserAccount.instance.connect(googleSignInAccount);
+        final snapshot = await Firestore.instance
+            .collection('Users')
+            .document(GlobalUserAccount.instance.uid)
+            .get();
+        if (snapshot == null || !snapshot.exists) {
+          Firestore.instance
+              .collection('Users')
+              .document(GlobalUserAccount.instance.uid)
+              .setData({'hasStory': false});
+        }
       }
       return true;
     }

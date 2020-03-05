@@ -13,7 +13,7 @@ class GlobalUserAccount {
 
   String get uid => _uid;
 
-  void connect(GoogleSignInAccount googleSignInAccount) async {
+  Future<void> connect(GoogleSignInAccount googleSignInAccount) async {
     GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount.authentication;
 
