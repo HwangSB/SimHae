@@ -27,6 +27,7 @@ class InformationMapPage extends StatelessWidget {
   Widget _pageViewPage(ScrollController scrollController) {
     return PageView.builder(
       controller: PageController(),
+      physics: ClampingScrollPhysics(),
       itemCount: 3,
       itemBuilder: (context, index) => _scrollingPage(scrollController),
     );

@@ -1,29 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:solution_challenge/help_page.dart';
-import 'package:solution_challenge/contact_page.dart';
 
-class SettingsPage extends StatelessWidget {
-  final List<String> data = ['도움말', '문의하기'];
-  final List<Function> pressedFunctions = [
-    (context) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => HelpPage(),
-        ),
-      );
-    },
-    (context) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ContactPage(),
-        ),
-      );
-    },
-  ];
-
+class ContactPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +37,7 @@ class SettingsPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          '설정',
+                          '문의하기',
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             fontSize: 26,
@@ -83,36 +60,18 @@ class SettingsPage extends StatelessWidget {
           Flexible(
             flex: 7,
             child: Container(
+              height: double.infinity,
               color: Colors.white,
-              child: ListView.separated(
-                physics: BouncingScrollPhysics(),
-                padding: EdgeInsets.all(0.0),
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  return CupertinoButton(
-                    padding: EdgeInsets.all(0.0),
-                    child: Container(
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Text(
-                            data[index],
-                            style: TextStyle(
-                              fontFamily: 'MapoFlowerIsland',
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      pressedFunctions[index](context);
-                    },
-                  );
-                },
-                separatorBuilder: (context, index) {
-                  return Divider();
-                },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 64.0),
+                child: Text(
+                  '궁금한 점이 있다면 언제든지 문의하세요.\n freesequence@gmail.com으로 문의 사항을 연락해주세요.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'MapoFlowerIsland',
+                    fontSize: 18,
+                  ),
+                ),
               ),
             ),
           ),
