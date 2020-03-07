@@ -285,6 +285,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
     //얘가 실질적으로 핀을 꼽는 곳임
 
     Completer<GoogleMapController> _controller = Completer();
+    Set<Marker> _markers = Set<Marker>();
 
     Set<Marker> _markerLocations = Set<Marker>();
 

@@ -135,7 +135,7 @@ class _SplashPageState extends State<SplashPage> {
     bool isSignedIn = await googleSignIn.isSignedIn();
     if (isSignedIn) {
       GoogleSignInAccount googleSignInAccount =
-          await googleSignIn.signInSilently();
+          await googleSignIn.signInSilently(suppressErrors: false);
       if (googleSignInAccount != null) {
         await GlobalUserAccount.instance.connect(googleSignInAccount);
         final snapshot = await Firestore.instance
@@ -146,7 +146,7 @@ class _SplashPageState extends State<SplashPage> {
           Firestore.instance
               .collection('Users')
               .document(GlobalUserAccount.instance.uid)
-              .setData({'hasStory': false});
+              .setData({'hasStory': false}, merge: true);
         }
       }
       return true;

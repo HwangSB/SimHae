@@ -1,7 +1,9 @@
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/memorial_space_loading_page.dart';
 
 class MemorialSpaceStoryWritePage extends StatefulWidget {
@@ -12,7 +14,7 @@ class MemorialSpaceStoryWritePage extends StatefulWidget {
 
 class _MemorialSpaceStoryWritePageState
     extends State<MemorialSpaceStoryWritePage> {
-  TextEditingController _textController = TextEditingController();
+  final TextEditingController _detailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +72,7 @@ class _MemorialSpaceStoryWritePageState
                         padding: const EdgeInsets.symmetric(
                             horizontal: 20.0, vertical: 8.0),
                         child: TextField(
-                          controller: _textController,
-                          onSubmitted: _handleSubmitted,
+                          controller: _detailController,
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'MapoFlowerIsland',
@@ -131,6 +132,7 @@ class _MemorialSpaceStoryWritePageState
                         ],
                       ),
                       onPressed: () {
+                        _createDocument(_detailController.text);
                         Navigator.pushReplacement(
                           context,
                           FadePageRoute(
@@ -149,7 +151,14 @@ class _MemorialSpaceStoryWritePageState
     );
   }
 
-  _handleSubmitted(String text) {}
+  _createDocument(String detail) async {
+    Firestore.instance.collection('MemorialSpace').add({
+      'user': GlobalUserAccount.instance.uid,
+      'detail': detail,
+      'empathizers': [],
+      'stamp': Timestamp.now(),
+    });
+  }
 }
 
 class PopBackButton extends StatelessWidget {

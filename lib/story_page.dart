@@ -10,6 +10,7 @@ import 'package:solution_challenge/information_map_page.dart';
 import 'package:solution_challenge/memorial_space_story_page.dart';
 import 'package:solution_challenge/story_detail_loading_page.dart';
 import 'package:solution_challenge/my_page.dart';
+import 'package:solution_challenge/story_write_page.dart';
 
 class StoryPage extends StatefulWidget {
   @override
@@ -18,6 +19,12 @@ class StoryPage extends StatefulWidget {
 
 class _StoryPageState extends State<StoryPage> {
   PageController _pageController = PageController();
+  List<String> _inducedPhrase = [
+    '우리는 저마다의 속도로 슬픔을 통과합니다.\n(브룩 노엘, 패멀라 D. 블레어)',
+    '소중한 누군가를 기억하고 얘기하는 당신이어서, 정말 고맙습니다.',
+    '함께 이야기하고, 기억해도 괜찮습니다.',
+    '저 깊은 심해에 마음을 털어놓는 건 어떨까요?',
+  ];
 
   @override
   void initState() {
@@ -137,8 +144,8 @@ class _StoryPageState extends State<StoryPage> {
                     ),
                   ],
                 ),
-                Flexible(
-                  flex: 2,
+                SizedBox(
+                  height: 200.0,
                   child: PageView.builder(
                     controller: _pageController,
                     physics: NeverScrollableScrollPhysics(),
@@ -146,43 +153,39 @@ class _StoryPageState extends State<StoryPage> {
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.only(left: 32),
-                                child: Stack(
-                                  children: <Widget>[
-                                    Text(
-                                      '유도 문구를\n넣을 생각입니다.${index % 5}',
-                                      style: TextStyle(
-                                        fontFamily: 'MapoFlowerIsland',
-                                        fontSize: 26,
-                                        foreground: Paint()
-                                          ..style = PaintingStyle.stroke
-                                          ..strokeWidth = 0.3
-                                          ..color = Color(0xFF707070),
-                                      ),
-                                    ),
-                                    Text(
-                                      '유도 문구를\n넣을 생각입니다.${index % 5}',
-                                      style: TextStyle(
-                                        fontFamily: 'MapoFlowerIsland',
-                                        fontSize: 26,
-                                        color: Color(0xFF3B514F),
-                                      ),
-                                    ),
-                                  ],
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 32),
+                            child: Stack(
+                              children: <Widget>[
+                                Text(
+                                  '${_inducedPhrase[index % _inducedPhrase.length]}',
+                                  style: TextStyle(
+                                    fontFamily: 'MapoFlowerIsland',
+                                    fontSize: 21,
+                                    foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 0.3
+                                      ..color = Color(0xFF707070),
+                                  ),
                                 ),
-                              ),
-                            ],
+                                Text(
+                                  '${_inducedPhrase[index % _inducedPhrase.length]}',
+                                  style: TextStyle(
+                                    fontFamily: 'MapoFlowerIsland',
+                                    fontSize: 21,
+                                    color: Color(0xFF3B514F),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       );
                     },
                   ),
                 ),
-                Flexible(
-                  flex: 2,
+                SizedBox(
+                  height: 200.0,
                   child: InfinityPageView(
                     controller: InfinityPageController(initialPage: 0),
                     itemCount: 2,
@@ -190,10 +193,6 @@ class _StoryPageState extends State<StoryPage> {
                       return StoryStream();
                     },
                   ),
-                ),
-                Flexible(
-                  flex: 3,
-                  child: Container(),
                 ),
               ],
             ),
@@ -252,12 +251,19 @@ class _StoryPageState extends State<StoryPage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
-        onPressed: () {},
         child: Icon(
           Icons.edit,
           color: Color(0xFF8CDDD5),
           size: 28.0,
         ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StoryWritePage(),
+            ),
+          );
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
@@ -269,66 +275,70 @@ class Story extends StatelessWidget {
   final String detail;
   final String color;
 
-  Story({Key key, @required this.title, this.detail = '', this.color}) : super(key: key);
+  Story({Key key, @required this.title, this.detail = '', this.color})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
       padding: EdgeInsets.all(0.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image(
-                image: AssetImage(
-                  'assets/images/left_quote.png',
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 4.0,
-                  top: 16.0,
-                  right: 4.0,
-                ),
-                child: Text(
-                  this.title,
-                  style: TextStyle(
-                    fontFamily: 'MapoFlowerIsland',
-                    fontSize: 16,
-                    color: Color(0xFF3B514F),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 4.0),
-                child: Image(
-                  image: AssetImage(
-                    'assets/images/right_quote.png',
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Divider(
-            indent: 64.0,
-            endIndent: 64.0,
-            color: Color(0xFF707070),
-            thickness: 0.6,
-            height: 16.0,
-          ),
-        ],
-      ),
+      child: _titleText(this.title),
       onPressed: () {
         Navigator.push(
           context,
           FadePageRoute(
-            page:
-                StoryDetailLoadingPage(title: this.title, detail: this.detail, color: Color(int.parse(this.color))),
+            page: StoryDetailLoadingPage(
+                title: this.title,
+                detail: this.detail,
+                color: Color(int.parse(this.color))),
           ),
         );
       },
+    );
+  }
+
+  _titleText(String title) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Image(
+                image: AssetImage('assets/images/left_quote.png'),
+              ),
+            ),
+            SizedBox(
+              width: 250.0,
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontFamily: 'MapoFlowerIsland',
+                  fontSize: 16,
+                  color: Color(0xFF3B514F),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Image(
+                image: AssetImage('assets/images/right_quote.png'),
+              ),
+            ),
+          ],
+        ),
+        Divider(
+          indent: 64.0,
+          endIndent: 64.0,
+          color: Color(0xFF707070),
+          thickness: 0.6,
+          height: 16.0,
+        ),
+      ],
     );
   }
 }
@@ -355,7 +365,10 @@ class StoryStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('Users').where('hasStory', isEqualTo: true).snapshots(),
+      stream: Firestore.instance
+          .collection('Users')
+          .where('hasStory', isEqualTo: true)
+          .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Story(title: '편지를 가져오는중 오류가 발생했습니다');
