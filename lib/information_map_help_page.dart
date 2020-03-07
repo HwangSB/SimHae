@@ -64,12 +64,14 @@ class InformationMapHelpPage extends StatelessWidget {
                           ),
                           Row(
                             children: <Widget>[
-                              Text(
-                                '자조모임 참여가 애도에 도움이 되나요?',
-                                style: TextStyle(
-                                  fontFamily: 'MapoFlowerIsland',
-                                  fontSize: 18,
-                                  color: Color(0xFF88CED1),
+                              Expanded(
+                                child: Text(
+                                  '자조모임 참여가 애도에 도움이 되나요?',
+                                  style: TextStyle(
+                                    fontFamily: 'MapoFlowerIsland',
+                                    fontSize: 18,
+                                    color: Color(0xFF88CED1),
+                                  ),
                                 ),
                               ),
                             ],
