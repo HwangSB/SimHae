@@ -79,10 +79,8 @@ class _MemorialSpaceLoadingPageState extends State<MemorialSpaceLoadingPage> {
 
   _startTimer() async {
     var _duration = Duration(seconds: 2);
-    return Timer(_duration, _navigationPage);
-  }
-
-  _navigationPage() async {
-    Navigator.pop(context);
+    return Timer(_duration, () {
+      Navigator.pop(context);
+    });
   }
 }

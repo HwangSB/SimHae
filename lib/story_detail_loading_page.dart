@@ -91,10 +91,10 @@ class _StoryDetailLoadingPageState extends State<StoryDetailLoadingPage> {
 
   _startTimer() async {
     var _duration = Duration(seconds: 1);
-    return Timer(_duration, _navigationPage);
+    return Timer(_duration, _navigatePage);
   }
 
-  _navigationPage() async {
+  _navigatePage() async {
     Navigator.pushReplacement(
       context,
       FadePageRoute(

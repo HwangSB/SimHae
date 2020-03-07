@@ -4,7 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:solution_challenge/memorial_space_loading_page.dart';
 
-class MemorialSpaceStoryWritePage extends StatelessWidget {
+class MemorialSpaceStoryWritePage extends StatefulWidget {
+  @override
+  _MemorialSpaceStoryWritePageState createState() =>
+      _MemorialSpaceStoryWritePageState();
+}
+
+class _MemorialSpaceStoryWritePageState
+    extends State<MemorialSpaceStoryWritePage> {
+  TextEditingController _textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,127 +35,163 @@ class MemorialSpaceStoryWritePage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Material(
-                      color: Colors.transparent,
+                PopBackButton(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 36.0),
+                  child: Text(
+                    '당신의 이야기를 나눠주세요',
+                    style: TextStyle(
+                      fontFamily: 'MapoFlowerIsland',
+                      fontSize: 21,
+                      color: Colors.white,
+                      shadows: [
+                        Shadow(
+                          blurRadius: 3.0,
+                          offset: Offset(0.0, 0.0),
+                          color: Color(0xFF52A7C6),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Flexible(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 12.0, vertical: 14.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(28.0),
+                        color: Color(0x0D000000),
+                      ),
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: InkResponse(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            width: 40.0,
-                            height: 40.0,
-                            decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              shape: BoxShape.circle,
-                            ),
-                            child: ClipRect(
-                              child: Stack(
-                                fit: StackFit.expand,
-                                children: <Widget>[
-                                  Icon(
-                                    Icons.arrow_back_ios,
-                                    color: Color(0x33000000),
-                                    size: 30.0,
-                                  ),
-                                  BackdropFilter(
-                                    filter: ImageFilter.blur(
-                                      sigmaX: 2.0,
-                                      sigmaY: 2.0,
-                                    ),
-                                    child: Icon(
-                                      Icons.arrow_back_ios,
-                                      color: Colors.white,
-                                      size: 28.0,
-                                    ),
-                                  ),
-                                ],
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 20.0, vertical: 8.0),
+                        child: TextField(
+                          controller: _textController,
+                          onSubmitted: _handleSubmitted,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'MapoFlowerIsland',
+                            fontSize: 14,
+                            height: 1.75,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 1.0,
+                                offset: Offset(1.0, 1.0),
+                                color: Color(0x66000000),
                               ),
+                            ],
+                          ),
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                          ),
+                          keyboardType: TextInputType.multiline,
+                          maxLines: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    CupertinoButton(
+                      padding: EdgeInsets.all(0.0),
+                      child: Stack(
+                        children: <Widget>[
+                          Image(
+                            image: AssetImage(
+                              'assets/images/write_memorial_story_button.png',
                             ),
                           ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(left: 36.0),
-                      child: Text(
-                        '당신의 이야기를 나눠주세요',
-                        style: TextStyle(
-                          fontFamily: 'MapoFlowerIsland',
-                          fontSize: 21,
-                          color: Colors.white,
-                          shadows: [
-                            Shadow(
-                              blurRadius: 3.0,
-                              offset: Offset(0.0, 0.0),
-                              color: Color(0xFF52A7C6),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 12.0, vertical: 14.0),
-                  child: Image(
-                    image: AssetImage(
-                      'assets/images/write_memorial_story_card.png',
-                    ),
-                  ),
-                ),
-                CupertinoButton(
-                  padding: EdgeInsets.all(0.0),
-                  child: Stack(
-                    children: <Widget>[
-                      Image(
-                        image: AssetImage(
-                          'assets/images/write_memorial_story_button.png',
-                        ),
-                      ),
-                      Positioned.fill(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              '등록',
-                              style: TextStyle(
-                                fontFamily: 'MapoFlowerIsland',
-                                color: Colors.white,
-                                shadows: [
-                                  Shadow(
-                                    blurRadius: 3.0,
-                                    offset: Offset(0.0, 0.0),
-                                    color: Color(0xFF52A7C6),
+                          Positioned.fill(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  '등록',
+                                  style: TextStyle(
+                                    fontFamily: 'MapoFlowerIsland',
+                                    color: Colors.white,
+                                    shadows: [
+                                      Shadow(
+                                        blurRadius: 3.0,
+                                        offset: Offset(0.0, 0.0),
+                                        color: Color(0xFF52A7C6),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                      context,
-                      FadePageRoute(
-                        page: MemorialSpaceLoadingPage(),
-                      ),
-                    );
-                  },
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          FadePageRoute(
+                            page: MemorialSpaceLoadingPage(),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  _handleSubmitted(String text) {}
+}
+
+class PopBackButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: Colors.transparent,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: InkResponse(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Container(
+            width: 40.0,
+            height: 40.0,
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+              shape: BoxShape.circle,
+            ),
+            child: ClipRect(
+              child: Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  Icon(
+                    Icons.arrow_back_ios,
+                    color: Color(0x33000000),
+                    size: 30.0,
+                  ),
+                  BackdropFilter(
+                    filter: ImageFilter.blur(
+                      sigmaX: 2.0,
+                      sigmaY: 2.0,
+                    ),
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      color: Colors.white,
+                      size: 28.0,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

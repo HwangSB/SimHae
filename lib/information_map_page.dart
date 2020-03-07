@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:solution_challenge/information_map_help_page.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class InformationMapPage extends StatelessWidget {
   final BorderRadiusGeometry radius = BorderRadius.only(
@@ -27,6 +30,7 @@ class InformationMapPage extends StatelessWidget {
   Widget _pageViewPage(ScrollController scrollController) {
     return PageView.builder(
       controller: PageController(),
+      physics: ClampingScrollPhysics(),
       itemCount: 3,
       itemBuilder: (context, index) => _scrollingPage(scrollController),
     );
@@ -197,12 +201,7 @@ class InformationMapPage extends StatelessWidget {
     return SafeArea(
       child: Stack(
         children: <Widget>[
-          Positioned.fill(
-            child: Image(
-              image: AssetImage('assets/images/information_map.png'),
-              alignment: Alignment.topCenter,
-            ),
-          ),
+          _googleMap(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
@@ -262,6 +261,32 @@ class InformationMapPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _googleMap() {
+    Completer<GoogleMapController> _controller = Completer();
+
+    final CameraPosition _kGooglePlex = CameraPosition(
+      target: LatLng(37.881386, 127.746995),
+      zoom: 15.0,
+    );
+
+    Set<Marker> _markers = {
+      Marker(
+        markerId: MarkerId(''),
+        position: LatLng(37.881386, 127.746995),
+        icon: BitmapDescriptor.defaultMarker,
+      ),
+    };
+
+    return GoogleMap(
+      mapType: MapType.normal,
+      markers: _markers,
+      initialCameraPosition: _kGooglePlex,
+      onMapCreated: (controller) {
+        _controller.complete(controller);
+      },
     );
   }
 }

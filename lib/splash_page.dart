@@ -1,10 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/settings_database.dart';
 import 'package:solution_challenge/story_page.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:solution_challenge/tos_page.dart';
+import 'package:solution_challenge/login_page.dart';
 
 class SplashPage extends StatefulWidget {
   @override
@@ -108,22 +111,54 @@ class _SplashPageState extends State<SplashPage> {
 
   _startTimer() async {
     var _duration = Duration(seconds: 2);
-    return Timer(_duration, _navigationPage);
+    return Timer(_duration, _navigatePage);
   }
 
-  _navigationPage() async {
+  _navigatePage() async {
+    bool isSignedIn = await _checkSignedIn();
+    if (!isSignedIn) {
+      Navigator.pushReplacement(context, FadePageRoute(page: LoginPage()));
+      return;
+    }
 
-    Widget page = await _checkAllTosAccept() ? StoryPage() : TosPage(); //아마도 처음에 다 확인해승면 Story고 아니면 Tos인듯
-    Navigator.pushReplacement(context, FadePageRoute(page: page));
-   
+    bool isAcceptAllTos = await _checkAllTosAccept();
+    if (!isAcceptAllTos) {
+      Navigator.pushReplacement(context, FadePageRoute(page: TosPage()));
+      return;
+    }
+
+    Navigator.pushReplacement(context, FadePageRoute(page: StoryPage()));
+  }
+
+  Future<bool> _checkSignedIn() async {
+    GoogleSignIn googleSignIn = new GoogleSignIn();
+    bool isSignedIn = await googleSignIn.isSignedIn();
+    if (isSignedIn) {
+      GoogleSignInAccount googleSignInAccount =
+          await googleSignIn.signInSilently();
+      if (googleSignInAccount != null) {
+        await GlobalUserAccount.instance.connect(googleSignInAccount);
+        final snapshot = await Firestore.instance
+            .collection('Users')
+            .document(GlobalUserAccount.instance.uid)
+            .get();
+        if (snapshot == null || !snapshot.exists) {
+          Firestore.instance
+              .collection('Users')
+              .document(GlobalUserAccount.instance.uid)
+              .setData({'hasStory': false});
+        }
+      }
+      return true;
+    }
+    return false;
   }
 
   Future<bool> _checkAllTosAccept() async {
     SettingsDatabase settings = SettingsDatabase();
     String acceptAllTos = await settings.valueOf('accept_all_tos');
     return acceptAllTos == 'true';
-  } 
-
+  }
 }
 
 class FadePageRoute extends PageRouteBuilder {
