@@ -135,7 +135,7 @@ class _SplashPageState extends State<SplashPage> {
     bool isSignedIn = await googleSignIn.isSignedIn();
     if (isSignedIn) {
       GoogleSignInAccount googleSignInAccount =
-          await googleSignIn.signInSilently();
+          await googleSignIn.signInSilently(suppressErrors: false);
       if (googleSignInAccount != null) {
         await GlobalUserAccount.instance.connect(googleSignInAccount);
         final snapshot = await Firestore.instance

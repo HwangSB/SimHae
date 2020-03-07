@@ -266,24 +266,23 @@ class InformationMapPage extends StatelessWidget {
 
   Widget _googleMap() {
     Completer<GoogleMapController> _controller = Completer();
+    Set<Marker> _markers = Set<Marker>();
 
-    final CameraPosition _kGooglePlex = CameraPosition(
-      target: LatLng(37.881386, 127.746995),
-      zoom: 15.0,
-    );
-
-    Set<Marker> _markers = {
+    _markers.add(
       Marker(
         markerId: MarkerId(''),
         position: LatLng(37.881386, 127.746995),
         icon: BitmapDescriptor.defaultMarker,
       ),
-    };
+    );
 
     return GoogleMap(
       mapType: MapType.normal,
       markers: _markers,
-      initialCameraPosition: _kGooglePlex,
+      initialCameraPosition: CameraPosition(
+        target: LatLng(37.881386, 127.746995),
+        zoom: 15.0,
+      ),
       onMapCreated: (controller) {
         _controller.complete(controller);
       },

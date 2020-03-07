@@ -147,7 +147,7 @@ class MyStoryStream extends StatelessWidget {
       itemCount: documents.length,
       itemBuilder: (context, index) {
         return Dismissible(
-          key: Key(index.toString()),
+          key: Key(documents[index].documentID),
           confirmDismiss: (DismissDirection direction) async {
             final bool res = await showDialog(
               context: context,
@@ -209,52 +209,8 @@ class MyStoryStream extends StatelessWidget {
                 ],
               ),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 32.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Image(
-                          image: AssetImage(
-                            'assets/images/left_quote.png',
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 4.0,
-                            top: 16.0,
-                            right: 4.0,
-                          ),
-                          child: Text(
-                            documents[index]['title'],
-                            style: TextStyle(
-                              fontFamily: 'MapoFlowerIsland',
-                              fontSize: 16,
-                              color: Color(0xFF3B514F),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
-                          child: Image(
-                            image: AssetImage(
-                              'assets/images/right_quote.png',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Divider(
-                      indent: 48.0,
-                      endIndent: 48.0,
-                      color: Color(0xFF707070),
-                      thickness: 0.6,
-                      height: 16.0,
-                    ),
-                  ],
-                ),
+                padding: EdgeInsets.symmetric(vertical: 32.0),
+                child: _titleText(documents[index]['title']),
               ),
             ),
           ),
@@ -270,6 +226,50 @@ class MyStoryStream extends StatelessWidget {
           },
         );
       },
+    );
+  }
+
+  _titleText(String title) {
+    return Column(
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Image(
+                image: AssetImage('assets/images/left_quote.png'),
+              ),
+            ),
+            SizedBox(
+              width: 250.0,
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontFamily: 'MapoFlowerIsland',
+                  fontSize: 16,
+                  color: Color(0xFF3B514F),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Image(
+                image: AssetImage('assets/images/right_quote.png'),
+              ),
+            ),
+          ],
+        ),
+        Divider(
+          indent: 64.0,
+          endIndent: 64.0,
+          color: Color(0xFF707070),
+          thickness: 0.6,
+          height: 16.0,
+        ),
+      ],
     );
   }
 }

@@ -1,142 +1,52 @@
-import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-StoryWritePageState pageState;
-
-//컬렉션명
-final String collection_name = "Stories";
-
-//필드명
-final String field_color = "color";
-final String field_detail = "detail";
-final String field_title = "title";
-
-Color col = Color(0xBF90CFCB);
-
-//각각의 텍스트콘트롤러를 가진다.
-final TextEditingController _detailController = TextEditingController();
-final TextEditingController _titleController = TextEditingController();
+import 'package:solution_challenge/global_user_account.dart';
 
 class StoryWritePage extends StatefulWidget {
   @override
-  StoryWritePageState createState() {
-    pageState = StoryWritePageState();
-    return pageState;
-  }
+  _StoryWritePageState createState() => _StoryWritePageState();
 }
 
-class StoryWritePageState extends State<StoryWritePage> {
+class _StoryWritePageState extends State<StoryWritePage> {
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _detailController = TextEditingController();
+  final List<String> _paletteColors = [
+    '0xFFD2EDDB',
+    '0xFFABD9D0',
+    '0xFFA4DBDD',
+    '0xFFAAC5E4',
+    '0xFF98ADD3',
+  ];
+  String _paletteColor;
+
+  @override
+  void initState() {
+    _paletteColor = _paletteColors[2];
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: col,
+        color: _colorFrom(_paletteColor),
         child: SafeArea(
           child: Column(
             children: <Widget>[
-              IconButtons(),
-              StoryTitle(_titleController),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32.0),
-                    ),
-                    child: Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: SingleChildScrollView(
-                          child: TextField(
-                            decoration:
-                                InputDecoration(labelText: "detail"), //걍 데코
-                            controller: _detailController,
-                            style: TextStyle(
-                              fontFamily: 'MapoFlowerIsland',
-                              fontSize: 16,
-                              height: 1.75,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              _iconButtons(),
+              _titleTextField(),
+              _detailTextField(),
             ],
           ),
         ),
       ),
     );
   }
-}
 
-void createDoc(String detail, String title) {
-  Firestore.instance.collection(collection_name).add({
-    //field_color: color,
-    field_detail: detail,
-    field_title: title,
-  });
-}
-
-class StoryTitle extends StatelessWidget {
-  final TextEditingController _textEditingController;
-
-  StoryTitle(this._textEditingController);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, right: 8.0),
-              child: Image(
-                image: AssetImage('assets/images/left_quote.png'),
-              ),
-            ),
-            SizedBox(
-              width: 250,
-              child: TextField(
-                controller: _textEditingController,
-                style: TextStyle(
-                  fontFamily: 'MapoFlowerIsland',
-                  fontSize: 16,
-                ),
-                decoration: InputDecoration(
-                  counterText: '',
-                  focusedBorder: UnderlineInputBorder(),
-                ),
-                maxLength: 48,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0, left: 8.0),
-              child: Image(
-                image: AssetImage('assets/images/right_quote.png'),
-              ),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class IconButtons extends StatefulWidget {
-  @override
-  _IconButtonsState createState() => _IconButtonsState();
-}
-
-class _IconButtonsState extends State<IconButtons> {
-  @override
-  Widget build(BuildContext context) {
+  _iconButtons() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Material(
           color: Colors.transparent,
@@ -156,34 +66,89 @@ class _IconButtonsState extends State<IconButtons> {
             ),
           ),
         ),
+        Material(
+          color: Colors.transparent,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                InkResponse(
+                  child: Image(
+                    image: AssetImage('assets/images/palette.png'),
+                    height: 40.0,
+                    width: 40.0,
+                  ),
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: true,
+                      builder: (context) => _buildPaletteColorDialog(),
+                    ).then((value) {
+                      setState(() {
+                        _paletteColor = value ?? _paletteColor;
+                      });
+                    });
+                  },
+                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.send,
+                    color: Colors.white,
+                  ),
+                  iconSize: 28.0,
+                  onPressed: () {
+                    if (_titleController.text.isNotEmpty &&
+                        _detailController.text.isNotEmpty) {
+                      _createDocument(
+                        _titleController.text,
+                        _detailController.text,
+                        _paletteColor,
+                      );
+                      Navigator.pop(context);
+                    }
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  _titleTextField() {
+    return Column(
+      children: <Widget>[
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            InkResponse(
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0, right: 8.0),
               child: Image(
-                image: AssetImage('assets/images/pallette.png'),
-                height: 40.0,
-                width: 40.0,
+                image: AssetImage('assets/images/left_quote.png'),
               ),
-              onTap: () {
-                //_showDialog(context);
-              }, //팔레트 창을 보여주도록 한다
+            ),
+            SizedBox(
+              width: 250,
+              child: TextField(
+                controller: _titleController,
+                style: TextStyle(
+                  fontFamily: 'MapoFlowerIsland',
+                  fontSize: 20,
+                ),
+                decoration: InputDecoration(
+                  counterText: '',
+                  focusedBorder: UnderlineInputBorder(),
+                ),
+                maxLength: 48,
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: IconButton(
-                icon: Icon(
-                  Icons.near_me,
-                  color: Colors.white,
-                ),
-                iconSize: 28.0,
-                onPressed: () {
-                  if (_detailController.text.isNotEmpty && //컬러가 없넹?
-                      _titleController.text.isNotEmpty) {
-                    createDoc(_detailController.text, _titleController.text);
-                  }
-                  _detailController.clear();
-                  _titleController.clear();
-                },
+              padding: const EdgeInsets.only(top: 8.0, left: 8.0),
+              child: Image(
+                image: AssetImage('assets/images/right_quote.png'),
               ),
             ),
           ],
@@ -191,101 +156,208 @@ class _IconButtonsState extends State<IconButtons> {
       ],
     );
   }
- 
-  Future<String> _asyncshowDialog(BuildContext context) async{
-    return await showDialog<String>(
-      context: context,
-      barrierDismissible: true,
-      builder: (BuildContext context){
-        return SimpleDialog(
-          children: <Widget>[
-             Container(
-              height: 300.0,
-              width: 300.0,
+
+  _detailTextField() {
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(32.0),
+          ),
+          child: Container(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SingleChildScrollView(
+                child: TextField(
+                  controller: _detailController,
+                  style: TextStyle(
+                    fontFamily: 'MapoFlowerIsland',
+                    fontSize: 16,
+                    height: 1.75,
+                  ),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                  ),
+                  keyboardType: TextInputType.multiline,
+                  maxLines: 20,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  _buildPaletteColorDialog() {
+    return Dialog(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(24.0),
+      ),
+      child: Container(
+        height: 300.0,
+        width: 300.0,
         child: Column(
           children: <Widget>[
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 14.0, vertical: 22.0),
                   child: Text(
                     "오늘 '당신의 바다'는 무슨 색 인가요?",
                     style: TextStyle(
                       fontFamily: 'MapoFlowerIsland',
                       fontSize: 14,
+                      shadows: [
+                        Shadow(
+                          color: Color(0xFFA4DBDD),
+                          blurRadius: 6.0,
+                          offset: Offset(0.0, 3.0),
+                        )
+                      ],
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(32.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   InkResponse(
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xFFD2EDDB),
-                        shape: BoxShape.circle,
-                      ),
-                      height: 45.0,
                       width: 45.0,
+                      height: 45.0,
+                      decoration: BoxDecoration(
+                        color: _colorFrom(_paletteColors[0]),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x3B000000),
+                            blurRadius: 6.0,
+                            offset: Offset(0.0, 3.0),
+                          ),
+                        ],
+                      ),
                     ),
                     onTap: () {
-                      setState(() {
-                        col = Color(0xFFD2EDDB);
-                      });
-                      
+                      Navigator.pop(context, _paletteColors[0]);
                     },
                   ),
                   InkResponse(
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xFFABD9D0),
-                        shape: BoxShape.circle,
-                      ),
-                      height: 45.0,
                       width: 45.0,
+                      height: 45.0,
+                      decoration: BoxDecoration(
+                        color: _colorFrom(_paletteColors[1]),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x3B000000),
+                            blurRadius: 6.0,
+                            offset: Offset(0.0, 3.0),
+                          ),
+                        ],
+                      ),
                     ),
+                    onTap: () {
+                      Navigator.pop(context, _paletteColors[1]);
+                    },
                   ),
                   InkResponse(
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xFFA4DBDD),
-                        shape: BoxShape.circle,
-                      ),
-                      height: 45.0,
                       width: 45.0,
+                      height: 45.0,
+                      decoration: BoxDecoration(
+                        color: _colorFrom(_paletteColors[2]),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x3B000000),
+                            blurRadius: 6.0,
+                            offset: Offset(0.0, 3.0),
+                          ),
+                        ],
+                      ),
                     ),
+                    onTap: () {
+                      Navigator.pop(context, _paletteColors[2]);
+                    },
                   ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 32.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 32.0, vertical: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   InkResponse(
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: Color(0xFFAAC5E4),
-                        shape: BoxShape.circle,
-                      ),
-                      height: 45.0,
                       width: 45.0,
+                      height: 45.0,
+                      decoration: BoxDecoration(
+                        color: _colorFrom(_paletteColors[3]),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x3B000000),
+                            blurRadius: 6.0,
+                            offset: Offset(0.0, 3.0),
+                          ),
+                        ],
+                      ),
                     ),
+                    onTap: () {
+                      Navigator.pop(context, _paletteColors[3]);
+                    },
                   ),
                   InkResponse(
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Color(0xFF98ADD3),
+                        color: _colorFrom(_paletteColors[4]),
                         shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x3B000000),
+                            blurRadius: 6.0,
+                            offset: Offset(0.0, 3.0),
+                          ),
+                        ],
                       ),
                       height: 45.0,
                       width: 45.0,
+                    ),
+                    onTap: () {
+                      Navigator.pop(context, _paletteColors[4]);
+                    },
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 40.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    "기분, 감정, 날씨 어느 것이어도 좋아요",
+                    style: TextStyle(
+                      fontFamily: 'MapoFlowerIsland',
+                      fontSize: 12,
+                      shadows: [
+                        Shadow(
+                          color: Color(0xFFA4DBDD),
+                          blurRadius: 6.0,
+                          offset: Offset(0.0, 3.0),
+                        )
+                      ],
                     ),
                   ),
                 ],
@@ -295,27 +367,19 @@ class _IconButtonsState extends State<IconButtons> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    "기분, 감정, 날씨 어느 것이어도 좋아요",
-                    style: TextStyle(
-                      fontFamily: 'MapoFlowerIsland',
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 16.0),
                   child: Text(
                     "오늘 당신의 바다 색을 정해보세요 :)",
                     style: TextStyle(
                       fontFamily: 'MapoFlowerIsland',
                       fontSize: 12,
+                      shadows: [
+                        Shadow(
+                          color: Color(0xFFA4DBDD),
+                          blurRadius: 6.0,
+                          offset: Offset(0.0, 3.0),
+                        )
+                      ],
                     ),
                   ),
                 ),
@@ -324,13 +388,33 @@ class _IconButtonsState extends State<IconButtons> {
           ],
         ),
       ),
-          ],
-          
-        );
-      },
-      
     );
-    
-    //showDialog(context: context, builder: (BuildContext context) => palette);
+  }
+
+  _createDocument(String title, String detail, String color) async {
+    await Firestore.instance
+        .collection('Users')
+        .document(GlobalUserAccount.instance.uid)
+        .get()
+        .then((document) {
+      if (!document['hasStory']) {
+        Firestore.instance
+            .document('Users/${GlobalUserAccount.instance.uid}')
+            .setData({'hasStory': true});
+      }
+    });
+    Firestore.instance
+        .collection('Users')
+        .document(GlobalUserAccount.instance.uid)
+        .collection('Stories')
+        .add({
+      'title': title,
+      'detail': detail,
+      'color': color,
+    });
+  }
+
+  Color _colorFrom(String hexString) {
+    return Color(int.parse(hexString));
   }
 }

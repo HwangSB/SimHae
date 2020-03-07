@@ -70,7 +70,7 @@ flutter:
     # InformationMapPage
     - assets/images/information_map.png
     # StoryWritePage
-    - assets/images/pallette.png
+    - assets/images/palette.png
     
   fonts:
     - family: MapoFlowerIsland

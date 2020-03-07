@@ -10,6 +10,7 @@ import 'package:solution_challenge/information_map_page.dart';
 import 'package:solution_challenge/memorial_space_story_page.dart';
 import 'package:solution_challenge/story_detail_loading_page.dart';
 import 'package:solution_challenge/my_page.dart';
+import 'package:solution_challenge/story_write_page.dart';
 
 class StoryPage extends StatefulWidget {
   @override
@@ -252,12 +253,19 @@ class _StoryPageState extends State<StoryPage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
-        onPressed: () {},
         child: Icon(
           Icons.edit,
           color: Color(0xFF8CDDD5),
           size: 28.0,
         ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => StoryWritePage(),
+            ),
+          );
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
@@ -269,66 +277,70 @@ class Story extends StatelessWidget {
   final String detail;
   final String color;
 
-  Story({Key key, @required this.title, this.detail = '', this.color}) : super(key: key);
+  Story({Key key, @required this.title, this.detail = '', this.color})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
       padding: EdgeInsets.all(0.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image(
-                image: AssetImage(
-                  'assets/images/left_quote.png',
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  left: 4.0,
-                  top: 16.0,
-                  right: 4.0,
-                ),
-                child: Text(
-                  this.title,
-                  style: TextStyle(
-                    fontFamily: 'MapoFlowerIsland',
-                    fontSize: 16,
-                    color: Color(0xFF3B514F),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 4.0),
-                child: Image(
-                  image: AssetImage(
-                    'assets/images/right_quote.png',
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Divider(
-            indent: 64.0,
-            endIndent: 64.0,
-            color: Color(0xFF707070),
-            thickness: 0.6,
-            height: 16.0,
-          ),
-        ],
-      ),
+      child: _titleText(this.title),
       onPressed: () {
         Navigator.push(
           context,
           FadePageRoute(
-            page:
-                StoryDetailLoadingPage(title: this.title, detail: this.detail, color: Color(int.parse(this.color))),
+            page: StoryDetailLoadingPage(
+                title: this.title,
+                detail: this.detail,
+                color: Color(int.parse(this.color))),
           ),
         );
       },
+    );
+  }
+
+  _titleText(String title) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 8.0),
+              child: Image(
+                image: AssetImage('assets/images/left_quote.png'),
+              ),
+            ),
+            SizedBox(
+              width: 250.0,
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontFamily: 'MapoFlowerIsland',
+                  fontSize: 16,
+                  color: Color(0xFF3B514F),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Image(
+                image: AssetImage('assets/images/right_quote.png'),
+              ),
+            ),
+          ],
+        ),
+        Divider(
+          indent: 64.0,
+          endIndent: 64.0,
+          color: Color(0xFF707070),
+          thickness: 0.6,
+          height: 16.0,
+        ),
+      ],
     );
   }
 }
@@ -355,7 +367,10 @@ class StoryStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: Firestore.instance.collection('Users').where('hasStory', isEqualTo: true).snapshots(),
+      stream: Firestore.instance
+          .collection('Users')
+          .where('hasStory', isEqualTo: true)
+          .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Story(title: '편지를 가져오는중 오류가 발생했습니다');
