@@ -113,6 +113,7 @@ class MyStoryStream extends StatelessWidget {
           .collection('Users')
           .document(this.user)
           .collection('Stories')
+          .orderBy('stamp', descending: true)
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
@@ -220,7 +221,7 @@ class MyStoryStream extends StatelessWidget {
                   .reference
                   .parent()
                   .parent()
-                  .setData({'hasStory': false});
+                  .updateData({'hasStory': false});
             }
             documents[index].reference.delete();
           },

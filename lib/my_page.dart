@@ -226,6 +226,7 @@ class MyStoryStream extends StatelessWidget {
           .collection('Users')
           .document(this.user)
           .collection('Stories')
+          .orderBy('stamp', descending: true)
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {

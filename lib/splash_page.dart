@@ -146,7 +146,7 @@ class _SplashPageState extends State<SplashPage> {
           Firestore.instance
               .collection('Users')
               .document(GlobalUserAccount.instance.uid)
-              .setData({'hasStory': false});
+              .setData({'hasStory': false}, merge: true);
         }
       }
       return true;

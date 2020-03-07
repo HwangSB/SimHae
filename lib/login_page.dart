@@ -144,7 +144,7 @@ class LoginPage extends StatelessWidget {
         Firestore.instance
             .collection('Users')
             .document(GlobalUserAccount.instance.uid)
-            .setData({'hasStory': false});
+            .setData({'hasStory': false}, merge: true);
       }
     }
 

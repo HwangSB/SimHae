@@ -399,8 +399,9 @@ class _StoryWritePageState extends State<StoryWritePage> {
         .then((document) {
       if (!document['hasStory']) {
         Firestore.instance
-            .document('Users/${GlobalUserAccount.instance.uid}')
-            .setData({'hasStory': true});
+            .collection('Users')
+            .document(GlobalUserAccount.instance.uid)
+            .updateData({'hasStory': true});
       }
     });
     Firestore.instance
@@ -408,6 +409,7 @@ class _StoryWritePageState extends State<StoryWritePage> {
         .document(GlobalUserAccount.instance.uid)
         .collection('Stories')
         .add({
+      'stamp': Timestamp.now(),
       'title': title,
       'detail': detail,
       'color': color,

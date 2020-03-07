@@ -19,6 +19,12 @@ class StoryPage extends StatefulWidget {
 
 class _StoryPageState extends State<StoryPage> {
   PageController _pageController = PageController();
+  List<String> _inducedPhrase = [
+    '우리는 저마다의 속도로 슬픔을 통과합니다.\n(브룩 노엘, 패멀라 D. 블레어)',
+    '소중한 누군가를 기억하고 얘기하는 당신이어서, 정말 고맙습니다.',
+    '함께 이야기하고, 기억해도 괜찮습니다.',
+    '저 깊은 심해에 마음을 털어놓는 건 어떨까요?',
+  ];
 
   @override
   void initState() {
@@ -138,8 +144,8 @@ class _StoryPageState extends State<StoryPage> {
                     ),
                   ],
                 ),
-                Flexible(
-                  flex: 2,
+                SizedBox(
+                  height: 200.0,
                   child: PageView.builder(
                     controller: _pageController,
                     physics: NeverScrollableScrollPhysics(),
@@ -147,43 +153,39 @@ class _StoryPageState extends State<StoryPage> {
                       return Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Row(
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.only(left: 32),
-                                child: Stack(
-                                  children: <Widget>[
-                                    Text(
-                                      '유도 문구를\n넣을 생각입니다.${index % 5}',
-                                      style: TextStyle(
-                                        fontFamily: 'MapoFlowerIsland',
-                                        fontSize: 26,
-                                        foreground: Paint()
-                                          ..style = PaintingStyle.stroke
-                                          ..strokeWidth = 0.3
-                                          ..color = Color(0xFF707070),
-                                      ),
-                                    ),
-                                    Text(
-                                      '유도 문구를\n넣을 생각입니다.${index % 5}',
-                                      style: TextStyle(
-                                        fontFamily: 'MapoFlowerIsland',
-                                        fontSize: 26,
-                                        color: Color(0xFF3B514F),
-                                      ),
-                                    ),
-                                  ],
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 32),
+                            child: Stack(
+                              children: <Widget>[
+                                Text(
+                                  '${_inducedPhrase[index % _inducedPhrase.length]}',
+                                  style: TextStyle(
+                                    fontFamily: 'MapoFlowerIsland',
+                                    fontSize: 21,
+                                    foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 0.3
+                                      ..color = Color(0xFF707070),
+                                  ),
                                 ),
-                              ),
-                            ],
+                                Text(
+                                  '${_inducedPhrase[index % _inducedPhrase.length]}',
+                                  style: TextStyle(
+                                    fontFamily: 'MapoFlowerIsland',
+                                    fontSize: 21,
+                                    color: Color(0xFF3B514F),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       );
                     },
                   ),
                 ),
-                Flexible(
-                  flex: 2,
+                SizedBox(
+                  height: 200.0,
                   child: InfinityPageView(
                     controller: InfinityPageController(initialPage: 0),
                     itemCount: 2,
@@ -191,10 +193,6 @@ class _StoryPageState extends State<StoryPage> {
                       return StoryStream();
                     },
                   ),
-                ),
-                Flexible(
-                  flex: 3,
-                  child: Container(),
                 ),
               ],
             ),

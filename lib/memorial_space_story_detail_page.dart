@@ -1,16 +1,32 @@
 import 'dart:ui';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:solution_challenge/global_user_account.dart';
 
-class MemorialSpaceStoryDetailPage extends StatelessWidget {
-  final String detail;
-  final int empathy;
+class MemorialSpaceStoryDetailPage extends StatefulWidget {
+  final DocumentSnapshot document;
 
-  MemorialSpaceStoryDetailPage({
-    Key key,
-    @required this.detail,
-    @required this.empathy,
-  }) : super(key: key);
+  MemorialSpaceStoryDetailPage({Key key, @required this.document})
+      : super(key: key);
+
+  @override
+  _MemorialSpaceStoryDetailPageState createState() =>
+      _MemorialSpaceStoryDetailPageState();
+}
+
+class _MemorialSpaceStoryDetailPageState
+    extends State<MemorialSpaceStoryDetailPage> {
+  String detail;
+  List<dynamic> empathizers;
+
+  @override
+  void initState() {
+    super.initState();
+    detail = widget.document['detail'];
+    empathizers = widget.document['empathizers'];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +100,7 @@ class MemorialSpaceStoryDetailPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Padding(
+                    CupertinoButton(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 32.0, vertical: 16.0),
                       child: Row(
@@ -100,7 +116,7 @@ class MemorialSpaceStoryDetailPage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            empathy.toString(),
+                            empathizers.length.toString(),
                             style: TextStyle(
                               fontFamily: 'MapoFlowerIsland',
                               fontSize: 20,
@@ -116,12 +132,14 @@ class MemorialSpaceStoryDetailPage extends StatelessWidget {
                           ),
                         ],
                       ),
+                      onPressed: _incrementEmpathy,
                     ),
                   ],
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.only(
+                        left: 16.0, right: 16.0, bottom: 16.0),
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(
@@ -165,5 +183,14 @@ class MemorialSpaceStoryDetailPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _incrementEmpathy() {
+    if (empathizers.contains(GlobalUserAccount.instance.uid)) return;
+
+    setState(() {
+      empathizers.add(GlobalUserAccount.instance.uid);
+    });
+    widget.document.reference.updateData({'empathizers': empathizers});
   }
 }
