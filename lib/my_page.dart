@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/shadowed_wave.dart';
 import 'package:solution_challenge/story_delete_page.dart';
 import 'package:solution_challenge/story_detail_page.dart';
@@ -57,7 +58,7 @@ class MyPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                MyStoryStream(user: 'user1'),
+                MyStoryStream(user: GlobalUserAccount.instance.uid),
                 SizedBox(
                   height: 32.0,
                 ),
@@ -344,6 +345,9 @@ class MyStoryStream extends StatelessWidget {
                 builder: (context) => StoryDetailPage(
                   title: documents[index]['title'],
                   detail: documents[index]['detail'],
+                  color: Color(
+                    int.parse(documents[index]['color']),
+                  ),
                 ),
               ),
             );
