@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:solution_challenge/settings_database.dart';
 import 'package:solution_challenge/story_page.dart';
-//import 'package:solution_challenge/tos_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:solution_challenge/tos_page.dart';
 
