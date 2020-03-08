@@ -13,7 +13,7 @@ class TosPage extends StatefulWidget {
 }
 
 class TosPageState extends State<TosPage> {
-  final List<Map<String, dynamic>> termsOfService = [
+  final List<Map<String, dynamic>> _termsOfService = [
     {
       'name': '인터넷 명예훼손',
       'summary': '정보통신망 이용촉진 및 정보보호 등에 관한 법률',
@@ -43,79 +43,64 @@ class TosPageState extends State<TosPage> {
       'agree': false,
     },
   ];
+  final String _precautions =
+      '본 서비스는 자살 유족들을 위한 소통 기능 및 정보를 제공합니다. 타인에게 과도한 불편함을 주는 표현은 삼가 주시길 바라며, 해당 내용은 신고 및 삭제 될 수 있습니다. 이용에 앞서, 서비스 관련 법률의 전문을 살펴보시기 바랍니다.';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Stack(
-          children: <Widget>[
-            ShadowedWave(
-              child: Container(
-                color: Color(0xFFCCF1D9),
-              ),
-              height: 320.0,
-              strength: 100.0,
-            ),
-            ShadowedWave(
-              child: Container(
-                color: Color(0xFF8CDDD5),
-              ),
-              height: 288.0,
-              strength: 100.0,
-            ),
-            Positioned(
-              left: 16,
-              child: SafeArea(
-                child: IconButton(
-                  icon: Icon(
-                    Icons.close,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    SystemNavigator.pop();
-                  },
-                ),
-              ),
-            ),
-            Positioned.fill(
-              child: SafeArea(
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 64.0),
-                    child: Text(
-                      '이용약관',
-                      style: TextStyle(
-                        fontFamily: 'MapoFlowerIsland',
-                        fontSize: 26,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 6.0,
-                            offset: Offset(0.0, 3.0),
-                            color: Color(0x29000000),
-                          ),
-                        ],
+      body: Stack(
+        children: <Widget>[
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                SizedBox(height: 240.0),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        '심해(心海)',
+                        style: TextStyle(
+                          fontFamily: 'MapoFlowerIsland',
+                          fontSize: 20,
+                          color: Color(0x91191919),
+                          shadows: [
+                            Shadow(
+                              blurRadius: 6.0,
+                              offset: Offset(0.0, 3.0),
+                              color: Color(0xFF7DBAC8),
+                            ),
+                          ],
+                        ),
                       ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Text(
+                    _precautions,
+                    style: TextStyle(
+                      fontFamily: 'MapoFlowerIsland',
+                      fontSize: 14,
+                      color: Color(0x91191919),
+                      height: 2.0,
                     ),
                   ),
                 ),
-              ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   child: Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     child: ListView.separated(
-                      padding: EdgeInsets.symmetric(vertical: 8.0),
                       shrinkWrap: true,
+                      padding: EdgeInsets.symmetric(vertical: 8.0),
                       physics: NeverScrollableScrollPhysics(),
-                      itemCount: termsOfService.length,
+                      itemCount: _termsOfService.length,
                       itemBuilder: (context, index) {
                         return Container(
                           child: Row(
@@ -124,10 +109,10 @@ class TosPageState extends State<TosPage> {
                               Row(
                                 children: <Widget>[
                                   Checkbox(
-                                      value: termsOfService[index]['agree'],
+                                      value: _termsOfService[index]['agree'],
                                       onChanged: null),
                                   Text(
-                                    termsOfService[index]['name'],
+                                    _termsOfService[index]['name'],
                                     style: TextStyle(
                                         fontFamily: 'MapoFlowerIsland',
                                         fontSize: 16),
@@ -195,8 +180,61 @@ class TosPageState extends State<TosPage> {
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+          ShadowedWave(
+            child: Container(
+              color: Color(0xFFCCF1D9),
+            ),
+            height: 240.0,
+            strength: 70.0,
+          ),
+          ShadowedWave(
+            child: Container(
+              color: Color(0xFF8CDDD5),
+            ),
+            height: 220.0,
+            strength: 70.0,
+          ),
+          SafeArea(
+            child: Material(
+              color: Colors.transparent,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: IconButton(
+                  icon: Icon(
+                    Icons.close,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    SystemNavigator.pop();
+                  },
+                ),
+              ),
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.only(top: 64.0),
+                child: Text(
+                  '이용약관',
+                  style: TextStyle(
+                    fontFamily: 'MapoFlowerIsland',
+                    fontSize: 26,
+                    shadows: [
+                      Shadow(
+                        blurRadius: 6.0,
+                        offset: Offset(0.0, 3.0),
+                        color: Color(0x29000000),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -206,20 +244,20 @@ class TosPageState extends State<TosPage> {
       context,
       MaterialPageRoute(
         builder: (context) => TosDetailPage(
-          name: termsOfService[index]['name'],
-          summary: termsOfService[index]['summary'],
-          detail: termsOfService[index]['detail'],
+          name: _termsOfService[index]['name'],
+          summary: _termsOfService[index]['summary'],
+          detail: _termsOfService[index]['detail'],
         ),
       ),
     );
 
     if (result != null) {
-      termsOfService[index]['agree'] = result;
+      _termsOfService[index]['agree'] = result;
     }
   }
 
   bool _isAcceptAllTerms() {
-    return termsOfService.where((term) => !term['agree']).isEmpty;
+    return _termsOfService.where((term) => !term['agree']).isEmpty;
   }
 
   void _continueButtonPressed() async {
