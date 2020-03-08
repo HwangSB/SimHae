@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,31 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:solution_challenge/information_map_help_page.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+
+class MapData {
+  final String name;
+  final String regionCity;
+  final String address;
+  final String time;
+  final String defaultActivity;
+  final String activity;
+  final String homepage;
+  final String telephone;
+  final List<String> images;
+
+  MapData({
+    this.name = '',
+    this.regionCity = '',
+    this.address = '',
+    this.time = '',
+    this.defaultActivity =
+        '모임을 통해 자살유가족들이 심리적·사회적 어려움과 고통속에서 벗어나 희망적인 삶을 되찾는 시간',
+    this.activity = '',
+    this.homepage = '',
+    this.telephone = '',
+    this.images = const ['logo_lg.png'],
+  });
+}
 
 class InformationMapPage extends StatefulWidget {
   @override
@@ -18,15 +44,12 @@ class _InformationMapPageState extends State<InformationMapPage> {
     topRight: Radius.circular(24.0),
   );
 
-  DocumentSnapshot _document;
-
-  static Future<dynamic> loadImage(String image) async {
-    return await FirebaseStorage.instance.ref().child(image).getDownloadURL();
-  }
+  MapData mapData;
 
   @override
   void initState() {
     super.initState();
+    mapData = MapData();
   }
 
   @override
@@ -36,7 +59,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
       body: SlidingUpPanel(
         controller: PanelController(),
         minHeight: 100.0,
-        maxHeight: 850.0,
+        maxHeight: 700.0,
         color: Colors.transparent,
         boxShadow: [],
         panelBuilder: _scrollingPage,
@@ -94,9 +117,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
                   ),
                   Expanded(
                     child: Text(
-                      (_document == null ? '' : _document['name']) +
-                          " " +
-                          (_document == null ? '' : _document['region_city']),
+                      mapData.name + ': ' + mapData.regionCity,
                       style: TextStyle(
                         fontFamily: 'MapoFlowerIsland',
                         fontSize: 16,
@@ -107,69 +128,29 @@ class _InformationMapPageState extends State<InformationMapPage> {
                 ],
               ),
             ),
-            _informationTag(
-                Icons.map, _document == null ? '' : _document['address']),
-            _informationTag(
-                Icons.access_time, _document == null ? '' : _document['time']),
-            _informationTag(Icons.people, '활동 소개~~'),
-            Divider(
-              indent: 16.0,
-              endIndent: 16.0,
-              color: Colors.white,
-              thickness: 0.5,
-            ),
-            SizedBox(
-              height: 32.0,
-            ),
-            _informationTag(Icons.more_horiz, '기타활동1\n\n기타활동2\n\n기타활동3'),
-            Divider(
-              indent: 16.0,
-              endIndent: 16.0,
-              color: Colors.white,
-              thickness: 0.5,
-            ),
-            SizedBox(
-              height: 32.0,
-            ),
-            _informationTag(
-                Icons.link, _document == null ? '' : _document['homepage']),
-            _informationTag(
-                Icons.call, _document == null ? '' : _document['telephone']),
-            Divider(
-              indent: 16.0,
-              endIndent: 16.0,
-              color: Colors.white,
-              thickness: 0.5,
-            ),
-            SizedBox(
-              height: 32.0,
-            ),
+            _informationTag(Icons.map, mapData.address),
+            _informationTag(Icons.access_time, mapData.time),
+            _informationTag(Icons.people, mapData.defaultActivity),
+            _divider(),
+            SizedBox(height: 32.0),
+            _informationTag(Icons.more_horiz, mapData.activity),
+            _divider(),
+            SizedBox(height: 32.0),
+            _informationTag(Icons.link, mapData.homepage),
+            _informationTag(Icons.call, mapData.telephone),
+            _divider(),
+            SizedBox(height: 32.0),
             _informationTag(Icons.image, ''),
             SizedBox(
               height: 180.0,
               child: PageView.builder(
                 physics: BouncingScrollPhysics(),
                 controller: PageController(viewportFraction: 0.9),
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(18.0),
-                        color: Colors.white,
-                      ),
-                      child: Center(
-                        child: Text('hello'),
-                      ),
-                    ),
-                  );
-                },
+                itemCount: mapData.images.length,
+                itemBuilder: (context, index) => _pageItem(index),
               ),
             ),
-            SizedBox(
-              height: 64.0,
-            ),
+            SizedBox(height: 64.0),
           ],
         ),
       ),
@@ -211,6 +192,46 @@ class _InformationMapPageState extends State<InformationMapPage> {
           ),
         ],
       ),
+    );
+  }
+
+  _divider() {
+    return Divider(
+      indent: 16.0,
+      endIndent: 16.0,
+      color: Colors.white,
+      thickness: 0.5,
+    );
+  }
+
+  _pageItem(index) {
+    return FutureBuilder<List<String>>(
+      future: _getURLs(mapData.images),
+      builder: (context, snapshot) {
+        Widget child;
+
+        if (snapshot.hasData) {
+          child = Image.network(snapshot.data[index]);
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
+          child = Text('이미지를 가져오는 중...');
+        }
+
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(18.0),
+              color: Colors.white,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(
+                child: child,
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -282,40 +303,74 @@ class _InformationMapPageState extends State<InformationMapPage> {
   }
 
   Widget _googleMap() {
-    //얘가 실질적으로 핀을 꼽는 곳임
-
     Completer<GoogleMapController> _controller = Completer();
-    Set<Marker> _markers = Set<Marker>();
-
     Set<Marker> _markerLocations = Set<Marker>();
 
     return StreamBuilder<QuerySnapshot>(
       stream: Firestore.instance.collection('InformationMap').snapshots(),
       builder: (context, snapshot) {
-        for (DocumentSnapshot document in snapshot.data.documents) {
-          if (document['Latitude'] == null) print(document.data);
-          _markerLocations.add(Marker(
+        if (snapshot.hasData) {
+          for (DocumentSnapshot document in snapshot.data.documents) {
+            _markerLocations.add(Marker(
               markerId: MarkerId(document.documentID),
               position: LatLng(document['Latitude'], document['longitude']),
               icon: BitmapDescriptor.defaultMarker,
               onTap: () {
-                setState(() {
-                  _document = document;
-                });
-              }));
+                if (document != null) {
+                  List<String> images = List<String>();
+                  images.add(document['logo']);
+
+                  for (var imagePath in document['image'] ?? []) {
+                    images.add(imagePath);
+                  }
+
+                  setState(() {
+                    mapData = MapData(
+                      name: document['name'],
+                      regionCity: document['region_city'],
+                      address: document['address'],
+                      time: document['time'],
+                      activity: document['activity'] ?? '홈페이지를 참고하세요',
+                      homepage: document['homepage'],
+                      telephone: document['telephone'],
+                      images: images,
+                    );
+                  });
+                }
+              },
+            ));
+          }
+
+          return GoogleMap(
+            mapType: MapType.normal,
+            markers: _markerLocations,
+            initialCameraPosition: CameraPosition(
+              target: LatLng(36.684602, 127.896608),
+              zoom: 7.0,
+            ),
+            onMapCreated: (controller) {
+              _controller.complete(controller);
+            },
+          );
         }
-        return GoogleMap(
-          mapType: MapType.normal,
-          markers: _markerLocations,
-          initialCameraPosition: CameraPosition(
-            target: LatLng(36.684602, 127.896608),
-            zoom: 7.0,
-          ),
-          onMapCreated: (controller) {
-            _controller.complete(controller);
-          },
+        return Container(
+          color: Colors.red,
         );
       },
     );
   }
+}
+
+Future<List<String>> _getURLs(List<String> paths) async {
+  List<String> result = List<String>();
+
+  final FirebaseStorage storage = FirebaseStorage(
+    storageBucket: 'gs://flutter-globalchallenge.appspot.com',
+  );
+
+  for (var path in paths) {
+    final String url = await storage.ref().child(path).getDownloadURL();
+    result.add(url);
+  }
+  return result;
 }

@@ -110,7 +110,7 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   _startTimer() async {
-    var _duration = Duration(seconds: 2);
+    var _duration = Duration(seconds: 1);
     return Timer(_duration, _navigatePage);
   }
 
