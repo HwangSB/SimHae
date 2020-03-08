@@ -1,15 +1,33 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:solution_challenge/information_map_help_page.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
-class InformationMapPage extends StatelessWidget {
+class InformationMapPage extends StatefulWidget {
+  @override
+  _InformationMapPageState createState() => _InformationMapPageState();
+}
+
+class _InformationMapPageState extends State<InformationMapPage> {
   final BorderRadiusGeometry radius = BorderRadius.only(
     topLeft: Radius.circular(24.0),
     topRight: Radius.circular(24.0),
   );
+
+  DocumentSnapshot _document;
+
+  static Future<dynamic> loadImage(String image) async {
+    return await FirebaseStorage.instance.ref().child(image).getDownloadURL();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,22 +35,13 @@ class InformationMapPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SlidingUpPanel(
         controller: PanelController(),
-        minHeight: 300.0,
+        minHeight: 100.0,
         maxHeight: 850.0,
         color: Colors.transparent,
         boxShadow: [],
-        panelBuilder: _pageViewPage,
+        panelBuilder: _scrollingPage,
         body: _bodyPage(context),
       ),
-    );
-  }
-
-  Widget _pageViewPage(ScrollController scrollController) {
-    return PageView.builder(
-      controller: PageController(),
-      physics: ClampingScrollPhysics(),
-      itemCount: 3,
-      itemBuilder: (context, index) => _scrollingPage(scrollController),
     );
   }
 
@@ -83,21 +92,26 @@ class InformationMapPage extends StatelessWidget {
                   SizedBox(
                     width: 8.0,
                   ),
-                  Text(
-                    '채움 (부모) _수원시 자살예방센터',
-                    style: TextStyle(
-                      fontFamily: 'MapoFlowerIsland',
-                      fontSize: 16,
-                      color: Colors.white,
+                  Expanded(
+                    child: Text(
+                      (_document == null ? '' : _document['name']) +
+                          " " +
+                          (_document == null ? '' : _document['region_city']),
+                      style: TextStyle(
+                        fontFamily: 'MapoFlowerIsland',
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
             _informationTag(
-                Icons.map, '경기도 수원시 팔달구 동말로 47번길 17 해피마음터 3층 \'소망실\''),
-            _informationTag(Icons.access_time, '매월 둘째주 토요일 오전 10시'),
-            _informationTag(Icons.people, '활동소개 한 줄'),
+                Icons.map, _document == null ? '' : _document['address']),
+            _informationTag(
+                Icons.access_time, _document == null ? '' : _document['time']),
+            _informationTag(Icons.people, '활동 소개~~'),
             Divider(
               indent: 16.0,
               endIndent: 16.0,
@@ -118,8 +132,9 @@ class InformationMapPage extends StatelessWidget {
               height: 32.0,
             ),
             _informationTag(
-                Icons.link, 'http://www.csp.or.kr/consulting/online_list.asp'),
-            _informationTag(Icons.call, '031-247-3279'),
+                Icons.link, _document == null ? '' : _document['homepage']),
+            _informationTag(
+                Icons.call, _document == null ? '' : _document['telephone']),
             Divider(
               indent: 16.0,
               endIndent: 16.0,
@@ -144,7 +159,9 @@ class InformationMapPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(18.0),
                         color: Colors.white,
                       ),
-                      child: Center(child: Text('hello')),
+                      child: Center(
+                        child: Text('hello'),
+                      ),
                     ),
                   );
                 },
@@ -265,26 +282,39 @@ class InformationMapPage extends StatelessWidget {
   }
 
   Widget _googleMap() {
+    //얘가 실질적으로 핀을 꼽는 곳임
+
     Completer<GoogleMapController> _controller = Completer();
     Set<Marker> _markers = Set<Marker>();
 
-    _markers.add(
-      Marker(
-        markerId: MarkerId(''),
-        position: LatLng(37.881386, 127.746995),
-        icon: BitmapDescriptor.defaultMarker,
-      ),
-    );
+    Set<Marker> _markerLocations = Set<Marker>();
 
-    return GoogleMap(
-      mapType: MapType.normal,
-      markers: _markers,
-      initialCameraPosition: CameraPosition(
-        target: LatLng(37.881386, 127.746995),
-        zoom: 15.0,
-      ),
-      onMapCreated: (controller) {
-        _controller.complete(controller);
+    return StreamBuilder<QuerySnapshot>(
+      stream: Firestore.instance.collection('InformationMap').snapshots(),
+      builder: (context, snapshot) {
+        for (DocumentSnapshot document in snapshot.data.documents) {
+          if (document['Latitude'] == null) print(document.data);
+          _markerLocations.add(Marker(
+              markerId: MarkerId(document.documentID),
+              position: LatLng(document['Latitude'], document['longitude']),
+              icon: BitmapDescriptor.defaultMarker,
+              onTap: () {
+                setState(() {
+                  _document = document;
+                });
+              }));
+        }
+        return GoogleMap(
+          mapType: MapType.normal,
+          markers: _markerLocations,
+          initialCameraPosition: CameraPosition(
+            target: LatLng(36.684602, 127.896608),
+            zoom: 7.0,
+          ),
+          onMapCreated: (controller) {
+            _controller.complete(controller);
+          },
+        );
       },
     );
   }
