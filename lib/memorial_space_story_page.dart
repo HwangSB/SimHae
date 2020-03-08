@@ -7,7 +7,7 @@ import 'package:solution_challenge/memorial_space_story_detail_page.dart';
 import 'package:solution_challenge/memorial_space_story_write_page.dart';
 
 class MemorialSpaceStoryPage extends StatelessWidget {
-  final DateTime expirationDate = DateTime.now().subtract(Duration(hours: 24));
+  final DateTime expirationDate = DateTime.now().subtract(Duration(days: 30));
 
   @override
   Widget build(BuildContext context) {
@@ -260,6 +260,7 @@ class MemorialSpaceStoryPage extends StatelessWidget {
                 color: Color(0x0D000000),
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.all(16.0),

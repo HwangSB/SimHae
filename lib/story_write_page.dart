@@ -98,8 +98,8 @@ class _StoryWritePageState extends State<StoryWritePage> {
                   ),
                   iconSize: 28.0,
                   onPressed: () {
-                    if (_titleController.text.isNotEmpty &&
-                        _detailController.text.isNotEmpty) {
+                    if (_titleController.text.trim().isNotEmpty &&
+                        _detailController.text.trim().isNotEmpty) {
                       _createDocument(
                         _titleController.text,
                         _detailController.text,

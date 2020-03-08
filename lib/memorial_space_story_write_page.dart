@@ -132,13 +132,15 @@ class _MemorialSpaceStoryWritePageState
                         ],
                       ),
                       onPressed: () {
-                        _createDocument(_detailController.text);
-                        Navigator.pushReplacement(
-                          context,
-                          FadePageRoute(
-                            page: MemorialSpaceLoadingPage(),
-                          ),
-                        );
+                        if (_detailController.text.trim().isNotEmpty) {
+                          _createDocument(_detailController.text);
+                          Navigator.pushReplacement(
+                            context,
+                            FadePageRoute(
+                              page: MemorialSpaceLoadingPage(),
+                            ),
+                          );
+                        }
                       },
                     ),
                   ],

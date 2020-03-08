@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -354,7 +353,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
           );
         }
         return Container(
-          color: Colors.red,
+          color: Colors.white,
         );
       },
     );
