@@ -1,4 +1,4 @@
-package com.example.solution_challenge
+package com.flipit.solution_challenge
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
