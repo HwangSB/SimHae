@@ -4,9 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:solution_challenge/global_user_account.dart';
-import 'package:solution_challenge/memorial_space_loading_page.dart';
+import 'package:solution_challenge/pages/memorial_space/memorial_space_loading_page.dart';
 
 class MemorialSpaceStoryWritePage extends StatefulWidget {
+  final DocumentSnapshot document;
+  final String detail;
+
+  MemorialSpaceStoryWritePage({this.document, this.detail});
+
   @override
   _MemorialSpaceStoryWritePageState createState() =>
       _MemorialSpaceStoryWritePageState();
@@ -15,6 +20,12 @@ class MemorialSpaceStoryWritePage extends StatefulWidget {
 class _MemorialSpaceStoryWritePageState
     extends State<MemorialSpaceStoryWritePage> {
   final TextEditingController _detailController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _detailController.text = widget.detail ?? '';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,54 +107,49 @@ class _MemorialSpaceStoryWritePageState
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    CupertinoButton(
-                      padding: EdgeInsets.all(0.0),
-                      child: Stack(
-                        children: <Widget>[
-                          Image(
-                            image: AssetImage(
-                              'assets/images/write_memorial_story_button.png',
-                            ),
-                          ),
-                          Positioned.fill(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  '등록',
-                                  style: TextStyle(
-                                    fontFamily: 'MapoFlowerIsland',
-                                    color: Colors.white,
-                                    shadows: [
-                                      Shadow(
-                                        blurRadius: 3.0,
-                                        offset: Offset(0.0, 0.0),
-                                        color: Color(0xFF52A7C6),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                      onPressed: () {
-                        if (_detailController.text.trim().isNotEmpty) {
-                          _createDocument(_detailController.text);
-                          Navigator.pushReplacement(
-                            context,
-                            FadePageRoute(
-                              page: MemorialSpaceLoadingPage(),
-                            ),
-                          );
-                        }
-                      },
+                CupertinoButton(
+                  padding: EdgeInsets.symmetric(horizontal: 12.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      borderRadius: BorderRadius.circular(28.0),
+                      color: Color(0x0D000000),
                     ),
-                  ],
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        child: Text(
+                          '등록',
+                          style: TextStyle(
+                            fontFamily: 'MapoFlowerIsland',
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 3.0,
+                                offset: Offset(0.0, 0.0),
+                                color: Color(0xFF52A7C6),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    if (_detailController.text.trim().isNotEmpty) {
+                      if (widget.document == null) {
+                        _createDocument(_detailController.text);
+                      } else {
+                        _updateDocument(_detailController.text);
+                      }
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRoute(
+                          page: MemorialSpaceLoadingPage(),
+                        ),
+                      );
+                    }
+                  },
                 ),
               ],
             ),
@@ -160,6 +166,10 @@ class _MemorialSpaceStoryWritePageState
       'empathizers': [],
       'stamp': Timestamp.now(),
     });
+  }
+
+  _updateDocument(String detail) async {
+    widget.document.reference.updateData({'detail': detail});
   }
 }
 

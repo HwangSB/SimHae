@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:solution_challenge/shadowed_wave.dart';
+import 'package:solution_challenge/widgets/shadowed_wave.dart';
 
 class InformationMapHelpPage extends StatelessWidget {
   @override

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:solution_challenge/shadowed_wave.dart';
+import 'package:solution_challenge/widgets/shadowed_wave.dart';
 import 'package:solution_challenge/settings_database.dart';
 import 'package:solution_challenge/tos_detail_page.dart';
-import 'package:solution_challenge/story_page.dart';
+import 'package:solution_challenge/pages/story/story_page.dart';
 
 class TosPage extends StatefulWidget {
   TosPage({Key key}) : super(key: key);

@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:solution_challenge/global_user_account.dart';
-import 'package:solution_challenge/shadowed_wave.dart';
-import 'package:solution_challenge/story_delete_page.dart';
-import 'package:solution_challenge/story_detail_page.dart';
+import 'package:solution_challenge/widgets/shadowed_wave.dart';
+import 'package:solution_challenge/pages/story/story_delete_page.dart';
+import 'package:solution_challenge/pages/story/story_detail_page.dart';
 import 'package:solution_challenge/settings_page.dart';
 
 class MyPage extends StatelessWidget {

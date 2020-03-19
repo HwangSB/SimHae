@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/Material.dart';
-import 'package:solution_challenge/shadowed_wave.dart';
-import 'package:solution_challenge/story_detail_page.dart';
+import 'package:solution_challenge/widgets/shadowed_wave.dart';
+import 'package:solution_challenge/pages/story/story_detail_page.dart';
 
 class StoryDetailLoadingPage extends StatefulWidget {
   final String title;

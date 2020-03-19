@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/settings_database.dart';
-import 'package:solution_challenge/tos_page.dart';
+import 'package:solution_challenge/pages/terms_of_service/tos_page.dart';
 
 class LoginPage extends StatelessWidget {
   final GoogleSignIn googleSignIn = GoogleSignIn();

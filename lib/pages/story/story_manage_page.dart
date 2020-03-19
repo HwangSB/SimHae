@@ -173,7 +173,7 @@ class MyStoryStream extends StatelessWidget {
           },
           direction: DismissDirection.endToStart,
           background: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 19.0),
+            padding: const EdgeInsets.symmetric(vertical: 18.0),
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.rectangle,

@@ -3,8 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:solution_challenge/memorial_space_story_detail_page.dart';
-import 'package:solution_challenge/memorial_space_story_write_page.dart';
+import 'package:solution_challenge/pages/memorial_space/memorial_space_my_page.dart';
+import 'package:solution_challenge/pages/memorial_space/memorial_space_story_detail_page.dart';
+import 'package:solution_challenge/pages/memorial_space/memorial_space_story_write_page.dart';
 
 class MemorialSpaceStoryPage extends StatelessWidget {
   final DateTime expirationDate = DateTime.now().subtract(Duration(days: 30));
@@ -41,90 +42,36 @@ class MemorialSpaceStoryPage extends StatelessWidget {
                       Material(
                         color: Colors.transparent,
                         child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: InkResponse(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Container(
-                              width: 40.0,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                shape: BoxShape.circle,
-                              ),
-                              child: ClipRect(
-                                child: Stack(
-                                  fit: StackFit.expand,
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.arrow_back_ios,
-                                      color: Color(0x33000000),
-                                      size: 30.0,
-                                    ),
-                                    BackdropFilter(
-                                      filter: ImageFilter.blur(
-                                        sigmaX: 2.0,
-                                        sigmaY: 2.0,
-                                      ),
-                                      child: Icon(
-                                        Icons.arrow_back_ios,
-                                        color: Colors.white,
-                                        size: 28.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
+                          padding: EdgeInsets.all(16.0),
+                          child: _shadowedIconButton(Icons.arrow_back_ios, () {
+                            Navigator.pop(context);
+                          }),
                         ),
                       ),
                       Material(
                         color: Colors.transparent,
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
-                          child: InkResponse(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      MemorialSpaceStoryWritePage(),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              width: 40.0,
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                shape: BoxShape.circle,
-                              ),
-                              child: ClipRect(
-                                child: Stack(
-                                  fit: StackFit.expand,
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.edit,
-                                      color: Color(0x33000000),
-                                      size: 28.0,
-                                    ),
-                                    BackdropFilter(
-                                      filter: ImageFilter.blur(
-                                        sigmaX: 2.0,
-                                        sigmaY: 2.0,
-                                      ),
-                                      child: Icon(
-                                        Icons.edit,
-                                        color: Colors.white,
-                                        size: 28.0,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
+                          child: Row(
+                            children: <Widget>[
+                              _shadowedIconButton(Icons.person, () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => MemorialSpaceMyPage(),
+                                  ),
+                                );
+                              }),
+                              _shadowedIconButton(Icons.edit, () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        MemorialSpaceStoryWritePage(),
+                                  ),
+                                );
+                              }),
+                            ],
                           ),
                         ),
                       ),
@@ -265,11 +212,8 @@ class MemorialSpaceStoryPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      documents[index]['detail'].substring(
-                          0,
-                          documents[index]['detail'].length < 100
-                              ? documents[index]['detail'].length
-                              : 100),
+                      _abridgedOf(documents[index]['detail'], 100),
+                      maxLines: 2,
                       style: TextStyle(
                         fontFamily: 'MapoFlowerIsland',
                         fontSize: 14,
@@ -335,6 +279,46 @@ class MemorialSpaceStoryPage extends StatelessWidget {
       },
     );
   }
+
+  _shadowedIconButton(IconData icon, Function onTap) {
+    return InkResponse(
+      onTap: onTap,
+      child: Container(
+        width: 40.0,
+        height: 40.0,
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          shape: BoxShape.circle,
+        ),
+        child: ClipRect(
+          child: Stack(
+            fit: StackFit.expand,
+            children: <Widget>[
+              Icon(
+                icon,
+                color: Color(0x33000000),
+                size: 30.0,
+              ),
+              BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: 2.0,
+                  sigmaY: 2.0,
+                ),
+                child: Icon(
+                  icon,
+                  color: Colors.white,
+                  size: 28.0,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  _abridgedOf(String text, int max) =>
+      text.substring(0, text.length < max ? text.length : max).trim();
 }
 
 class ColumnBuilder extends StatelessWidget {
