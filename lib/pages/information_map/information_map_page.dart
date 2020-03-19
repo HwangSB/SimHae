@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:solution_challenge/information_map_help_page.dart';
+import 'package:solution_challenge/pages/information_map/information_map_help_page.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 

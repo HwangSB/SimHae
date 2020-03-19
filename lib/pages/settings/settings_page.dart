@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:solution_challenge/help_page.dart';
-import 'package:solution_challenge/contact_page.dart';
+import 'package:solution_challenge/pages/settings/settings_help_page.dart';
+import 'package:solution_challenge/pages/settings/settings_contact_page.dart';
 
 class SettingsPage extends StatelessWidget {
   final List<String> data = ['도움말', '문의하기'];
@@ -10,7 +10,7 @@ class SettingsPage extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => HelpPage(),
+          builder: (context) => SettingsHelpPage(),
         ),
       );
     },
@@ -18,7 +18,7 @@ class SettingsPage extends StatelessWidget {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ContactPage(),
+          builder: (context) => SettingsContactPage(),
         ),
       );
     },

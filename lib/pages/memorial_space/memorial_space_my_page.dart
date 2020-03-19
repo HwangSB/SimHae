@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:solution_challenge/global_user_account.dart';
-import 'package:solution_challenge/pages/memorial_space_story_detail_page.dart';
-import 'package:solution_challenge/pages/memorial_space_story_write_page.dart';
+import 'package:solution_challenge/pages/memorial_space/memorial_space_detail_page.dart';
+import 'package:solution_challenge/pages/memorial_space/memorial_space_write_page.dart';
 
 class MemorialSpaceMyPage extends StatefulWidget {
   @override
@@ -224,7 +224,7 @@ class _MemorialSpaceMyPageState extends State<MemorialSpaceMyPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => MemorialSpaceStoryWritePage(
+                              builder: (context) => MemorialSpaceManagePage(
                                   document: documents[index],
                                   detail: documents[index]['detail']),
                             ),
@@ -339,7 +339,7 @@ class _MemorialSpaceMyPageState extends State<MemorialSpaceMyPage> {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      MemorialSpaceStoryDetailPage(document: documents[index]),
+                      MemorialSpaceDetailPage(document: documents[index]),
                 ),
               );
             },

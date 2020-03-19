@@ -6,19 +6,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/pages/memorial_space/memorial_space_loading_page.dart';
 
-class MemorialSpaceStoryWritePage extends StatefulWidget {
+class MemorialSpaceManagePage extends StatefulWidget {
   final DocumentSnapshot document;
   final String detail;
 
-  MemorialSpaceStoryWritePage({this.document, this.detail});
+  MemorialSpaceManagePage({this.document, this.detail});
 
   @override
-  _MemorialSpaceStoryWritePageState createState() =>
-      _MemorialSpaceStoryWritePageState();
+  _MemorialSpaceManagePageState createState() =>
+      _MemorialSpaceManagePageState();
 }
 
-class _MemorialSpaceStoryWritePageState
-    extends State<MemorialSpaceStoryWritePage> {
+class _MemorialSpaceManagePageState
+    extends State<MemorialSpaceManagePage> {
   final TextEditingController _detailController = TextEditingController();
 
   @override
@@ -160,7 +160,7 @@ class _MemorialSpaceStoryWritePageState
   }
 
   _createDocument(String detail) async {
-    Firestore.instance.collection('MemorialSpace').add({
+    await Firestore.instance.collection('MemorialSpace').add({
       'user': GlobalUserAccount.instance.uid,
       'detail': detail,
       'empathizers': [],
@@ -169,7 +169,7 @@ class _MemorialSpaceStoryWritePageState
   }
 
   _updateDocument(String detail) async {
-    widget.document.reference.updateData({'detail': detail});
+    await widget.document.reference.updateData({'detail': detail});
   }
 }
 

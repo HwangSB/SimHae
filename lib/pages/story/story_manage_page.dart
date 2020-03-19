@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:solution_challenge/global_user_account.dart';
+import 'package:solution_challenge/pages/story/story_write_page.dart';
 
 class StoryDeletePage extends StatelessWidget {
   @override
@@ -149,30 +150,36 @@ class MyStoryStream extends StatelessWidget {
       itemBuilder: (context, index) {
         return Dismissible(
           key: Key(documents[index].documentID),
-          confirmDismiss: (DismissDirection direction) async {
-            final bool res = await showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return CupertinoAlertDialog(
-                  title: const Text("편지 삭제"),
-                  content: const Text("정말 삭제하시겠습니까?"),
-                  actions: <Widget>[
-                    CupertinoButton(
-                      onPressed: () => Navigator.pop(context, true),
-                      child: const Text("삭제"),
-                    ),
-                    CupertinoButton(
-                      onPressed: () => Navigator.pop(context, false),
-                      child: const Text("취소"),
-                    ),
-                  ],
-                );
-              },
-            );
-            return res;
-          },
-          direction: DismissDirection.endToStart,
           background: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 18.0),
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(16.0),
+                color: Colors.blue,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.edit,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    '수정',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'MapoFlowerIsland',
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          secondaryBackground: Padding(
             padding: const EdgeInsets.symmetric(vertical: 18.0),
             child: Container(
               decoration: BoxDecoration(
@@ -183,6 +190,13 @@ class MyStoryStream extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
+                  Text(
+                    '삭제',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'MapoFlowerIsland',
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Icon(
@@ -194,6 +208,63 @@ class MyStoryStream extends StatelessWidget {
               ),
             ),
           ),
+          confirmDismiss: (DismissDirection direction) async {
+            if (direction == DismissDirection.startToEnd) {
+              return await showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return CupertinoAlertDialog(
+                    title: const Text("편지 수정"),
+                    content: const Text("글을 수정하시겠습니까?"),
+                    actions: <Widget>[
+                      CupertinoButton(
+                        onPressed: () {
+                          Navigator.pop(context, false);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => StoryWritePage(
+                                document: documents[index],
+                                title: documents[index]['title'],
+                                detail: documents[index]['detail'],
+                                color: documents[index]['color'],
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Text("수정"),
+                      ),
+                      CupertinoButton(
+                        onPressed: () => Navigator.pop(context, false),
+                        child: const Text("취소"),
+                      ),
+                    ],
+                  );
+                },
+              );
+            } else if (direction == DismissDirection.endToStart) {
+              return await showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return CupertinoAlertDialog(
+                    title: const Text("편지 삭제"),
+                    content: const Text("정말 삭제하시겠습니까?"),
+                    actions: <Widget>[
+                      CupertinoButton(
+                        onPressed: () => Navigator.pop(context, true),
+                        child: const Text("삭제"),
+                      ),
+                      CupertinoButton(
+                        onPressed: () => Navigator.pop(context, false),
+                        child: const Text("취소"),
+                      ),
+                    ],
+                  );
+                },
+              );
+            }
+            return false;
+          },
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 12.0),
             child: Container(
@@ -215,15 +286,17 @@ class MyStoryStream extends StatelessWidget {
               ),
             ),
           ),
-          onDismissed: (direction) {
-            if (documents.length == 1) {
-              documents[index]
-                  .reference
-                  .parent()
-                  .parent()
-                  .updateData({'hasStory': false});
+          onDismissed: (DismissDirection direction) {
+            if (direction == DismissDirection.endToStart) {
+              if (documents.length == 1) {
+                documents[index]
+                    .reference
+                    .parent()
+                    .parent()
+                    .updateData({'hasStory': false});
+              }
+              documents[index].reference.delete();
             }
-            documents[index].reference.delete();
           },
         );
       },

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:solution_challenge/widgets/shadowed_wave.dart';
 import 'package:solution_challenge/settings_database.dart';
-import 'package:solution_challenge/tos_detail_page.dart';
+import 'package:solution_challenge/pages/terms_of_service/tos_detail_page.dart';
 import 'package:solution_challenge/pages/story/story_page.dart';
 
 class TosPage extends StatefulWidget {

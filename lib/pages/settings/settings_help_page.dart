@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class HelpPage extends StatelessWidget {
+class SettingsHelpPage extends StatelessWidget {
   final List<Entry> data = <Entry>[
     Entry(
       '\'심해\'는 어떤 서비스인가요?',

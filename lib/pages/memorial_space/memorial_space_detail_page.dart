@@ -5,19 +5,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:solution_challenge/global_user_account.dart';
 
-class MemorialSpaceStoryDetailPage extends StatefulWidget {
+class MemorialSpaceDetailPage extends StatefulWidget {
   final DocumentSnapshot document;
 
-  MemorialSpaceStoryDetailPage({Key key, @required this.document})
+  MemorialSpaceDetailPage({Key key, @required this.document})
       : super(key: key);
 
   @override
-  _MemorialSpaceStoryDetailPageState createState() =>
-      _MemorialSpaceStoryDetailPageState();
+  _MemorialSpaceDetailPageState createState() =>
+      _MemorialSpaceDetailPageState();
 }
 
-class _MemorialSpaceStoryDetailPageState
-    extends State<MemorialSpaceStoryDetailPage> {
+class _MemorialSpaceDetailPageState
+    extends State<MemorialSpaceDetailPage> {
   String detail;
   List<dynamic> empathizers;
 

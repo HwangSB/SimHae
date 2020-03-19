@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:solution_challenge/widgets/animated_wave.dart';
 import 'package:infinity_page_view/infinity_page_view.dart';
-import 'package:solution_challenge/information_map_page.dart';
-import 'package:solution_challenge/pages/memorial_space/memorial_space_story_page.dart';
-import 'package:solution_challenge/story_detail_loading_page.dart';
-import 'package:solution_challenge/my_page.dart';
-import 'package:solution_challenge/story_write_page.dart';
+import 'package:solution_challenge/pages/information_map/information_map_page.dart';
+import 'package:solution_challenge/pages/memorial_space/memorial_space_page.dart';
+import 'package:solution_challenge/pages/story/story_loading_page.dart';
+import 'package:solution_challenge/pages/story/story_my_page.dart';
+import 'package:solution_challenge/pages/story/story_write_page.dart';
 
 class StoryPage extends StatefulWidget {
   @override
@@ -115,7 +115,7 @@ class _StoryPageState extends State<StoryPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => MyPage(),
+                                  builder: (context) => StoryMyPage(),
                                 ),
                               );
                             },
@@ -238,7 +238,7 @@ class _StoryPageState extends State<StoryPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => MemorialSpaceStoryPage(),
+                          builder: (context) => MemorialSpacePage(),
                         ),
                       );
                     },

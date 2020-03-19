@@ -7,7 +7,7 @@ import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/settings_database.dart';
 import 'package:solution_challenge/pages/story/story_page.dart';
 import 'package:solution_challenge/pages/terms_of_service/tos_page.dart';
-import 'package:solution_challenge/login_page.dart';
+import 'package:solution_challenge/pages/login_page.dart';
 
 class SplashPage extends StatefulWidget {
   @override

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:solution_challenge/pages/memorial_space/memorial_space_my_page.dart';
-import 'package:solution_challenge/pages/memorial_space/memorial_space_story_detail_page.dart';
-import 'package:solution_challenge/pages/memorial_space/memorial_space_story_write_page.dart';
+import 'package:solution_challenge/pages/memorial_space/memorial_space_detail_page.dart';
+import 'package:solution_challenge/pages/memorial_space/memorial_space_write_page.dart';
 
-class MemorialSpaceStoryPage extends StatelessWidget {
+class MemorialSpacePage extends StatelessWidget {
   final DateTime expirationDate = DateTime.now().subtract(Duration(days: 30));
 
   @override
@@ -67,7 +67,7 @@ class MemorialSpaceStoryPage extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        MemorialSpaceStoryWritePage(),
+                                        MemorialSpaceManagePage(),
                                   ),
                                 );
                               }),
@@ -271,7 +271,7 @@ class MemorialSpaceStoryPage extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) =>
-                    MemorialSpaceStoryDetailPage(document: documents[index]),
+                    MemorialSpaceDetailPage(document: documents[index]),
               ),
             );
           },

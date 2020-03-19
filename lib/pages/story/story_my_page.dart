@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/widgets/shadowed_wave.dart';
-import 'package:solution_challenge/pages/story/story_delete_page.dart';
+import 'package:solution_challenge/pages/story/story_manage_page.dart';
 import 'package:solution_challenge/pages/story/story_detail_page.dart';
-import 'package:solution_challenge/settings_page.dart';
+import 'package:solution_challenge/pages/settings/settings_page.dart';
 
-class MyPage extends StatelessWidget {
+class StoryMyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

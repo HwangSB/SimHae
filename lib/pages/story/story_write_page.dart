@@ -1,8 +1,16 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:solution_challenge/global_user_account.dart';
 
 class StoryWritePage extends StatefulWidget {
+  final DocumentSnapshot document;
+  final String title;
+  final String detail;
+  final String color;
+
+  StoryWritePage({this.document, this.title, this.detail, this.color});
+
   @override
   _StoryWritePageState createState() => _StoryWritePageState();
 }
@@ -21,8 +29,10 @@ class _StoryWritePageState extends State<StoryWritePage> {
 
   @override
   void initState() {
-    _paletteColor = _paletteColors[2];
     super.initState();
+    _titleController.text = widget.title ?? '';
+    _detailController.text = widget.detail ?? '';
+    _paletteColor = widget.color ?? _paletteColors[2];
   }
 
   @override
@@ -97,17 +107,7 @@ class _StoryWritePageState extends State<StoryWritePage> {
                     color: Colors.white,
                   ),
                   iconSize: 28.0,
-                  onPressed: () {
-                    if (_titleController.text.trim().isNotEmpty &&
-                        _detailController.text.trim().isNotEmpty) {
-                      _createDocument(
-                        _titleController.text,
-                        _detailController.text,
-                        _paletteColor,
-                      );
-                      Navigator.pop(context);
-                    }
-                  },
+                  onPressed: _send,
                 ),
               ],
             ),
@@ -184,7 +184,7 @@ class _StoryWritePageState extends State<StoryWritePage> {
                 ),
               ),
             ),
-          ),                                
+          ),
         ),
       ),
     );
@@ -391,6 +391,48 @@ class _StoryWritePageState extends State<StoryWritePage> {
     );
   }
 
+  _send() async {
+    if (_titleController.text.trim().isNotEmpty &&
+        _detailController.text.trim().isNotEmpty) {
+      bool result = await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CupertinoAlertDialog(
+            title: const Text("편지 작성"),
+            content: const Text("편지를 띄우시겠습니까?"),
+            actions: <Widget>[
+              CupertinoButton(
+                onPressed: () => Navigator.pop(context, true),
+                child: const Text("확인"),
+              ),
+              CupertinoButton(
+                onPressed: () => Navigator.pop(context, false),
+                child: const Text("취소"),
+              ),
+            ],
+          );
+        },
+      );
+
+      if (result) {
+        if (widget.document == null) {
+          _createDocument(
+            _titleController.text,
+            _detailController.text,
+            _paletteColor,
+          );
+        } else {
+          _updateDocument(
+            _titleController.text,
+            _detailController.text,
+            _paletteColor,
+          );
+        }
+        Navigator.pop(context);
+      }
+    }
+  }
+
   _createDocument(String title, String detail, String color) async {
     await Firestore.instance
         .collection('Users')
@@ -414,6 +456,11 @@ class _StoryWritePageState extends State<StoryWritePage> {
       'detail': detail,
       'color': color,
     });
+  }
+
+  _updateDocument(String title, String detail, String color) async {
+    await widget.document.reference
+        .updateData({'title': title, 'detail': detail, 'color': color});
   }
 
   Color _colorFrom(String hexString) {

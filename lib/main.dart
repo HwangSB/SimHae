@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:solution_challenge/splash_page.dart';
+import 'package:solution_challenge/pages/splash_page.dart';
 
 void main() => runApp(MyApp());
 
