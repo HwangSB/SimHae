@@ -257,12 +257,39 @@ class _StoryPageState extends State<StoryPage> {
           size: 28.0,
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => StoryWritePage(),
-            ),
+          MaterialPageRoute route = MaterialPageRoute(
+            builder: (context) => StoryWritePage(),
           );
+
+          Navigator.push(context, route);
+
+          route.didPush().then((_) {
+            showDialog(
+              context: context,
+              builder: (context) {
+                return Dialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24.0),
+                  ),
+                  child: Container(
+                    width: 300.0,
+                    height: 200.0,
+                    child: Center(
+                      child: Text(
+                        '이곳은 함께 이야기 하고\n기억하는 공간입니다.\n타인에게 과도한 불편함을 주는글은\n삼가주시길 바랍니다.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'MapoFlowerIsland',
+                          fontSize: 16.0,
+                          height: 1.75,
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            );
+          });
         },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
