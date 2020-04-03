@@ -25,6 +25,10 @@ class SettingsDatabase {
           'INSERT INTO AppSettings(key, value) VALUES(?, ?)',
           ['accept_all_tos', 'false'],
         );
+        db.rawInsert(
+          'INSERT INTO AppSettings(key, value) VALUES(?, ?)',
+          ['init_launch', 'true'],
+        );
       },
       version: 1,
     );

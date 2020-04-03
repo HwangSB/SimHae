@@ -2,7 +2,7 @@
 
 ## What is Deep Sea?
 
-Suicide Survivor Communication and Information Service, this is an official application for "Deep Sea".
+We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate with suicide survivor and provide information about support center and offline meeting. The meaning of the title is sharing your heart in the deep sea.
 
 ## Getting Started
 
