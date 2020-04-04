@@ -25,10 +25,6 @@ class SettingsDatabase {
           'INSERT INTO AppSettings(key, value) VALUES(?, ?)',
           ['accept_all_tos', 'false'],
         );
-        db.rawInsert(
-          'INSERT INTO AppSettings(key, value) VALUES(?, ?)',
-          ['init_launch', 'true'],
-        );
       },
       version: 1,
     );
@@ -42,6 +38,8 @@ class SettingsDatabase {
     final List<Map<String, dynamic>> rawAppSettings = await database.query(
       'AppSettings',
     );
+
+    database.close();
 
     List<AppSetting> appSettings = List.generate(rawAppSettings.length, (i) {
       return AppSetting(
@@ -63,5 +61,7 @@ class SettingsDatabase {
       where: 'key = ?',
       whereArgs: [appSetting.key],
     );
+
+    database.close();
   }
 }

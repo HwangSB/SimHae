@@ -132,13 +132,6 @@ class _SplashPageState extends State<SplashPage> {
 
   Future<bool> _checkSignedIn() async {
     GoogleSignIn googleSignIn = new GoogleSignIn();
-
-    SettingsDatabase settings = SettingsDatabase();
-    String initLaunch = await settings.valueOf('init_launch');
-    if (initLaunch == 'true') {
-      googleSignIn.signOut();
-    }
-
     bool isSignedIn = await googleSignIn.isSignedIn();
     if (isSignedIn) {
       GoogleSignInAccount googleSignInAccount =
@@ -150,13 +143,11 @@ class _SplashPageState extends State<SplashPage> {
             .document(GlobalUserAccount.instance.uid)
             .get();
         if (snapshot == null || !snapshot.exists) {
-          Firestore.instance
+          await Firestore.instance
               .collection('Users')
               .document(GlobalUserAccount.instance.uid)
               .setData({'hasStory': false}, merge: true);
         }
-        SettingsDatabase settings = SettingsDatabase();
-        settings.update(AppSetting(key: 'init_launch', value: 'false'));
       }
       return true;
     }
