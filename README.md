@@ -14,25 +14,40 @@ We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate 
 
 ### Build and Run
 
-[Providing SHA1/SHA256 key](https://developers.google.com/android/guides/client-auth) 
+1. [Providing SHA1/SHA256 key](https://developers.google.com/android/guides/client-auth) 
 
-JAVA keytool을 사용해서 SHA-1/256 key를 생성 후에 firebase의 "My App"에서 "SHA 인증서 지문"에 추가해준다.
+2. After creating SHA-1 / 256 key using JAVA keytool, add it to "SHA certificate fingerprint" in "My App" of firebase.
 
-Launch `Terminal` and move to Project Directory
+3. Launch `Terminal` and move to Project Directory.
 
-Enter `flutter pub get`
+4. Enter `flutter pub get`.
 
-Click `Run` tab on side of and 'create a launch.json' file.
+5. Click `Run` tab on side of and 'create a launch.json' file.
 
-VSCode의 왼쪽에 있는 Run 탭을 클릭하고 create a launch.json file을 클릭
+6. Click the Run tab on the left side of VSCode and click create a launch.json file.
 
-Select `Dart & Flutter` Environment
+7. Select `Dart & Flutter` Environment.
 
-VSCode의 왼쪽에 있는 Run 탭을 클릭하고 실행버튼을 눌러 실행
+8. Click the Run tab on the left side of VSCode and click the Run button to run.
 
 
 ## DB
 
+| ![image](https://user-images.githubusercontent.com/59796964/80091107-8241d900-859b-11ea-94d4-499a982d1bd3.png) |
+|:--:|
+| InformationMapCommunity Firestore Database |
+
+| ![image](https://user-images.githubusercontent.com/59796964/80091216-b1584a80-859b-11ea-9354-2bb1fae76625.png) |
+|:--:|
+| InformationMap Firestore Database |
+
+| ![image](https://user-images.githubusercontent.com/59796964/80091300-d1880980-859b-11ea-83ed-34f3a8f492ad.png) |
+|:--:|
+| Users/Stories Firestore Database (Only if hasStory is true) |
+
+| ![image](https://user-images.githubusercontent.com/59796964/80091322-dd73cb80-859b-11ea-861f-68ec5c1033f9.png) |
+|:--:|
+| MemorialSpace Firestore Database |
 
 
 ### Technical Stack
