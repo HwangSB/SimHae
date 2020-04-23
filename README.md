@@ -1,18 +1,18 @@
-# 심해(心海) - 우리의 마음이 머무는 바다 (Deep Sea - The sea where our hearts stay)
+# What is Deep Sea?
 
-## What is Deep Sea?
+심해(心海) - 우리의 마음이 머무는 바다 (Deep Sea - The sea where our hearts stay)
 
 We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate with suicide survivor and provide information about support center and offline meeting. The meaning of the title is sharing your heart in the deep sea.
 
-## Getting Started
+# Getting Started
 
-### Install
+## Install
 
-[How to install Flutter](https://flutter.dev/docs/get-started/install)
+1. [How to install Flutter](https://flutter.dev/docs/get-started/install)
 
-[Set up an editor](https://flutter.dev/docs/get-started/editor?tab=vscode)
+2. [Set up an editor](https://flutter.dev/docs/get-started/editor?tab=vscode)
 
-### Build and Run
+## Build and Run
 
 1. [Providing SHA1/SHA256 key](https://developers.google.com/android/guides/client-auth) 
 
@@ -31,7 +31,7 @@ We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate 
 8. Click the Run tab on the left side of VSCode and click the Run button to run.
 
 
-## DB
+# DB
 
 | ![image](https://user-images.githubusercontent.com/59796964/80091107-8241d900-859b-11ea-94d4-499a982d1bd3.png) |
 |:--:|
@@ -50,19 +50,79 @@ We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate 
 | MemorialSpace Firestore Database |
 
 
-### Technical Stack
+# Technical Stack
 
-Flutter
+## Firebase - FireStore
+- We used firestore because We built a community and felt the need for cloud DB.
 
-Firebase - FireStore
+- #### Usage
 
-Firebase - Storage
+    > Initialize Firestore Database
 
-Firebase - Authentication
+    ``` dart
+    Future<Database> _open() async {
+        Database database = await openDatabase(
+        join(await getDatabasesPath(), 'settings.db'),
+        onCreate: (db, version) {
+            db.execute(
+            ...
+            );
+            db.rawInsert(
+            ...
+            );
+        },
+        version: 1,
+        );
 
-Google Cloud Platform - Google Map
+        return database;
+    }
+    ```
+    > Get Value from Firestore Database
 
-### Preview
+    ``` dart
+    Future<String> valueOf(String key) async {
+        Database database = await _open();
+
+        final List<Map<String, dynamic>> rawAppSettings = await database.query(
+            ...
+        );
+
+        database.close();
+
+        List<AppSetting> appSettings = List.generate(rawAppSettings.length, (i) {
+            return AppSetting(
+                ...
+            );
+        });
+
+        AppSetting setting = appSettings.firstWhere((setting) => setting.key == key);
+        return setting.value;
+    }
+    ```
+
+    > Update Firestore Database
+
+    ``` dart
+    void update(AppSetting appSetting) async {
+        Database database = await _open();
+
+        await database.update(
+            ...
+        );
+
+        database.close();
+    }
+    ```
+- #### [See more...](https://console.firebase.google.com)
+
+## Firebase - Storage
+
+## Firebase - Authentication
+
+## Google Cloud Platform - Google Map
+
+ 
+# Preview
 
 |||||||||
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -70,7 +130,7 @@ Google Cloud Platform - Google Map
 
 
 
-## Contributer
+# Contributer
 
 Yuna Kim - UI/UX Designer, Video productor
 
