@@ -33,7 +33,7 @@ class StoryMyPage extends StatelessWidget {
                             image: AssetImage('assets/images/sent_story.png'),
                           ),
                           Text(
-                            '건너간 편지',
+                            'Floated letters',
                             style: TextStyle(
                               fontFamily: 'MapoFlowerIsland',
                               fontSize: 18,
@@ -156,7 +156,7 @@ class StoryMyPage extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Text(
-                        '나의 바다',
+                        'My Sea',
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 24,
@@ -231,7 +231,7 @@ class MyStoryStream extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Text(
-            '편지를 가져오는중 오류가 발생했습니다',
+            'Oops! we loss the letter',
             style: TextStyle(
               fontFamily: 'MapoFlowerIsland',
               fontSize: 16,
@@ -242,7 +242,7 @@ class MyStoryStream extends StatelessWidget {
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
             return Text(
-              '편지를 가져오는 중...',
+              'Rowing for letters...',
               style: TextStyle(
                 fontFamily: 'MapoFlowerIsland',
                 fontSize: 16,
@@ -259,7 +259,7 @@ class MyStoryStream extends StatelessWidget {
   _myStoryStream(List<DocumentSnapshot> documents) {
     if (documents.length == 0) {
       return Text(
-        '건너간 편지가 없습니다',
+        'There are not floated letters',
         style: TextStyle(
           fontFamily: 'MapoFlowerIsland',
           fontSize: 16,

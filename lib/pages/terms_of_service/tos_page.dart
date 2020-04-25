@@ -15,36 +15,26 @@ class TosPage extends StatefulWidget {
 class TosPageState extends State<TosPage> {
   final List<Map<String, dynamic>> _termsOfService = [
     {
-      'name': '인터넷 명예훼손',
-      'summary': '정보통신망 이용촉진 및 정보보호 등에 관한 법률',
-      'detail':
-          '1. 정의\n이용자는 명예훼손 등 타인의 권리를 침해하는 정보를 정보통신망에 유통시켜서는 안 됩니다(규제「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제44조제1항).\n\n※ “이용자”란 정보통신서비스 제공자가 제공하는 정보통신서비스를 이용하는 사람을 말합니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제2조제1항제4호).\n\n※ “정보통신망”이란 전기통신설비를 이용하거나 전기통신설비와 컴퓨터 및 컴퓨터의 이용기술을 활용하여 정보를 수집·가공·저장·검색·송신 또는 수신하는 정보통신체제를 말합니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제2조제1항제1호). ‘전기통신설비’란 유선·무선·광선 및 기타의 전자적 방식에 의하여 부호·문언·음향 또는 영상\n\n2. 처벌\n- 사람을 비방할 목적으로 정보통신망을 통해 공공연하게 사실을 드러내어 다른 사람의 명예를 훼손한 자는 3년 이하의 징역 또는 3천만원 이하의 벌금에 처해집니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제1항).\nㄴ> ※ 위의 죄는 피해자가 구체적으로 밝힌 의사에 반해 공소를 제기할 수 없습니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제3항).\n\n- 사람을 비방할 목적으로 정보통신망을 통해 공공연하게 거짓의 사실을 드러내어 다른 사람의 명예를 훼손한 자는 7년 이하의 징역, 10년 이하의 자격정지 또는 5천만원 이하의 벌금에 처해집니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제2항).\nㄴ> 위의 죄는 피해자가 구체적으로 밝힌 의사에 반하여 공소를 제기할 수 없습니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제3항).',
+      'name': 'Internet defamation',
+      'summary': 'Laws for promoting the use of information and communication networks and protecting information',
+      'detail': 'Users should not distribute information that infringes the interests of others, such as name loss, to the information and communication network (Regulation “Act on Promotion of Information and Communication Network Use and Information Protection”, Paragraph 1, Paragraph 1).\n\n* “User” refers to a person who uses the information and communication service provided by the information and communication service provider (“Act on Promotion of Information and Communication Network Use and Information Protection”, Paragraph 2, Paragraph 1, Paragraph 4) .\n\n* "Information communication network" refers to an information communication system that uses telecommunications equipment or collects, processes, saves, and transmits or receives information using telecommunications equipment, computers, and computer utilization technology ( "Act on Promotion of Utilization of Information and Communication Networks and Protection of Information, etc." "Telecommunications equipment" means coded audio or video by wired and wireless rays and other electronic methods.\n\n-A person who publicly exposes things through the information and communication network for the purpose of slandering others and damages the name of another person is punished by imprisonment for not more than 3 years or a fine of not more than 30 million won (`` Information Act on Promotion of Communication Network Use and Information Protection, "Article 70, Paragraph 1).\nYes> * You cannot file a lawsuit against the above-mentioned intention of the victim of the crime (“Law for Promoting Use of Information and Communication Networks and Information Protection”, Paragraph 3, Article 70).\n\nPersons who openly expose people through the information and communication network for the purpose of slandering others and lose the name of other people are imprisoned for not more than 7 years, suspended for 10 years or less or 50 million won or less. You will be fined (Article 70, Paragraph 2 of the Act on Promotion of Information and Communication Network Use and Information Protection).\nYes> * You cannot file a lawsuit against the above-mentioned intention of the victim of the crime (“Law for Promoting Use of Information and Communication Networks and Information Protection”, Paragraph 3, Article 70).',
       'agree': false,
     },
     {
-      'name': '사이버 모욕',
-      'summary': '형법 제311조의 모욕죄와 별도로 정보통신망법에 사이버 모욕죄 조항',
-      'detail':
-          '1. 정의\n2008년 10월, 대한민국 정부는 사이버상 모욕 행위에 대해 형법 제311조의 모욕죄와 별도로 정보통신망법에 사이버 모욕죄 조항을 신설하는 것을 본격적으로 추진. 어떤 사람에 대한 사실이 아닌 내용을 많은 사람이 알 수 있도록 인터넷에 경멸적 감정을 담아 기재해 그 사람에 대한 사회적 평가를 훼손시킬 때 인정되는 죄\n\n2. 처벌\n형법 제311조(모욕)의 처벌과 동일(형법 제311조(모욕) 공연히 사람을 모욕한 자는 1년 이하의 징역이나 금고 또는 200만원 이하의 벌금에 처한다.)',
+      'name': 'crime of cyber insult',
+      'summary': 'Apart from the contempt of Article 311 of the Criminal Act, the cyber insult clause in the Information and Communication Network Act.',
+      'detail': 'In October 2008, the Korean government will make full-scale efforts to establish a new offense against cyber crimes in the Information and Communication Network Law, in addition to the offense under Criminal Code No. 311 as an offense against cyber crimes. Describing the internet with derogatory feelings for some people, as most people know it, not just for the sake of discouragement, to undermine corporate reputation for that person Sometimes recognized sin\n\nSame as punishment under Criminal Code No. 311 (Insult) (Penal Code No. 311 (Insult) A person who insults an open person shall be punished with imprisonment or imprisonment for not more than one year or a fine of not more than 2 million won.)\n''In October 2008, the Korean government will make full-scale efforts to establish a new offense against cyber crimes in the Information and Communication Network Law, in addition to the offense under Criminal Code No. 311 as an offense against cyber crimes. Describing the internet with derogatory feelings for some people, as most people know it, not just for the sake of discouragement, to undermine corporate reputation for that person Sometimes recognized sin\n\n\nSame as punishment under Criminal Code No. 311 (Insult) (Penal Code No. 311 (Insult) A person who insults an open person shall be punished with imprisonment or imprisonment for not more than one year or a fine of not more than 2 million won.)',
       'agree': false,
     },
     {
-      'name': '사이버 폭력',
-      'summary': '사이버 폭력(악성 댓글)에 의한 피해자의 심리적 피해',
-      'detail':
-          '- 사이버폭력의 피해자들은 사건 이후, 극심한 우울증을 보이고 극단적으로는 자살을 하는 등 심각한 결과를 초래한다.\n사이버폭력으로 인한 학생 피해자의 심리적인 영향은 학교를 결석하거나, 낮은 성적을 받고, 낮은 집중력을 보이는 것과 유의미한 상관이 나타났고 또한 사회 불안을 유의미하게 증가시킨다는 결과를 나타냈다. \n사이버폭력의 가해자를 아는 경우와 모르는 경우로 구분하여 심리사회적인 문제를 측정하였다. 그 결과 가해자를 아는 경우에는 공격적인 행동이나 사회적 문제에서 유의미한 결과가 나타났고, 가해자를 모르는 경우에는 사회적 문제와 우울에서 유의미한 결과를 나타냈다. 결국 가해자가 아는 사람이든 모르는 사람이든 피해자의 심리에 상당한 부정적 영향을 미치는 것으로 나타났다.',
-      'agree': false,
-    },
-    {
-      'name': '컴퓨터 범죄',
-      'summary': '형법 제314조(업무방해), 형법 제347조의2(컴퓨터 등 사용사기)',
-      'detail':
-          '-  제314조(업무방해) \n1-1. 정의 : ①항 : 제313조의 방법 또는 위력으로써 사람의 업무를 방해한 자\n1-2. 처벌 : 5년 이하의 징역 또는 1천500만원 이하의 벌금에 처한다.  <개정 1995. 12. 29.>\n\n2-1. 정의 : ②항 : 컴퓨터등 정보처리장치 또는 전자기록등 특수매체기록을 손괴하거나 정보처리장치에 허위의 정보 또는 부정한 명령을 입력하거나 기타 방법으로 정보처리에 장애를 발생하게 하여 사람의 업무를 방해한 자\n2-2. 처벌 : 제1항의 형과 같다.(5년 이하의 징역 또는 1천500만원 이하의 벌금에 처한다.)                                                                <신설 1995. 12. 29.>\n\n- 제347조의2(컴퓨터등 사용사기)  \n1. 정의  : 컴퓨터등 정보처리장치에 허위의 정보 또는 부정한 명령을 입력하거나 권한 없이 정보를 입력ㆍ변경하여 정보처리를 하게 함으로써 재산상의 이익을 취득하거나 제3자로 하여금 취득하게 한 자\n2. 처벌 : 10년 이하의 징역 또는 2천만원 이하의 벌금에 처한다. [전문개정 2001. 12. 29.]',
+      'name': 'Computer crime',
+      'summary': 'Article 314 of the Criminal Act (obstruction of business), Article 347-2 of the Criminal Act (fraud of using computers, etc.)',
+      'detail': '-No. 314 (Business interruption)\n1-1. Definition: Item (1): Method 313 or power that interferes with the work of a person\n1-2. Penalty: Imprisonment of up to 5 years or fine of up to 15 million won. <Revised December 29, 1995>\n\n2-1. Definition: (2): Damage to information storage such as computers and special media such as electronic storage, inputting information to the information storage or illegal commands, or obstructing the processing of other information. Those who interfere with the work of other people\n2-2. Penalty: The same as the type in paragraph 1. (Prison for 5 years or less or fine of 15 million won or less.) <New establishment December 29, 1995>\n\n -No. 347-2 (Scam that uses computer etc.)\n1. Definition: Entering information or illegal commands in a computer or other information device, or inputting unlimited information and updating it to obtain a profit on property, Person who decides to acquire a third party\n2. Penalty: imprisonment of 10 years or less or fine of 20 million won or less. [Full text revision December 29, 2001]',
       'agree': false,
     },
   ];
   final String _precautions =
-      '본 서비스는 자살 유족들을 위한 소통 기능 및 정보를 제공합니다. 타인에게 과도한 불편함을 주는 표현은 삼가 주시길 바라며, 해당 내용은 신고 및 삭제 될 수 있습니다. 이용에 앞서, 서비스 관련 법률의 전문을 살펴보시기 바랍니다.';
+      'This service provides communication functions and information for families of suicide victims. Please refrain from expressing excessive inconvenience to others, and the contents may be reported and deleted. Prior to use, please review the full text of service-related laws.';
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +51,7 @@ class TosPageState extends State<TosPage> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        '심해(心海)',
+                        'Simhae(心海)',
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 20,
@@ -123,7 +113,7 @@ class TosPageState extends State<TosPage> {
                                 padding: const EdgeInsets.only(right: 8.0),
                                 child: MaterialButton(
                                   child: Text(
-                                    '전문 보기',
+                                    'Full Text',
                                     style: TextStyle(
                                         fontFamily: 'MapoFlowerIsland'),
                                   ),
@@ -218,7 +208,7 @@ class TosPageState extends State<TosPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 64.0),
                 child: Text(
-                  '이용약관',
+                  'Terms of service',
                   style: TextStyle(
                     fontFamily: 'MapoFlowerIsland',
                     fontSize: 26,

@@ -37,7 +37,7 @@ class SettingsContactPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          '문의하기',
+                          'Contact us',
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             fontSize: 26,
@@ -65,7 +65,7 @@ class SettingsContactPage extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 64.0),
                 child: Text(
-                  '궁금한 점이 있다면 언제든지 문의하세요.\n freesequence@gmail.com으로 문의 사항을 연락해주세요.',
+                  'Please contact us with your inquiries freesequence@gmail.com',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontFamily: 'MapoFlowerIsland',

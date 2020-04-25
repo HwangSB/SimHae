@@ -118,11 +118,11 @@ class MyStoryStream extends StatelessWidget {
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('편지를 가져오는중 오류가 발생했습니다');
+          return Text('Oops! we loss the letter');
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Text('편지를 가져오는 중...');
+            return Text('Rowing for letters...');
           default:
             return _myStoryStream(snapshot.data.documents);
         }
@@ -134,7 +134,7 @@ class MyStoryStream extends StatelessWidget {
     if (documents.length == 0) {
       return Center(
         child: Text(
-          '건너간 편지가 없습니다',
+          'There are not floated letters',
           style: TextStyle(
             fontFamily: 'MapoFlowerIsland',
             fontSize: 16,
@@ -169,7 +169,7 @@ class MyStoryStream extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '수정',
+                    'Edit',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'MapoFlowerIsland',
@@ -191,7 +191,7 @@ class MyStoryStream extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Text(
-                    '삭제',
+                    'Remove',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'MapoFlowerIsland',
@@ -214,8 +214,8 @@ class MyStoryStream extends StatelessWidget {
                 context: context,
                 builder: (BuildContext context) {
                   return CupertinoAlertDialog(
-                    title: const Text("편지 수정"),
-                    content: const Text("글을 수정하시겠습니까?"),
+                    title: const Text("Edit letter"),
+                    content: const Text("Would you like to edit the letter?"),
                     actions: <Widget>[
                       CupertinoButton(
                         onPressed: () {
@@ -232,11 +232,11 @@ class MyStoryStream extends StatelessWidget {
                             ),
                           );
                         },
-                        child: const Text("수정"),
+                        child: const Text("yes"),
                       ),
                       CupertinoButton(
                         onPressed: () => Navigator.pop(context, false),
-                        child: const Text("취소"),
+                        child: const Text("no"),
                       ),
                     ],
                   );
@@ -247,16 +247,16 @@ class MyStoryStream extends StatelessWidget {
                 context: context,
                 builder: (BuildContext context) {
                   return CupertinoAlertDialog(
-                    title: const Text("편지 삭제"),
-                    content: const Text("정말 삭제하시겠습니까?"),
+                    title: const Text("Delete letter"),
+                    content: const Text("Would you like to delete the letter?"),
                     actions: <Widget>[
                       CupertinoButton(
                         onPressed: () => Navigator.pop(context, true),
-                        child: const Text("삭제"),
+                        child: const Text("yes"),
                       ),
                       CupertinoButton(
                         onPressed: () => Navigator.pop(context, false),
-                        child: const Text("취소"),
+                        child: const Text("no"),
                       ),
                     ],
                   );

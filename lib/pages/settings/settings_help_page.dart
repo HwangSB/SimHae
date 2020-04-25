@@ -3,36 +3,36 @@ import 'package:flutter/material.dart';
 class SettingsHelpPage extends StatelessWidget {
   final List<Entry> data = <Entry>[
     Entry(
-      '\'심해\'는 어떤 서비스인가요?',
+      'What kind of service is "Simhae"?',
       <Entry>[
         Entry(
-            '\'심해(心海): 마음을 담은 바다\' 는 자살 유족분들을 위한 모바일 소통 앱 서비스입니다. 주요 기능으로는 ① 자살 유족간의 사연작성 및 공유가 가능한 소통기능, ② 유족들을 위한 지역센터 및 자조모임 정보 제공 ③ 고인을 기리는 추모공간이 있습니다.'),
+            '"Simhae : The Sea of Mind" is a mobile communication app service for suicide survivors.\nThe main functions are\n① a communication function that enables writing and sharing of post with suicide survivors,\n②  a regional center for survivors and provision of self-help information,\nand  ③  a memorial space for the deceased.'),
       ],
     ),
     Entry(
-      '\'심해\'는 왜 회원가입이 없나요?',
+      'Why no membership in "Simhae"?',
       <Entry>[
         Entry(
-            '\'심해\'는 익명의 서비스를 제공하고 있으며, 유족분들에게 \'고인과의 관계\', \'사별기간\' 등의 정보를 따로 받지 않고 소셜사이트 로그인으로 사용을 가능하게 하여 서비스에 대한 심리적 장벽을 낮추려 하고 있습니다.'),
+            '"Simhae" offers anonymous services. We are trying to lower the psychological barriers of service by making it possible for survivors to log in to the social site without being separately notified of information such as "relationship with the deceased" and "bereaved period"'),
       ],
     ),
     Entry(
-      '제가 쓴 글은 언제까지 뜨나요?',
+      'How long will my writing be floating?',
       <Entry>[
         Entry(
-            '-\'심해\' 메인 페이지에서 > 글 쓰기 버튼을 눌러 작성하신 사연은 계속해서 랜덤으로 화면에 띄워집니다.\n( 마이페이지 > 건너 간 편지 ) 에서 확인 및 재업로드 (이전 삭제 시) 가 가능합니다. \n\n-추모공간 카테고리에 쓰신 글의 경우에는 일정 기간 이후 휘발됩니다.'),
+            '-On the main page of "Simhae", press “Send Text button” and the post it was created will be randomly floated on the surface. You can check it in (My Page> Crossed Mail) and upload again (when deleting it before).\n\n -In the case of post written in the category of Memorial space, it will be volatilized after a certain period.'),
       ],
     ),
     Entry(
-      '제가 쓴 글을 지우고 싶어요.',
+      'I want to erase the post I wrote.',
       <Entry>[
-        Entry('사연의 경우 ( 마이페이지 > 건너 간 편지 ) 에서 삭제해 주시면 됩니다.'),
+        Entry('In case of post, go (My Page> Mail), please delete.'),
       ],
     ),
     Entry(
-      '광고나 비방성 글을 보았어요.',
+      'I saw advertisement or slander post.',
       <Entry>[
-        Entry('불편한 감정을 일으키는 글은 (마이페이지 > 문의하기) 로 가셔서 개별 신고 절차를 통해 처리하도록 하고 있습니다. 서비스 특성상 상시 모니터링을 하고 있지만 개인별로 느끼는 감정은 다르기에 주저 없이 문의해주시면 되겠습니다.'),
+        Entry('We try to go to (My Page> Contact us) for the sentences that cause unpleasant feelings and process them through the individual filer. Due to the nature of the service, we are constantly monitoring it, but you should not hesitate to contact us if you feel that the emotions you feel are different.'),
       ],
     ),
   ];
@@ -73,7 +73,7 @@ class SettingsHelpPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          '도움말',
+                          'Help',
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             fontSize: 26,

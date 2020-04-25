@@ -20,10 +20,10 @@ class StoryPage extends StatefulWidget {
 class _StoryPageState extends State<StoryPage> {
   PageController _pageController = PageController();
   List<String> _inducedPhrase = [
-    '우리는 저마다의 속도로 슬픔을 통과합니다.\n(브룩 노엘, 패멀라 D. 블레어)',
-    '소중한 누군가를 기억하고 얘기하는 당신이어서, 정말 고맙습니다.',
-    '함께 이야기하고, 기억해도 괜찮습니다.',
-    '저 깊은 심해에 마음을 털어놓는 건 어떨까요?',
+    'We go through sadness at each speed. \n(Brook Noel, L Morla D. Blair)',
+    'Thank you for sharing your precious memories.',
+    'It\'s okay to talk and remember together.',
+    'How about opening your heart to the deep sea?',
   ];
 
   @override
@@ -276,7 +276,7 @@ class _StoryPageState extends State<StoryPage> {
                     height: 200.0,
                     child: Center(
                       child: Text(
-                        '이곳은 함께 이야기 하고\n기억하는 공간입니다.\n타인에게 과도한 불편함을 주는글은\n삼가주시길 바랍니다.',
+                        'This is a place where we talk together.\nLet\'s not write anything that makes you feel uncomfortable feelings to Other.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
@@ -398,11 +398,11 @@ class StoryStream extends StatelessWidget {
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Story(title: '편지를 가져오는중 오류가 발생했습니다');
+          return Story(title: 'Oops! we loss the letter');
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Story(title: '편지를 가져오는 중...');
+            return Story(title: 'Rowing for letters...');
           default:
             List<DocumentSnapshot> documents = snapshot.data.documents;
             if (documents.isNotEmpty) {
@@ -411,8 +411,8 @@ class StoryStream extends StatelessWidget {
               return _storyStream(document);
             } else {
               return Story(
-                title: '인터넷 연결을 확인해주세요',
-                detail: '인터넷에 연결되어있지 않아 편지를 불러올 수 없습니다.',
+                title: 'Please check the internet connected',
+                detail: 'The letter could not be loaded because it is not connected to the Internet.',
               );
             }
         }
@@ -425,11 +425,11 @@ class StoryStream extends StatelessWidget {
       stream: document.reference.collection('Stories').snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Story(title: '편지를 가져오는중 오류가 발생했습니다');
+          return Story(title: 'Oops! we loss the letter');
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Story(title: '편지를 가져오는 중...');
+            return Story(title: 'Rowing for letters...');
           default:
             List<DocumentSnapshot> documents = snapshot.data.documents;
             DocumentSnapshot document =

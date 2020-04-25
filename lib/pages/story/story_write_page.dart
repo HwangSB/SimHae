@@ -207,7 +207,7 @@ class _StoryWritePageState extends State<StoryWritePage> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 14.0, vertical: 22.0),
                   child: Text(
-                    "오늘 '당신의 바다'는 무슨 색 인가요?",
+                    "What color is your sea today?",
                     style: TextStyle(
                       fontFamily: 'MapoFlowerIsland',
                       fontSize: 14,
@@ -347,7 +347,7 @@ class _StoryWritePageState extends State<StoryWritePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "기분, 감정, 날씨 어느 것이어도 좋아요",
+                    "Feelings, Emotions, Weathers, anything is fine",
                     style: TextStyle(
                       fontFamily: 'MapoFlowerIsland',
                       fontSize: 12,
@@ -369,7 +369,7 @@ class _StoryWritePageState extends State<StoryWritePage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: Text(
-                    "오늘 당신의 바다 색을 정해보세요 :)",
+                    "Decide your sea color today :)",
                     style: TextStyle(
                       fontFamily: 'MapoFlowerIsland',
                       fontSize: 12,
@@ -398,16 +398,16 @@ class _StoryWritePageState extends State<StoryWritePage> {
         context: context,
         builder: (BuildContext context) {
           return CupertinoAlertDialog(
-            title: const Text("편지 작성"),
-            content: const Text("편지를 띄우시겠습니까?"),
+            title: const Text("Write letter"),
+            content: const Text("Would you like to send a letter?"),
             actions: <Widget>[
               CupertinoButton(
                 onPressed: () => Navigator.pop(context, true),
-                child: const Text("확인"),
+                child: const Text("yes"),
               ),
               CupertinoButton(
                 onPressed: () => Navigator.pop(context, false),
-                child: const Text("취소"),
+                child: const Text("no"),
               ),
             ],
           );

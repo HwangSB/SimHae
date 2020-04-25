@@ -34,7 +34,7 @@ class _StoryDetailLoadingPageState extends State<StoryDetailLoadingPage> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 172.0),
                 child: Text(
-                  '편지가 당신에게 오고 있습니다',
+                  'A letter is coming to you.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 22,

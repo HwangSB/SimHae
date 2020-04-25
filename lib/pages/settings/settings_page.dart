@@ -4,7 +4,7 @@ import 'package:solution_challenge/pages/settings/settings_help_page.dart';
 import 'package:solution_challenge/pages/settings/settings_contact_page.dart';
 
 class SettingsPage extends StatelessWidget {
-  final List<String> data = ['도움말', '문의하기'];
+  final List<String> data = ['Help', 'Contact us'];
   final List<Function> pressedFunctions = [
     (context) {
       Navigator.push(
@@ -60,7 +60,7 @@ class SettingsPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          '설정',
+                          'Settings',
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             fontSize: 26,

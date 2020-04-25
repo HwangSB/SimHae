@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
                   child: Stack(
                     children: <Widget>[
                       Text(
-                        '심해(心海)',
+                        'Simhae(心海)',
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 24,
@@ -39,7 +39,7 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '심해(心海)',
+                        'Simhae(心海)',
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 24,
@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
                   child: Stack(
                     children: <Widget>[
                       Text(
-                        '우리의 마음이 머무는 바다.',
+                        'Deep sea of mind.',
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 18,
@@ -72,7 +72,7 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '우리의 마음이 머무는 바다.',
+                        'Deep sea of mind',
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 18,
@@ -106,7 +106,7 @@ class LoginPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      '시작하기',
+                      'Start',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontFamily: 'MapoFlowerIsland',

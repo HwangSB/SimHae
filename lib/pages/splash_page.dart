@@ -41,7 +41,7 @@ class _SplashPageState extends State<SplashPage> {
                 child: Stack(
                   children: <Widget>[
                     Text(
-                      '심해(心海)',
+                      'Simhae(心海)',
                       style: TextStyle(
                         fontFamily: 'MapoFlowerIsland',
                         fontSize: 24,
@@ -52,7 +52,7 @@ class _SplashPageState extends State<SplashPage> {
                       ),
                     ),
                     Text(
-                      '심해(心海)',
+                      'Simhae(心海)',
                       style: TextStyle(
                         fontFamily: 'MapoFlowerIsland',
                         fontSize: 24,
@@ -74,7 +74,7 @@ class _SplashPageState extends State<SplashPage> {
                 child: Stack(
                   children: <Widget>[
                     Text(
-                      '우리의 마음이 머무는 바다.',
+                      'Deep sea of mind.',
                       style: TextStyle(
                         fontFamily: 'MapoFlowerIsland',
                         fontSize: 18,
@@ -85,7 +85,7 @@ class _SplashPageState extends State<SplashPage> {
                       ),
                     ),
                     Text(
-                      '우리의 마음이 머무는 바다.',
+                      'Deep sea of mind.',
                       style: TextStyle(
                         fontFamily: 'MapoFlowerIsland',
                         fontSize: 18,
