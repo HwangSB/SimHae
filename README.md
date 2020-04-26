@@ -2,7 +2,7 @@
 
 심해(心海) - 우리의 마음이 머무는 바다 (Simhae - Deep sea of mind)
 
-We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate with suicide survivor and provide information about support center and offline meeting. The meaning of the title is sharing your heart in the deep sea.
+We developed ‘Deep sea of mind’ it called ‘Simhae’ which can communicate with suicide survivor and provide information about support center and offline meeting. The meaning of the title is sharing your heart in the deep sea.
 
 # Getting Started
 
