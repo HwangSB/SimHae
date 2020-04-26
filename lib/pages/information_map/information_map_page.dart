@@ -20,12 +20,12 @@ class MapData {
   final List<String> images;
 
   MapData({
-    this.name = '위치를 클릭하여 정보를 확인하세요',
+    this.name = 'Click a position and confirm the information.',
     this.regionCity = '',
     this.address = '-',
     this.time = '-',
     this.defaultActivity =
-        '모임을 통해 자살유가족들이 심리적·사회적 어려움과 고통속에서 벗어나 희망적인 삶을 되찾는 시간',
+        'Time for suicide survivors to escape from psychological-social difficulties and sufferings and regain hopeful lives through meetings',
     this.activity = '-',
     this.homepage = '-',
     this.telephone = '-',
@@ -82,7 +82,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
           children: <Widget>[
             Expanded(
               child: Text(
-                "자조모임을 통해 함께 나누고, 소통해보는건 어떨까요?",
+                "How about trying to communicate and share them through 'Survivors meeting?",
                 style: TextStyle(
                   fontFamily: 'MapoFlowerIsland',
                   fontSize: 14,
@@ -240,7 +240,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
         if (snapshot.hasData) {
           child = Image.network(snapshot.data[index]);
         } else if (snapshot.connectionState == ConnectionState.waiting) {
-          child = Text('이미지를 가져오는 중...');
+          child = Text('Getting image...');
         }
 
         return Padding(
@@ -403,7 +403,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
                       regionCity: document['region_city'],
                       address: document['address'],
                       time: document['time'],
-                      activity: document['activity'] ?? '홈페이지를 참고하세요',
+                      activity: document['activity'] ?? 'Check the homepage.',
                       homepage: document['homepage'],
                       telephone: document['telephone'],
                       images: images,

@@ -30,7 +30,7 @@ class InformationMapHelpPage extends StatelessWidget {
                           Row(
                             children: <Widget>[
                               Text(
-                                '자조모임이 무엇인가요?',
+                                'What is Survivors Meeting?',
                                 style: TextStyle(
                                   fontFamily: 'MapoFlowerIsland',
                                   fontSize: 18,
@@ -47,7 +47,7 @@ class InformationMapHelpPage extends StatelessWidget {
                               children: <Widget>[
                                 Expanded(
                                   child: Text(
-                                    '자조모임은 같은 아픔을 지닌 유족들이 모여 서로의 아픔을 공감하고 치유의 과정을 함께하는 모임입니다.',
+                                    'Its a group meeting. The bereaved families of the same pain gather together.\nWe can relate to each others pain, and we can take care of the healing process.',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: 'MapoFlowerIsland',
@@ -66,7 +66,7 @@ class InformationMapHelpPage extends StatelessWidget {
                             children: <Widget>[
                               Expanded(
                                 child: Text(
-                                  '자조모임 참여가 애도에 도움이 되나요?',
+                                  'Does attending the meeting help you in our condolences?',
                                   style: TextStyle(
                                     fontFamily: 'MapoFlowerIsland',
                                     fontSize: 18,
@@ -94,7 +94,7 @@ class InformationMapHelpPage extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal: 24.0, vertical: 34.0),
                               child: Text(
-                                '“충분히 내 속에 있는 것을 꺼낼 수 있었어요.\n그동안 치밀어 올라왔던 화가 사라지고, 아들의 죽음을 좋은 기억으로 남기려고 노력하려구요.”',
+                                '"I was able to take out what was inside me enough. \nThe house that has gone up till now disappears, I try hard to make my sons death a good memory."',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontFamily: 'MapoFlowerIsland',
@@ -122,7 +122,7 @@ class InformationMapHelpPage extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal: 24.0, vertical: 34.0),
                               child: Text(
-                                '“자조모임에 참여하고 상실감과 우울감이 많이 줄었어요. 많이 우울했는데…지금은 하루하루 산다는 것이 굉장히 유쾌해요. 같이 모임한 분들이 긍정적인 생각을 가지고 계신 분들이라 이렇게 좋게 바뀐 것 같아 너무 감사해요.”',
+                                '"In addition to self-help, I have lost a lot of feelings of loss and depression. I was depressed a lot … I live one day nowIt’s very fun. Would like to have more positive thoughts With you I am very grateful for the success of this."',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontFamily: 'MapoFlowerIsland',
@@ -139,7 +139,7 @@ class InformationMapHelpPage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
                               Text(
-                                '참고문헌 : 자살자 유가족의 자조모임 참여경험에 관한 연구\n- 박혜선, 이종익(2016.06.)',
+                                'A Study on the experience of participating in self-help meetings of families of suicide victims - Park Hye-sun and Lee Jong-ik (2016.06)',
                                 textAlign: TextAlign.end,
                                 style: TextStyle(
                                   fontFamily: 'MapoFlowerIsland',
@@ -155,7 +155,7 @@ class InformationMapHelpPage extends StatelessWidget {
                           Row(
                             children: <Widget>[
                               Text(
-                                '자조모임에 어떻게 참여하나요?',
+                                'How do I participate in self-help meetings?',
                                 style: TextStyle(
                                   fontFamily: 'MapoFlowerIsland',
                                   fontSize: 18,
@@ -172,7 +172,7 @@ class InformationMapHelpPage extends StatelessWidget {
                               children: <Widget>[
                                 Expanded(
                                   child: Text(
-                                    '1577-0199 또는 해당 기관에 문의해주세요.',
+                                    'Please contact 1577-0199 or the relevant agency',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontFamily: 'MapoFlowerIsland',
@@ -251,7 +251,7 @@ class InformationMapHelpPage extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Text(
-                        '자조모임 도움말',
+                        'Self-help meeting Help',
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 24,

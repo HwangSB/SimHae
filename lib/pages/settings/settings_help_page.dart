@@ -20,7 +20,7 @@ class SettingsHelpPage extends StatelessWidget {
       'How long will my writing be floating?',
       <Entry>[
         Entry(
-            '-On the main page of "Simhae", press “Send Text button” and the post it was created will be randomly floated on the surface. You can check it in (My Page> Crossed Mail) and upload again (when deleting it before).\n\n -In the case of post written in the category of Memorial space, it will be volatilized after a certain period.'),
+            '-On the main page of "Simhae", press "Send Text button" and the post it was created will be randomly floated on the surface. You can check it in (My Page> Crossed Mail) and upload again (when deleting it before).\n\n -In the case of post written in the category of Memorial space, it will be volatilized after a certain period.'),
       ],
     ),
     Entry(

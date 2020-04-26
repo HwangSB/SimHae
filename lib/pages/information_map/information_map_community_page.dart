@@ -33,7 +33,7 @@ class InformationMapCommunityPage extends StatelessWidget {
                           child: Row(
                             children: <Widget>[
                               Text(
-                                '온라인 카페',
+                                'Online Cafe',
                                 style: TextStyle(
                                   fontFamily: 'MapoFlowerIsland',
                                   fontSize: 16,
@@ -53,7 +53,7 @@ class InformationMapCommunityPage extends StatelessWidget {
                                 return Padding(
                                   padding: const EdgeInsets.only(top: 64.0),
                                   child: Text(
-                                    '커뮤니티 글을 가져오는 중...',
+                                    'Getting Community writings...',
                                     style: TextStyle(
                                       fontFamily: 'MapoFlowerIsland',
                                       fontSize: 16,
@@ -134,7 +134,7 @@ class InformationMapCommunityPage extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Text(
-                        '커뮤니티',
+                        'Community',
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 24,
