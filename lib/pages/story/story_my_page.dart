@@ -155,29 +155,36 @@ class StoryMyPage extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 12.0, left: 28.0),
                   child: Row(
                     children: <Widget>[
-                      Text(
-                        'My Sea',
-                        style: TextStyle(
-                          fontFamily: 'MapoFlowerIsland',
-                          fontSize: 24,
-                          color: Colors.white,
-                          shadows: [
-                            Shadow(
-                              blurRadius: 6.0,
-                              offset: Offset(0.0, 3.0),
-                              color: Color(0x29000000),
+                      Container(
+                        padding: EdgeInsets.only(
+                          bottom: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: Colors.white,
+                              width: 1.0,
                             ),
-                          ],
+                          ),
+                        ),
+                        child: Text(
+                          'My Sea',
+                          style: TextStyle(
+                            fontFamily: 'MapoFlowerIsland',
+                            fontSize: 24,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 6.0,
+                                offset: Offset(0.0, 3.0),
+                                color: Color(0x29000000),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
-                ),
-                Divider(
-                  indent: 28.0,
-                  endIndent: 248.0,
-                  color: Color(0x99FFFFFF),
-                  thickness: 1.5,
                 ),
               ],
             ),

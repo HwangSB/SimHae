@@ -138,13 +138,15 @@ class InformationMapHelpPage extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
-                              Text(
-                                'A Study on the experience of participating in self-help meetings of families of suicide victims - Park Hye-sun and Lee Jong-ik (2016.06)',
-                                textAlign: TextAlign.end,
-                                style: TextStyle(
-                                  fontFamily: 'MapoFlowerIsland',
-                                  fontSize: 9,
-                                  color: Color(0xFF707070),
+                              Expanded(
+                                child: Text(
+                                  'A Study on the experience of participating in self-help meetings of families of suicide victims - Park Hye-sun and Lee Jong-ik (2016.06)',
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(
+                                    fontFamily: 'MapoFlowerIsland',
+                                    fontSize: 9,
+                                    color: Color(0xFF707070),
+                                  ),
                                 ),
                               ),
                             ],
@@ -154,12 +156,14 @@ class InformationMapHelpPage extends StatelessWidget {
                           ),
                           Row(
                             children: <Widget>[
-                              Text(
-                                'How do I participate in self-help meetings?',
-                                style: TextStyle(
-                                  fontFamily: 'MapoFlowerIsland',
-                                  fontSize: 18,
-                                  color: Color(0xFF88CED1),
+                              Expanded(
+                                child: Text(
+                                  'How do I participate in self-help meetings?',
+                                  style: TextStyle(
+                                    fontFamily: 'MapoFlowerIsland',
+                                    fontSize: 18,
+                                    color: Color(0xFF88CED1),
+                                  ),
                                 ),
                               ),
                             ],
@@ -250,29 +254,36 @@ class InformationMapHelpPage extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 12.0, left: 28.0),
                   child: Row(
                     children: <Widget>[
-                      Text(
-                        'Self-help meeting Help',
-                        style: TextStyle(
-                          fontFamily: 'MapoFlowerIsland',
-                          fontSize: 24,
-                          color: Colors.white,
-                          shadows: [
-                            Shadow(
-                              blurRadius: 6.0,
-                              offset: Offset(0.0, 3.0),
-                              color: Color(0x29000000),
+                      Container(
+                        padding: EdgeInsets.only(
+                          bottom: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: Colors.white,
+                              width: 1.0,
                             ),
-                          ],
+                          ),
+                        ),
+                        child: Text(
+                          'Self-help meeting Help',
+                          style: TextStyle(
+                            fontFamily: 'MapoFlowerIsland',
+                            fontSize: 24,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 6.0,
+                                offset: Offset(0.0, 3.0),
+                                color: Color(0x29000000),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
-                ),
-                Divider(
-                  indent: 28.0,
-                  endIndent: 178.0,
-                  color: Color(0x99FFFFFF),
-                  thickness: 1.5,
                 ),
               ],
             ),

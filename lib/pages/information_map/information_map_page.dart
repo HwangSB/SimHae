@@ -240,7 +240,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
         if (snapshot.hasData) {
           child = Image.network(snapshot.data[index]);
         } else if (snapshot.connectionState == ConnectionState.waiting) {
-          child = Text('Getting image...');
+          child = Text('Loading...');
         }
 
         return Padding(

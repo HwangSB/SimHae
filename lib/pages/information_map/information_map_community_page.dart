@@ -67,7 +67,9 @@ class InformationMapCommunityPage extends StatelessWidget {
                             }
                           },
                         ),
-                        SizedBox(height: 16.0,),
+                        SizedBox(
+                          height: 16.0,
+                        ),
                       ],
                     ),
                   ),
@@ -133,29 +135,36 @@ class InformationMapCommunityPage extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 12.0, left: 28.0),
                   child: Row(
                     children: <Widget>[
-                      Text(
-                        'Community',
-                        style: TextStyle(
-                          fontFamily: 'MapoFlowerIsland',
-                          fontSize: 24,
-                          color: Colors.white,
-                          shadows: [
-                            Shadow(
-                              blurRadius: 6.0,
-                              offset: Offset(0.0, 3.0),
-                              color: Color(0x29000000),
+                      Container(
+                        padding: EdgeInsets.only(
+                          bottom: 10,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: Colors.white,
+                              width: 1.0,
                             ),
-                          ],
+                          ),
+                        ),
+                        child: Text(
+                          'Community',
+                          style: TextStyle(
+                            fontFamily: 'MapoFlowerIsland',
+                            fontSize: 24,
+                            color: Colors.white,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 6.0,
+                                offset: Offset(0.0, 3.0),
+                                color: Color(0x29000000),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
                   ),
-                ),
-                Divider(
-                  indent: 28.0,
-                  endIndent: 210.0,
-                  color: Color(0x99FFFFFF),
-                  thickness: 1.5,
                 ),
               ],
             ),
@@ -171,7 +180,7 @@ class InformationMapCommunityPage extends StatelessWidget {
       itemCount: documents.length,
       itemBuilder: (context, index) {
         return Container(
-          width:double.infinity,
+          width: double.infinity,
           decoration: BoxDecoration(
             shape: BoxShape.rectangle,
             border: Border.all(color: Color(0x1A707070)),
