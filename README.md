@@ -57,7 +57,24 @@ We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate 
 
 - #### Usage
 
-
+``` dart
+StreamBuilder<QuerySnapshot>(
+    stream: document.reference.collection('Stories').snapshots(),
+    builder: (context, snapshot) {
+        if (snapshot.hasError) {
+            ...
+        }
+        switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+                ...
+            default:
+                List<DocumentSnapshot> documents = snapshot.data.documents;
+                DocumentSnapshot document = documents[random.nextInt(documents.length)];
+                ...
+        }
+    },
+);
+```
     
 - #### [See more...](https://console.firebase.google.com)
 
@@ -74,7 +91,7 @@ The image address of the storage was saved from the `FireStore` database to retr
         List<String> result = List<String>();
 
         final FirebaseStorage storage = FirebaseStorage(
-            storageBucket: 'gs://flutter-globalchallenge.appspot.com',
+            ...
         );
 
         for (var path in paths) {
@@ -166,7 +183,7 @@ Because Google Maps covers 99% of the world's maps, We thought it was easy to ex
         mapType: MapType.normal,
         markers: _markerLocations,
         initialCameraPosition: CameraPosition(
-            target: LatLng(36.684602, 127.896608),
+            target: LatLng(..., ...),
             zoom: 7.0,
         ),
         onMapCreated: (controller) {
@@ -241,7 +258,14 @@ implemented using sqflite package.
 
 |||||||||
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|![preview1](https://lh3.googleusercontent.com/GZbpU4FnXBVQt8BrVEyIZs19EEOCr5LYadJ00mqjxjll7Ok4wFlfftdft7UqQVWoRww=w1600-h708-rw)|![preview2](https://lh3.googleusercontent.com/waPeVZh6_0dhEMeRA4AbbqCIebsilkZAaZzgNveywIF4xVrmGbda2U2fCsBc8CqiAWcu=w1600-h708-rw)|![preview3](https://lh3.googleusercontent.com/KjYlkW0nLMRzzX4R1ODrWu3IRxMPuH2E_J34-QzfaPr4y2bGozMMcaIqb4grkE1mkjs=w1600-h708-rw)|![preview4](https://lh3.googleusercontent.com/A4vVlk5BY-5WqlHviWLdEmMRZ8ZPDdsiPWDexpTy5fix2546la94i-qVP5oUx_gFdIE=w1600-h708-rw)|![preview5](https://lh3.googleusercontent.com/acjEch88HvimwZvgNvOW6qc58c-IYSDiJ8Y7eKLiMvI6N0yYPYnlteyCAZLKrjvppPI=w1600-h708-rw)|![preview6](https://lh3.googleusercontent.com/rSZFZ6ch_g06RgvQUmb4pn2zzDeo6ryO10vTT2hDtCEP3VynQXaD9b93w7eImpCawg=w1600-h708-rw)|![preview7](https://lh3.googleusercontent.com/pGzMgSOQO9U5Soyi92GMIDV5RYyQEi1Z_uthIdH6UtNhMS-eNz2bTBQemwd_nqHAA3xf=w1600-h708-rw)|![preview8](https://lh3.googleusercontent.com/Gb57omLQX1D6u18KdSrVwQGJyE3MMD_xJeoIzk0Ipyk285LQuEyKNqmkgkfyp9ats1E=w1600-h708-rw)|
+|![image](https://user-images.githubusercontent.com/8086407/80313389-9a2c8d80-8825-11ea-89cd-b67a0acad4d7.png)
+|![image](https://user-images.githubusercontent.com/8086407/80313435-deb82900-8825-11ea-9370-e485bdb313de.png)
+|![image](https://user-images.githubusercontent.com/8086407/80313468-fee7e800-8825-11ea-9dde-4ba96beb7cce.png)
+|![image](https://user-images.githubusercontent.com/8086407/80313497-20e16a80-8826-11ea-962b-968516edeef6.png)
+|![image](https://user-images.githubusercontent.com/8086407/80313561-87ff1f00-8826-11ea-93db-7cb935b44d0b.png)
+|![image](https://user-images.githubusercontent.com/8086407/80313583-acf39200-8826-11ea-85f3-9130b2d2eb8b.png)
+|![image](https://user-images.githubusercontent.com/8086407/80313583-acf39200-8826-11ea-85f3-9130b2d2eb8b.png)
+|![preview8](https://lh3.googleusercontent.com/Gb57omLQX1D6u18KdSrVwQGJyE3MMD_xJeoIzk0Ipyk285LQuEyKNqmkgkfyp9ats1E=w1600-h708-rw)|
 
 
 
