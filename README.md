@@ -1,6 +1,6 @@
-# What is Deep Sea?
+# What is Simhae?
 
-심해(心海) - 우리의 마음이 머무는 바다 (Deep Sea - The sea where our hearts stay)
+심해(心海) - 우리의 마음이 머무는 바다 (Simhae - Deep sea of mind)
 
 We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate with suicide survivor and provide information about support center and offline meeting. The meaning of the title is sharing your heart in the deep sea.
 
@@ -57,8 +57,132 @@ We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate 
 
 - #### Usage
 
-    > Initialize Firestore Database
 
+    
+- #### [See more...](https://console.firebase.google.com)
+
+## Firebase - Storage
+
+- Used to store self-help meeting logos and activity photos.
+The image address of the storage was saved from the `FireStore` database to retrieve photos.
+
+- #### Usage
+
+    > Get URL
+    ``` dart
+    Future<List<String>> _getURLs(List<String> paths) async {
+        List<String> result = List<String>();
+
+        final FirebaseStorage storage = FirebaseStorage(
+            storageBucket: 'gs://flutter-globalchallenge.appspot.com',
+        );
+
+        for (var path in paths) {
+            final String url = await storage.ref().child(path).getDownloadURL();
+            result.add(url);
+        }
+        return result;
+    }
+    ```
+
+    > Get FireStorage Image
+    ``` dart
+    FutureBuilder<List<String>>(
+        future: _getURLs(mapData.images),
+        builder: (context, snapshot) {
+        Widget child;
+
+        if (snapshot.hasData) {
+            child = Image.network(snapshot.data[index]);
+        } else if (snapshot.connectionState == ConnectionState.waiting) {
+            child = Text('Loading...');
+        }
+
+        return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18.0),
+                        color: Colors.white,
+                    ),
+                    child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Center(
+                        child: child,
+                        ),
+                    ),
+                ),
+            );
+        },
+    );
+    ```
+
+## Firebase - Authentication
+
+- Among the various authentication methods, Google login was used because it used from many people and was easy to use.
+
+- #### Usage
+
+    > Authentication
+    ``` dart
+    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    if (googleSignInAccount != null) {
+        await GlobalUserAccount.instance.connect(googleSignInAccount);
+        final snapshot = await Firestore.instance
+            .collection('Users')
+            .document(GlobalUserAccount.instance.uid)
+            .get();
+        if (snapshot == null || !snapshot.exists) {
+            Firestore.instance
+                .collection('Users')
+                .document(GlobalUserAccount.instance.uid)
+                .setData({'hasStory': false}, merge: true);
+        }
+    }
+
+    if (googleSignInAccount != null) {
+        bool isAcceptAllTos = await _checkAllTosAccept();
+        if (!isAcceptAllTos) {
+            Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                builder: (context) => TosPage(),
+                ),
+            );
+        }
+    }
+    ```
+
+## Google Cloud Platform - Google Map
+
+- Google Maps were used to visually indicate the location of the self-help group.
+Because Google Maps covers 99% of the world's maps, We thought it was easy to expand services around the world.
+
+- #### Usage
+
+    > Google Map
+    ``` dart
+    GoogleMap(
+        mapType: MapType.normal,
+        markers: _markerLocations,
+        initialCameraPosition: CameraPosition(
+            target: LatLng(36.684602, 127.896608),
+            zoom: 7.0,
+        ),
+        onMapCreated: (controller) {
+            _controller.complete(controller);
+        },
+    );
+    ```
+
+## SQLite 
+
+- It was used to determine whether the terms and conditions of use are agreed within the app.
+implemented using sqflite package.
+
+- #### Usage
+
+    > Initialize Firestore Database
     ``` dart
     Future<Database> _open() async {
         Database database = await openDatabase(
@@ -77,8 +201,8 @@ We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate 
         return database;
     }
     ```
-    > Get Value from Firestore Database
 
+    > Get Value from SQLite Database
     ``` dart
     Future<String> valueOf(String key) async {
         Database database = await _open();
@@ -100,8 +224,7 @@ We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate 
     }
     ```
 
-    > Update Firestore Database
-
+    > Update SQLite Database
     ``` dart
     void update(AppSetting appSetting) async {
         Database database = await _open();
@@ -113,17 +236,7 @@ We developed ‘Deep sea of mind’it called ‘Simhae’ which can communicate 
         database.close();
     }
     ```
-- #### [See more...](https://console.firebase.google.com)
 
-## Firebase - Storage
-
-## Firebase - Authentication
-
-## Google Cloud Platform - Google Map
-
-## SQLite 
-
- 
 # Preview
 
 |||||||||
