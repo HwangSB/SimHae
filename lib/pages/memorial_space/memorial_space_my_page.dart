@@ -62,7 +62,7 @@ class _MemorialSpaceMyPageState extends State<MemorialSpaceMyPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            '내가 쓴 추모글',
+                            'My Stories',
                             style: TextStyle(
                               fontFamily: 'MapoFlowerIsland',
                               fontSize: 32,
@@ -91,7 +91,7 @@ class _MemorialSpaceMyPageState extends State<MemorialSpaceMyPage> {
                           return Padding(
                             padding: const EdgeInsets.only(top: 64.0),
                             child: Text(
-                              '추모글을 가져오는중 오류가 발생했습니다',
+                              'Oops! We lost the story',
                               style: TextStyle(
                                 fontFamily: 'MapoFlowerIsland',
                                 fontSize: 16,
@@ -104,7 +104,7 @@ class _MemorialSpaceMyPageState extends State<MemorialSpaceMyPage> {
                           return Padding(
                             padding: const EdgeInsets.only(top: 64.0),
                             child: Text(
-                              '작성하신 추모글이 없습니다',
+                              'No stories here',
                               style: TextStyle(
                                 fontFamily: 'MapoFlowerIsland',
                                 fontSize: 16,
@@ -118,7 +118,7 @@ class _MemorialSpaceMyPageState extends State<MemorialSpaceMyPage> {
                             return Padding(
                               padding: const EdgeInsets.only(top: 64.0),
                               child: Text(
-                                '추모글을 가져오는 중...',
+                                'Loading Stories...',
                                 style: TextStyle(
                                   fontFamily: 'MapoFlowerIsland',
                                   fontSize: 16,
@@ -170,7 +170,7 @@ class _MemorialSpaceMyPageState extends State<MemorialSpaceMyPage> {
                     ),
                   ),
                   Text(
-                    '수정',
+                    'Edit',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'MapoFlowerIsland',
@@ -192,7 +192,7 @@ class _MemorialSpaceMyPageState extends State<MemorialSpaceMyPage> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Text(
-                    '삭제',
+                    'Delete',
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'MapoFlowerIsland',
@@ -215,8 +215,8 @@ class _MemorialSpaceMyPageState extends State<MemorialSpaceMyPage> {
                 context: context,
                 builder: (BuildContext context) {
                   return CupertinoAlertDialog(
-                    title: const Text("추모글 수정"),
-                    content: const Text("글을 수정하시겠습니까?"),
+                    title: const Text("Edit post"),
+                    content: const Text("Are you sure you want to delete this post?"),
                     actions: <Widget>[
                       CupertinoButton(
                         onPressed: () {
@@ -230,11 +230,11 @@ class _MemorialSpaceMyPageState extends State<MemorialSpaceMyPage> {
                             ),
                           );
                         },
-                        child: const Text("수정"),
+                        child: const Text("Yes"),
                       ),
                       CupertinoButton(
                         onPressed: () => Navigator.pop(context, false),
-                        child: const Text("취소"),
+                        child: const Text("No"),
                       ),
                     ],
                   );
@@ -245,16 +245,16 @@ class _MemorialSpaceMyPageState extends State<MemorialSpaceMyPage> {
                 context: context,
                 builder: (BuildContext context) {
                   return CupertinoAlertDialog(
-                    title: const Text("추모글 삭제"),
-                    content: const Text("정말 삭제하시겠습니까?"),
+                    title: const Text("Delete post"),
+                    content: const Text("Are you sure you want to delete this post?"),
                     actions: <Widget>[
                       CupertinoButton(
                         onPressed: () => Navigator.pop(context, true),
-                        child: const Text("삭제"),
+                        child: const Text("Yes"),
                       ),
                       CupertinoButton(
                         onPressed: () => Navigator.pop(context, false),
-                        child: const Text("취소"),
+                        child: const Text("No"),
                       ),
                     ],
                   );

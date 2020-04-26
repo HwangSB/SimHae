@@ -54,7 +54,7 @@ class _MemorialSpaceManagePageState
                 Padding(
                   padding: const EdgeInsets.only(left: 36.0),
                   child: Text(
-                    '당신의 이야기를 나눠주세요',
+                    'Share your story',
                     style: TextStyle(
                       fontFamily: 'MapoFlowerIsland',
                       fontSize: 21,
@@ -119,7 +119,7 @@ class _MemorialSpaceManagePageState
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: Text(
-                          '등록',
+                          'Send',
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             color: Colors.white,

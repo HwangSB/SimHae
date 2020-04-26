@@ -37,7 +37,7 @@ class _MemorialSpaceLoadingPageState extends State<MemorialSpaceLoadingPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              '당신의 이야기가 띄워졌습니다',
+              'Your story floated',
               style: TextStyle(
                 fontSize: 22,
                 fontFamily: 'MapoFlowerIsland',
@@ -55,7 +55,7 @@ class _MemorialSpaceLoadingPageState extends State<MemorialSpaceLoadingPage> {
               height: 20.0,
             ),
             Text(
-              '다른 사람들에게\n과도한 불편함을 느끼게 하는 표현은 삼가 바라며,\n해당 내용은 신고 및 삭제될 수 있습니다',
+              'To others\nplease refrain from expressions\nthat make you feel uncomfortable,\nthe contents may be declared and deleted.',
               textAlign: TextAlign.center,
               style: TextStyle(
                 height: 1.5,

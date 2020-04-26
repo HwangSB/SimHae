@@ -86,7 +86,7 @@ class MemorialSpacePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            '추모공간',
+                            'Memorial Space',
                             style: TextStyle(
                               fontFamily: 'MapoFlowerIsland',
                               fontSize: 32,
@@ -109,7 +109,7 @@ class MemorialSpacePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            '고인을 추모하는 공간입니다\n함께했던 추억이나 기억, 즐거웠던 순간들을\n나눠주세요',
+                            'It’s a space to remember the deceased\nPlease share memories and happy moments\nyou had together',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: 'MapoFlowerIsland',
@@ -140,7 +140,7 @@ class MemorialSpacePage extends StatelessWidget {
                           return Padding(
                             padding: const EdgeInsets.only(top: 64.0),
                             child: Text(
-                              '추모글을 가져오는중 오류가 발생했습니다',
+                              'Oops! We lost the story',
                               style: TextStyle(
                                 fontFamily: 'MapoFlowerIsland',
                                 fontSize: 16,
@@ -154,7 +154,7 @@ class MemorialSpacePage extends StatelessWidget {
                             return Padding(
                               padding: const EdgeInsets.only(top: 64.0),
                               child: Text(
-                                '추모글을 가져오는 중...',
+                                'Loading stories...',
                                 style: TextStyle(
                                   fontFamily: 'MapoFlowerIsland',
                                   fontSize: 16,
@@ -183,7 +183,7 @@ class MemorialSpacePage extends StatelessWidget {
       return Padding(
         padding: const EdgeInsets.only(top: 64.0),
         child: Text(
-          '아직 작성된 추모글이 없습니다',
+          'No Stories here',
           style: TextStyle(
             fontFamily: 'MapoFlowerIsland',
             fontSize: 16,
