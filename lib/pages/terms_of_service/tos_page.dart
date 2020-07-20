@@ -33,12 +33,6 @@ class TosPageState extends State<TosPage> {
       'detail': S.current.tosDetail3,
       'agree': false,
     },
-    {
-      'name': S.current.tosName4,
-      'summary': S.current.tosSummary4,
-      'detail': S.current.tosDetail4,
-      'agree': false,
-    },
   ];
   final String _precautions = S.current.tosPrecautions;
 

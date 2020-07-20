@@ -134,7 +134,14 @@ class LoginPage extends StatelessWidget {
   }
 
   _navigatePage(BuildContext context) async {
-    GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+    GoogleSignInAccount googleSignInAccount;
+
+    try {
+      googleSignInAccount = await googleSignIn.signIn();
+    } catch (error) {
+      print(error);
+    }
+    
     if (googleSignInAccount != null) {
       await GlobalUserAccount.instance.connect(googleSignInAccount);
       final snapshot = await Firestore.instance

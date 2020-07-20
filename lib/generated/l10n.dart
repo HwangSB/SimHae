@@ -33,130 +33,160 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `심해(心海)`
+  /// `Simhae(心海)`
   String get appTitle {
     return Intl.message(
-      '심해(心海)',
+      'Simhae(心海)',
       name: 'appTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `우리의 마음이 머무는 바다.`
+  /// `Deep sea of mind.`
   String get appSubTitle {
     return Intl.message(
-      '우리의 마음이 머무는 바다.',
+      'Deep sea of mind.',
       name: 'appSubTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `시작하기`
+  /// `Start`
   String get start {
     return Intl.message(
-      '시작하기',
+      'Start',
       name: 'start',
       desc: '',
       args: [],
     );
   }
 
-  /// `자조모임이 무엇인가요?`
+  /// `What is Survivors Meeting?`
   String get whatIsSurvivorsMeeting {
     return Intl.message(
-      '자조모임이 무엇인가요?',
+      'What is Survivors Meeting?',
       name: 'whatIsSurvivorsMeeting',
       desc: '',
       args: [],
     );
   }
 
-  /// `자조모임은 같은 아픔을 지닌 유족들이 모여 서로의 아픔을 공감하고 치유의 과정을 함께하는 모임입니다.`
+  /// `Its a group meeting. The bereaved families of the same pain gather together.\nWe can relate to each others pain, and we can take care of the healing process.`
   String get survivorsMeetingIntroduction {
     return Intl.message(
-      '자조모임은 같은 아픔을 지닌 유족들이 모여 서로의 아픔을 공감하고 치유의 과정을 함께하는 모임입니다.',
+      'Its a group meeting. The bereaved families of the same pain gather together.\nWe can relate to each others pain, and we can take care of the healing process.',
       name: 'survivorsMeetingIntroduction',
       desc: '',
       args: [],
     );
   }
 
-  /// `자조모임 참여가 애도에 도움이 되나요?`
+  /// `Does attending the meeting help you in our condolences?`
   String get survivorsMeetingQuestion1 {
     return Intl.message(
-      '자조모임 참여가 애도에 도움이 되나요?',
+      'Does attending the meeting help you in our condolences?',
       name: 'survivorsMeetingQuestion1',
       desc: '',
       args: [],
     );
   }
 
-  /// `“충분히 내 속에 있는 것을 꺼낼 수 있었어요.\n그동안 치밀어 올라왔던 화가 사라지고, 아들의 죽음을 좋은 기억으로 남기려고 노력하려구요.”`
+  /// `“I was able to take out what was inside me enough. \nThe house that has gone up till now disappears, I try hard to make my sons death a good memory.”`
   String get survivorsMeetingAnswer1_1 {
     return Intl.message(
-      '“충분히 내 속에 있는 것을 꺼낼 수 있었어요.\n그동안 치밀어 올라왔던 화가 사라지고, 아들의 죽음을 좋은 기억으로 남기려고 노력하려구요.”',
+      '“I was able to take out what was inside me enough. \nThe house that has gone up till now disappears, I try hard to make my sons death a good memory.”',
       name: 'survivorsMeetingAnswer1_1',
       desc: '',
       args: [],
     );
   }
 
-  /// `“자조모임에 참여하고 상실감과 우울감이 많이 줄었어요. 많이 우울했는데…지금은 하루하루 산다는 것이 굉장히 유쾌해요. 같이 모임한 분들이 긍정적인 생각을 가지고 계신 분들이라 이렇게 좋게 바뀐 것 같아 너무 감사해요.”`
+  /// `“In addition to self-help, I have lost a lot of feelings of loss and depression. I was depressed a lot … I live one day nowIt’s very fun. Would like to have more positive thoughts With you I am very grateful for the success of this.”`
   String get survivorsMeetingAnswer1_2 {
     return Intl.message(
-      '“자조모임에 참여하고 상실감과 우울감이 많이 줄었어요. 많이 우울했는데…지금은 하루하루 산다는 것이 굉장히 유쾌해요. 같이 모임한 분들이 긍정적인 생각을 가지고 계신 분들이라 이렇게 좋게 바뀐 것 같아 너무 감사해요.”',
+      '“In addition to self-help, I have lost a lot of feelings of loss and depression. I was depressed a lot … I live one day nowIt’s very fun. Would like to have more positive thoughts With you I am very grateful for the success of this.”',
       name: 'survivorsMeetingAnswer1_2',
       desc: '',
       args: [],
     );
   }
 
-  /// `참고문헌 : 자살자 유가족의 자조모임 참여경험에 관한 연구\n- 박혜선, 이종익(2016.06.)`
+  /// `A Study on the experience of participating in self-help meetings of families of suicide victims - Park Hye-sun and Lee Jong-ik (2016.06)`
   String get survivorsMeetingAnswer1_3 {
     return Intl.message(
-      '참고문헌 : 자살자 유가족의 자조모임 참여경험에 관한 연구\n- 박혜선, 이종익(2016.06.)',
+      'A Study on the experience of participating in self-help meetings of families of suicide victims - Park Hye-sun and Lee Jong-ik (2016.06)',
       name: 'survivorsMeetingAnswer1_3',
       desc: '',
       args: [],
     );
   }
 
-  /// `자조모임에 어떻게 참여하나요?`
+  /// `How do I participate in self-help meetings?`
   String get survivorsMeetingQuestion2 {
     return Intl.message(
-      '자조모임에 어떻게 참여하나요?',
+      'How do I participate in self-help meetings?',
       name: 'survivorsMeetingQuestion2',
       desc: '',
       args: [],
     );
   }
 
-  /// `1577-0199 또는 해당 기관에 문의해주세요.`
+  /// `Please contact 1577-0199 or the relevant agency`
   String get survivorsMeetingAnswer2_1 {
     return Intl.message(
-      '1577-0199 또는 해당 기관에 문의해주세요.',
+      'Please contact 1577-0199 or the relevant agency',
       name: 'survivorsMeetingAnswer2_1',
       desc: '',
       args: [],
     );
   }
 
-  /// `자조모임 도움말`
+  /// `Survivors meeting help`
   String get survivorsMeetingHelp {
     return Intl.message(
-      '자조모임 도움말',
+      'Survivors meeting help',
       name: 'survivorsMeetingHelp',
       desc: '',
       args: [],
     );
   }
 
-  /// ``
+  /// `Online Cafe`
+  String get onlineCafe {
+    return Intl.message(
+      'Online Cafe',
+      name: 'onlineCafe',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Loading community post...`
+  String get communityLoading {
+    return Intl.message(
+      'Loading community post...',
+      name: 'communityLoading',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Community`
+  String get community {
+    return Intl.message(
+      'Community',
+      name: 'community',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Click a position and confirm the information.`
   String get informationMapDefaultName {
     return Intl.message(
-      '',
+      'Click a position and confirm the information.',
       name: 'informationMapDefaultName',
       desc: '',
       args: [],
@@ -193,20 +223,20 @@ class S {
     );
   }
 
-  /// `모임을 통해 자살유가족들이 심리적·사회적 어려움과 고통속에서 벗어나 희망적인 삶을 되찾는 시간`
+  /// `Time for suicide survivors to escape from psychological-social difficulties and sufferings and regain hopeful lives through meetings`
   String get informationMapDefaultActivity {
     return Intl.message(
-      '모임을 통해 자살유가족들이 심리적·사회적 어려움과 고통속에서 벗어나 희망적인 삶을 되찾는 시간',
+      'Time for suicide survivors to escape from psychological-social difficulties and sufferings and regain hopeful lives through meetings',
       name: 'informationMapDefaultActivity',
       desc: '',
       args: [],
     );
   }
 
-  /// `홈페이지를 참고하세요`
+  /// `Check the website`
   String get informationMapDefaultCurrentActivity {
     return Intl.message(
-      '홈페이지를 참고하세요',
+      'Check the website',
       name: 'informationMapDefaultCurrentActivity',
       desc: '',
       args: [],
@@ -233,680 +263,650 @@ class S {
     );
   }
 
-  /// `이미지를 가져오는중...`
+  /// `Loading image...`
   String get informationMapImageLoading {
     return Intl.message(
-      '이미지를 가져오는중...',
+      'Loading image...',
       name: 'informationMapImageLoading',
       desc: '',
       args: [],
     );
   }
 
-  /// `당신의 이야기가 띄워졌습니다`
+  /// `Your story floated`
   String get storyFloated {
     return Intl.message(
-      '당신의 이야기가 띄워졌습니다',
+      'Your story floated',
       name: 'storyFloated',
       desc: '',
       args: [],
     );
   }
 
-  /// `다른 사람들에게\n과도한 불편함을 느끼게 하는 표현은 삼가 바라며,\n해당 내용은 신고 및 삭제될 수 있습니다`
+  /// `To others\nplease refrain from expressions\nthat make you feel uncomfortable,\nthe contents may be declared and deleted.`
   String get storyWriteWarning {
     return Intl.message(
-      '다른 사람들에게\n과도한 불편함을 느끼게 하는 표현은 삼가 바라며,\n해당 내용은 신고 및 삭제될 수 있습니다',
+      'To others\nplease refrain from expressions\nthat make you feel uncomfortable,\nthe contents may be declared and deleted.',
       name: 'storyWriteWarning',
       desc: '',
       args: [],
     );
   }
 
-  /// `내가 쓴 추모글`
+  /// `My Stories`
   String get myStories {
     return Intl.message(
-      '내가 쓴 추모글',
+      'My Stories',
       name: 'myStories',
       desc: '',
       args: [],
     );
   }
 
-  /// `추모글을 가져오는중 오류가 발생했습니다`
+  /// `Oops! We lost the story`
   String get storyLoadError {
     return Intl.message(
-      '추모글을 가져오는중 오류가 발생했습니다',
+      'Oops! We lost the story',
       name: 'storyLoadError',
       desc: '',
       args: [],
     );
   }
 
-  /// `작성된 추모글이 없습니다`
+  /// `No stories here`
   String get storyEmpty {
     return Intl.message(
-      '작성된 추모글이 없습니다',
+      'No stories here',
       name: 'storyEmpty',
       desc: '',
       args: [],
     );
   }
 
-  /// `추모글을 가져오는 중...`
+  /// `Rowing for stories...`
   String get storyLoading {
     return Intl.message(
-      '추모글을 가져오는 중...',
+      'Rowing for stories...',
       name: 'storyLoading',
       desc: '',
       args: [],
     );
   }
 
-  /// `수정`
+  /// `Edit`
   String get edit {
     return Intl.message(
-      '수정',
+      'Edit',
       name: 'edit',
       desc: '',
       args: [],
     );
   }
 
-  /// `삭제`
+  /// `Delete`
   String get delete {
     return Intl.message(
-      '삭제',
+      'Delete',
       name: 'delete',
       desc: '',
       args: [],
     );
   }
 
-  /// `취소`
+  /// `Cancel`
   String get cancel {
     return Intl.message(
-      '취소',
+      'Cancel',
       name: 'cancel',
       desc: '',
       args: [],
     );
   }
 
-  /// `추모글 수정`
+  /// `Edit story`
   String get storyEdit {
     return Intl.message(
-      '추모글 수정',
+      'Edit story',
       name: 'storyEdit',
       desc: '',
       args: [],
     );
   }
 
-  /// `글을 수정하시겠습니까?`
+  /// `Would you like to edit a story?`
   String get editCheck {
     return Intl.message(
-      '글을 수정하시겠습니까?',
+      'Would you like to edit a story?',
       name: 'editCheck',
       desc: '',
       args: [],
     );
   }
 
-  /// `추모글 삭제`
+  /// `Delete story`
   String get storyDelete {
     return Intl.message(
-      '추모글 삭제',
+      'Delete story',
       name: 'storyDelete',
       desc: '',
       args: [],
     );
   }
 
-  /// `정말 삭제하시겠습니까?`
+  /// `Are you sure you want to delete this story?`
   String get deleteCheck {
     return Intl.message(
-      '정말 삭제하시겠습니까?',
+      'Are you sure you want to delete this story?',
       name: 'deleteCheck',
       desc: '',
       args: [],
     );
   }
 
-  /// `추모공간`
+  /// `Memorial Space`
   String get memorialSpace {
     return Intl.message(
-      '추모공간',
+      'Memorial Space',
       name: 'memorialSpace',
       desc: '',
       args: [],
     );
   }
 
-  /// `고인을 추모하는 공간입니다\n함께했던 추억이나 기억, 즐거웠던 순간들을\n나눠주세요`
+  /// `It’s a space to remember the deceased\nPlease share memories and happy moments\nyou had together`
   String get memorialSpaceDescription {
     return Intl.message(
-      '고인을 추모하는 공간입니다\n함께했던 추억이나 기억, 즐거웠던 순간들을\n나눠주세요',
+      'It’s a space to remember the deceased\nPlease share memories and happy moments\nyou had together',
       name: 'memorialSpaceDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// `당신의 이야기를 나눠주세요`
+  /// `Share your story`
   String get memorialSpaceWriteDescription {
     return Intl.message(
-      '당신의 이야기를 나눠주세요',
+      'Share your story',
       name: 'memorialSpaceWriteDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// `등록`
-  String get register {
+  /// `Send`
+  String get send {
     return Intl.message(
-      '등록',
-      name: 'register',
+      'Send',
+      name: 'send',
       desc: '',
       args: [],
     );
   }
 
-  /// `문의하기`
+  /// `Contact us`
   String get contact {
     return Intl.message(
-      '문의하기',
+      'Contact us',
       name: 'contact',
       desc: '',
       args: [],
     );
   }
 
-  /// `궁금한 점이 있다면 언제든지 문의하세요.\n freesequence@gmail.com으로 문의 사항을 연락해주세요.`
+  /// `Please contact us with your inquiries freesequence@gmail.com`
   String get contactDescription {
     return Intl.message(
-      '궁금한 점이 있다면 언제든지 문의하세요.\n freesequence@gmail.com으로 문의 사항을 연락해주세요.',
+      'Please contact us with your inquiries freesequence@gmail.com',
       name: 'contactDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// `'심해'는 어떤 서비스인가요?`
+  /// `What kind of service is 'Simhae'`
   String get helpQuestion1 {
     return Intl.message(
-      '\'심해\'는 어떤 서비스인가요?',
+      'What kind of service is \'Simhae\'',
       name: 'helpQuestion1',
       desc: '',
       args: [],
     );
   }
 
-  /// `'심해(心海): 마음을 담은 바다' 는 자살 유족분들을 위한 모바일 소통 앱 서비스입니다. 주요 기능으로는 ① 자살 유족간의 사연작성 및 공유가 가능한 소통기능, ② 유족들을 위한 지역센터 및 자조모임 정보 제공 ③ 고인을 기리는 추모공간이 있습니다.`
+  /// `'Simhae : The Sea of Mind' is a mobile communication app service for suicide survivors.\nThe main functions are\n① a communication function that enables writing and sharing of story with suicide survivors,\n②  a regional center for survivors and provision of self-help information,\nand  ③  a memorial space for the deceased.`
   String get helpAnswer1 {
     return Intl.message(
-      '\'심해(心海): 마음을 담은 바다\' 는 자살 유족분들을 위한 모바일 소통 앱 서비스입니다. 주요 기능으로는 ① 자살 유족간의 사연작성 및 공유가 가능한 소통기능, ② 유족들을 위한 지역센터 및 자조모임 정보 제공 ③ 고인을 기리는 추모공간이 있습니다.',
+      '\'Simhae : The Sea of Mind\' is a mobile communication app service for suicide survivors.\nThe main functions are\n① a communication function that enables writing and sharing of story with suicide survivors,\n②  a regional center for survivors and provision of self-help information,\nand  ③  a memorial space for the deceased.',
       name: 'helpAnswer1',
       desc: '',
       args: [],
     );
   }
 
-  /// `'심해'는 왜 회원가입이 없나요?`
+  /// `Why no membership in 'Simhae'?`
   String get helpQuestion2 {
     return Intl.message(
-      '\'심해\'는 왜 회원가입이 없나요?',
+      'Why no membership in \'Simhae\'?',
       name: 'helpQuestion2',
       desc: '',
       args: [],
     );
   }
 
-  /// `'심해'는 익명의 서비스를 제공하고 있으며, 유족분들에게 '고인과의 관계', '사별기간' 등의 정보를 따로 받지 않고 소셜사이트 로그인으로 사용을 가능하게 하여 서비스에 대한 심리적 장벽을 낮추려 하고 있습니다.`
+  /// `'Simhae' offers anonymous services. We are trying to lower the psychological barriers of service by making it possible for survivors to log in to the social site without being separately notified of information such as 'relationship with the deceased' and 'bereaved period'`
   String get helpAnswer2 {
     return Intl.message(
-      '\'심해\'는 익명의 서비스를 제공하고 있으며, 유족분들에게 \'고인과의 관계\', \'사별기간\' 등의 정보를 따로 받지 않고 소셜사이트 로그인으로 사용을 가능하게 하여 서비스에 대한 심리적 장벽을 낮추려 하고 있습니다.',
+      '\'Simhae\' offers anonymous services. We are trying to lower the psychological barriers of service by making it possible for survivors to log in to the social site without being separately notified of information such as \'relationship with the deceased\' and \'bereaved period\'',
       name: 'helpAnswer2',
       desc: '',
       args: [],
     );
   }
 
-  /// `제가 쓴 글은 언제까지 뜨나요?`
+  /// `How long will my writing be floating?`
   String get helpQuestion3 {
     return Intl.message(
-      '제가 쓴 글은 언제까지 뜨나요?',
+      'How long will my writing be floating?',
       name: 'helpQuestion3',
       desc: '',
       args: [],
     );
   }
 
-  /// `-'심해' 메인 페이지에서 > 글 쓰기 버튼을 눌러 작성하신 사연은 계속해서 랜덤으로 화면에 띄워집니다.\n( 마이페이지 > 건너 간 편지 ) 에서 확인 및 재업로드 (이전 삭제 시) 가 가능합니다. \n\n-추모공간 카테고리에 쓰신 글의 경우에는 일정 기간 이후 휘발됩니다.`
+  /// `-On the main page of 'Simhae', press “Send Text button” and the story it was created will be randomly floated on the surface. You can check it in (My Page> Crossed Mail) and upload again (when deleting it before).\n\n -In the case of story written in the category of Memorial space, it will be volatilized after a certain period.`
   String get helpAnswer3 {
     return Intl.message(
-      '-\'심해\' 메인 페이지에서 > 글 쓰기 버튼을 눌러 작성하신 사연은 계속해서 랜덤으로 화면에 띄워집니다.\n( 마이페이지 > 건너 간 편지 ) 에서 확인 및 재업로드 (이전 삭제 시) 가 가능합니다. \n\n-추모공간 카테고리에 쓰신 글의 경우에는 일정 기간 이후 휘발됩니다.',
+      '-On the main page of \'Simhae\', press “Send Text button” and the story it was created will be randomly floated on the surface. You can check it in (My Page> Crossed Mail) and upload again (when deleting it before).\n\n -In the case of story written in the category of Memorial space, it will be volatilized after a certain period.',
       name: 'helpAnswer3',
       desc: '',
       args: [],
     );
   }
 
-  /// `제가 쓴 글을 지우고 싶어요.`
+  /// `I want to erase the story I wrote.`
   String get helpQuestion4 {
     return Intl.message(
-      '제가 쓴 글을 지우고 싶어요.',
+      'I want to erase the story I wrote.',
       name: 'helpQuestion4',
       desc: '',
       args: [],
     );
   }
 
-  /// `사연의 경우 ( 마이페이지 > 건너 간 편지 ) 에서 삭제해 주시면 됩니다.`
+  /// `In case of story, go ( My Page> Mail ), please delete.`
   String get helpAnswer4 {
     return Intl.message(
-      '사연의 경우 ( 마이페이지 > 건너 간 편지 ) 에서 삭제해 주시면 됩니다.',
+      'In case of story, go ( My Page> Mail ), please delete.',
       name: 'helpAnswer4',
       desc: '',
       args: [],
     );
   }
 
-  /// `광고나 비방성 글을 보았어요.`
+  /// `I saw advertisement or slander story.`
   String get helpQuestion5 {
     return Intl.message(
-      '광고나 비방성 글을 보았어요.',
+      'I saw advertisement or slander story.',
       name: 'helpQuestion5',
       desc: '',
       args: [],
     );
   }
 
-  /// `불편한 감정을 일으키는 글은 (마이페이지 > 문의하기) 로 가셔서 개별 신고 절차를 통해 처리하도록 하고 있습니다. 서비스 특성상 상시 모니터링을 하고 있지만 개인별로 느끼는 감정은 다르기에 주저 없이 문의해주시면 되겠습니다.`
+  /// `We try to go to (My Page> Contact us) for the sentences that cause unpleasant feelings and process them through the individual filer. Due to the nature of the service, we are constantly monitoring it, but you should not hesitate to contact us if you feel that the emotions you feel are different.`
   String get helpAnswer5 {
     return Intl.message(
-      '불편한 감정을 일으키는 글은 (마이페이지 > 문의하기) 로 가셔서 개별 신고 절차를 통해 처리하도록 하고 있습니다. 서비스 특성상 상시 모니터링을 하고 있지만 개인별로 느끼는 감정은 다르기에 주저 없이 문의해주시면 되겠습니다.',
+      'We try to go to (My Page> Contact us) for the sentences that cause unpleasant feelings and process them through the individual filer. Due to the nature of the service, we are constantly monitoring it, but you should not hesitate to contact us if you feel that the emotions you feel are different.',
       name: 'helpAnswer5',
       desc: '',
       args: [],
     );
   }
 
-  /// `도움말`
+  /// `Help`
   String get help {
     return Intl.message(
-      '도움말',
+      'Help',
       name: 'help',
       desc: '',
       args: [],
     );
   }
 
-  /// `설정`
+  /// `Settings`
   String get settings {
     return Intl.message(
-      '설정',
+      'Settings',
       name: 'settings',
       desc: '',
       args: [],
     );
   }
 
-  /// `편지가 당신에게 오고 있습니다`
+  /// `A letter is coming to you.`
   String get storyIncomming {
     return Intl.message(
-      '편지가 당신에게 오고 있습니다',
+      'A letter is coming to you.',
       name: 'storyIncomming',
       desc: '',
       args: [],
     );
   }
 
-  /// `편지를 가져오는중 오류가 발생했습니다`
+  /// `Oops! we lost the letter`
   String get letterLoadError {
     return Intl.message(
-      '편지를 가져오는중 오류가 발생했습니다',
+      'Oops! we lost the letter',
       name: 'letterLoadError',
       desc: '',
       args: [],
     );
   }
 
-  /// `편지를 가져오는 중...`
+  /// `Rowing for letters...`
   String get letterLoading {
     return Intl.message(
-      '편지를 가져오는 중...',
+      'Rowing for letters...',
       name: 'letterLoading',
       desc: '',
       args: [],
     );
   }
 
-  /// `건너간 편지가 없습니다`
+  /// `There are not floated letters`
   String get letterEmpty {
     return Intl.message(
-      '건너간 편지가 없습니다',
+      'There are not floated letters',
       name: 'letterEmpty',
       desc: '',
       args: [],
     );
   }
 
-  /// `편지 수정`
+  /// `Edit letter`
   String get letterEdit {
     return Intl.message(
-      '편지 수정',
+      'Edit letter',
       name: 'letterEdit',
       desc: '',
       args: [],
     );
   }
 
-  /// `편지 삭제`
+  /// `Delete letter`
   String get letterDelete {
     return Intl.message(
-      '편지 삭제',
+      'Delete letter',
       name: 'letterDelete',
       desc: '',
       args: [],
     );
   }
 
-  /// `건너간 편지`
+  /// `Floated letters`
   String get sentLetters {
     return Intl.message(
-      '건너간 편지',
+      'Floated letters',
       name: 'sentLetters',
       desc: '',
       args: [],
     );
   }
 
-  /// `나의 바다`
+  /// `My Sea`
   String get mySea {
     return Intl.message(
-      '나의 바다',
+      'My Sea',
       name: 'mySea',
       desc: '',
       args: [],
     );
   }
 
-  /// `우리는 저마다의 속도로 슬픔을 통과합니다.\n(브룩 노엘, 패멀라 D. 블레어)`
+  /// `We go through sadness at each speed. \n(Brook Noel, L Morla D. Blair)`
   String get inducedPhrase1 {
     return Intl.message(
-      '우리는 저마다의 속도로 슬픔을 통과합니다.\n(브룩 노엘, 패멀라 D. 블레어)',
+      'We go through sadness at each speed. \n(Brook Noel, L Morla D. Blair)',
       name: 'inducedPhrase1',
       desc: '',
       args: [],
     );
   }
 
-  /// `소중한 누군가를 기억하고 얘기하는 당신이어서, 정말 고맙습니다.`
+  /// `Thank you for sharing your precious memories.`
   String get inducedPhrase2 {
     return Intl.message(
-      '소중한 누군가를 기억하고 얘기하는 당신이어서, 정말 고맙습니다.',
+      'Thank you for sharing your precious memories.',
       name: 'inducedPhrase2',
       desc: '',
       args: [],
     );
   }
 
-  /// `함께 이야기하고, 기억해도 괜찮습니다.`
+  /// `It's okay to talk and remember together.`
   String get inducedPhrase3 {
     return Intl.message(
-      '함께 이야기하고, 기억해도 괜찮습니다.',
+      'It\'s okay to talk and remember together.',
       name: 'inducedPhrase3',
       desc: '',
       args: [],
     );
   }
 
-  /// `저 깊은 심해에 마음을 털어놓는 건 어떨까요?`
+  /// `How about opening your heart to the deep sea?`
   String get inducedPhrase4 {
     return Intl.message(
-      '저 깊은 심해에 마음을 털어놓는 건 어떨까요?',
+      'How about opening your heart to the deep sea?',
       name: 'inducedPhrase4',
       desc: '',
       args: [],
     );
   }
 
-  /// `인터넷 연결을 확인해주세요`
+  /// `Please check the internet connected`
   String get checkInternet {
     return Intl.message(
-      '인터넷 연결을 확인해주세요',
+      'Please check the internet connected',
       name: 'checkInternet',
       desc: '',
       args: [],
     );
   }
 
-  /// `인터넷에 연결되어있지 않아 편지를 불러올 수 없습니다.`
+  /// `The letter could not be loaded because it is not connected to the Internet.`
   String get checkInternetDescription {
     return Intl.message(
-      '인터넷에 연결되어있지 않아 편지를 불러올 수 없습니다.',
+      'The letter could not be loaded because it is not connected to the Internet.',
       name: 'checkInternetDescription',
       desc: '',
       args: [],
     );
   }
 
-  /// `오늘 '당신의 바다'는 무슨 색 인가요?`
+  /// `What color is your sea today?`
   String get paletteColorTitle {
     return Intl.message(
-      '오늘 \'당신의 바다\'는 무슨 색 인가요?',
+      'What color is your sea today?',
       name: 'paletteColorTitle',
       desc: '',
       args: [],
     );
   }
 
-  /// `기분, 감정, 날씨 어느 것이어도 좋아요`
+  /// `Feelings, Emotions, Weathers, anything is fine`
   String get paletteColorDescription1 {
     return Intl.message(
-      '기분, 감정, 날씨 어느 것이어도 좋아요',
+      'Feelings, Emotions, Weathers, anything is fine',
       name: 'paletteColorDescription1',
       desc: '',
       args: [],
     );
   }
 
-  /// `오늘 당신의 바다 색을 정해보세요 :)`
+  /// `Decide your sea color today :)`
   String get paletteColorDescription2 {
     return Intl.message(
-      '오늘 당신의 바다 색을 정해보세요 :)',
+      'Decide your sea color today :)',
       name: 'paletteColorDescription2',
       desc: '',
       args: [],
     );
   }
 
-  /// `확인`
+  /// `Apply`
   String get apply {
     return Intl.message(
-      '확인',
+      'Apply',
       name: 'apply',
       desc: '',
       args: [],
     );
   }
 
-  /// `편지 작성`
+  /// `Write letter`
   String get letterWrite {
     return Intl.message(
-      '편지 작성',
+      'Write letter',
       name: 'letterWrite',
       desc: '',
       args: [],
     );
   }
 
-  /// `편지를 띄우시겠습니까?`
+  /// `Would you like to send a letter?`
   String get letterWriteApply {
     return Intl.message(
-      '편지를 띄우시겠습니까?',
+      'Would you like to send a letter?',
       name: 'letterWriteApply',
       desc: '',
       args: [],
     );
   }
 
-  /// `인지하고 있습니다.`
+  /// `I Swear`
   String get tosApply {
     return Intl.message(
-      '인지하고 있습니다.',
+      'I Swear',
       name: 'tosApply',
       desc: '',
       args: [],
     );
   }
 
-  /// `전문보기`
+  /// `Full Text`
   String get tosSeeMore {
     return Intl.message(
-      '전문보기',
+      'Full Text',
       name: 'tosSeeMore',
       desc: '',
       args: [],
     );
   }
 
-  /// `이용약관`
+  /// `Terms of service`
   String get tos {
     return Intl.message(
-      '이용약관',
+      'Terms of service',
       name: 'tos',
       desc: '',
       args: [],
     );
   }
 
-  /// `인터넷 명예훼손`
+  /// `Internet defamation`
   String get tosName1 {
     return Intl.message(
-      '인터넷 명예훼손',
+      'Internet defamation',
       name: 'tosName1',
       desc: '',
       args: [],
     );
   }
 
-  /// `정보통신망 이용촉진 및 정보보호 등에 관한 법률`
+  /// `Laws for promoting the use of information and communication networks and protecting information`
   String get tosSummary1 {
     return Intl.message(
-      '정보통신망 이용촉진 및 정보보호 등에 관한 법률',
+      'Laws for promoting the use of information and communication networks and protecting information',
       name: 'tosSummary1',
       desc: '',
       args: [],
     );
   }
 
-  /// `1. 정의\n이용자는 명예훼손 등 타인의 권리를 침해하는 정보를 정보통신망에 유통시켜서는 안 됩니다(규제「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제44조제1항).\n\n※ “이용자”란 정보통신서비스 제공자가 제공하는 정보통신서비스를 이용하는 사람을 말합니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제2조제1항제4호).\n\n※ “정보통신망”이란 전기통신설비를 이용하거나 전기통신설비와 컴퓨터 및 컴퓨터의 이용기술을 활용하여 정보를 수집·가공·저장·검색·송신 또는 수신하는 정보통신체제를 말합니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제2조제1항제1호). ‘전기통신설비’란 유선·무선·광선 및 기타의 전자적 방식에 의하여 부호·문언·음향 또는 영상\n\n2. 처벌\n- 사람을 비방할 목적으로 정보통신망을 통해 공공연하게 사실을 드러내어 다른 사람의 명예를 훼손한 자는 3년 이하의 징역 또는 3천만원 이하의 벌금에 처해집니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제1항).\nㄴ> ※ 위의 죄는 피해자가 구체적으로 밝힌 의사에 반해 공소를 제기할 수 없습니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제3항).\n\n- 사람을 비방할 목적으로 정보통신망을 통해 공공연하게 거짓의 사실을 드러내어 다른 사람의 명예를 훼손한 자는 7년 이하의 징역, 10년 이하의 자격정지 또는 5천만원 이하의 벌금에 처해집니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제2항).\nㄴ> 위의 죄는 피해자가 구체적으로 밝힌 의사에 반하여 공소를 제기할 수 없습니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제3항).`
+  /// `Users should not distribute information that infringes the interests of others, such as name loss, to the information and communication network (Regulation “Act on Promotion of Information and Communication Network Use and Information Protection”, Paragraph 1, Paragraph 1).\n\n* “User” refers to a person who uses the information and communication service provided by the information and communication service provider (“Act on Promotion of Information and Communication Network Use and Information Protection”, Paragraph 2, Paragraph 1, Paragraph 4) .\n\n* "Information communication network" refers to an information communication system that uses telecommunications equipment or collects, processes, saves, and transmits or receives information using telecommunications equipment, computers, and computer utilization technology ( "Act on Promotion of Utilization of Information and Communication Networks and Protection of Information, etc." "Telecommunications equipment" means coded audio or video by wired and wireless rays and other electronic methods.\n\n-A person who publicly exposes things through the information and communication network for the purpose of slandering others and damages the name of another person is punished by imprisonment for not more than 3 years or a fine of not more than 30 million won ('' Information Act on Promotion of Communication Network Use and Information Protection, "Article 70, Paragraph 1).\nYes> * You cannot file a lawsuit against the above-mentioned intention of the victim of the crime (“Law for Promoting Use of Information and Communication Networks and Information Protection”, Paragraph 3, Article 70).\n\nPersons who openly expose people through the information and communication network for the purpose of slandering others and lose the name of other people are imprisoned for not more than 7 years, suspended for 10 years or less or 50 million won or less. You will be fined (Article 70, Paragraph 2 of the Act on Promotion of Information and Communication Network Use and Information Protection).\nYes> * You cannot file a lawsuit against the above-mentioned intention of the victim of the crime (“Law for Promoting Use of Information and Communication Networks and Information Protection”, Paragraph 3, Article 70).`
   String get tosDetail1 {
     return Intl.message(
-      '1. 정의\n이용자는 명예훼손 등 타인의 권리를 침해하는 정보를 정보통신망에 유통시켜서는 안 됩니다(규제「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제44조제1항).\n\n※ “이용자”란 정보통신서비스 제공자가 제공하는 정보통신서비스를 이용하는 사람을 말합니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제2조제1항제4호).\n\n※ “정보통신망”이란 전기통신설비를 이용하거나 전기통신설비와 컴퓨터 및 컴퓨터의 이용기술을 활용하여 정보를 수집·가공·저장·검색·송신 또는 수신하는 정보통신체제를 말합니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제2조제1항제1호). ‘전기통신설비’란 유선·무선·광선 및 기타의 전자적 방식에 의하여 부호·문언·음향 또는 영상\n\n2. 처벌\n- 사람을 비방할 목적으로 정보통신망을 통해 공공연하게 사실을 드러내어 다른 사람의 명예를 훼손한 자는 3년 이하의 징역 또는 3천만원 이하의 벌금에 처해집니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제1항).\nㄴ> ※ 위의 죄는 피해자가 구체적으로 밝힌 의사에 반해 공소를 제기할 수 없습니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제3항).\n\n- 사람을 비방할 목적으로 정보통신망을 통해 공공연하게 거짓의 사실을 드러내어 다른 사람의 명예를 훼손한 자는 7년 이하의 징역, 10년 이하의 자격정지 또는 5천만원 이하의 벌금에 처해집니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제2항).\nㄴ> 위의 죄는 피해자가 구체적으로 밝힌 의사에 반하여 공소를 제기할 수 없습니다(「정보통신망 이용촉진 및 정보보호 등에 관한 법률」 제70조제3항).',
+      'Users should not distribute information that infringes the interests of others, such as name loss, to the information and communication network (Regulation “Act on Promotion of Information and Communication Network Use and Information Protection”, Paragraph 1, Paragraph 1).\n\n* “User” refers to a person who uses the information and communication service provided by the information and communication service provider (“Act on Promotion of Information and Communication Network Use and Information Protection”, Paragraph 2, Paragraph 1, Paragraph 4) .\n\n* "Information communication network" refers to an information communication system that uses telecommunications equipment or collects, processes, saves, and transmits or receives information using telecommunications equipment, computers, and computer utilization technology ( "Act on Promotion of Utilization of Information and Communication Networks and Protection of Information, etc." "Telecommunications equipment" means coded audio or video by wired and wireless rays and other electronic methods.\n\n-A person who publicly exposes things through the information and communication network for the purpose of slandering others and damages the name of another person is punished by imprisonment for not more than 3 years or a fine of not more than 30 million won (`` Information Act on Promotion of Communication Network Use and Information Protection, "Article 70, Paragraph 1).\nYes> * You cannot file a lawsuit against the above-mentioned intention of the victim of the crime (“Law for Promoting Use of Information and Communication Networks and Information Protection”, Paragraph 3, Article 70).\n\nPersons who openly expose people through the information and communication network for the purpose of slandering others and lose the name of other people are imprisoned for not more than 7 years, suspended for 10 years or less or 50 million won or less. You will be fined (Article 70, Paragraph 2 of the Act on Promotion of Information and Communication Network Use and Information Protection).\nYes> * You cannot file a lawsuit against the above-mentioned intention of the victim of the crime (“Law for Promoting Use of Information and Communication Networks and Information Protection”, Paragraph 3, Article 70).',
       name: 'tosDetail1',
       desc: '',
       args: [],
     );
   }
 
-  /// `사이버 모욕`
+  /// `crime of cyber insult`
   String get tosName2 {
     return Intl.message(
-      '사이버 모욕',
+      'crime of cyber insult',
       name: 'tosName2',
       desc: '',
       args: [],
     );
   }
 
-  /// `형법 제311조의 모욕죄와 별도로 정보통신망법에 사이버 모욕죄 조항`
+  /// `Apart from the contempt of Article 311 of the Criminal Act, the cyber insult clause in the Information and Communication Network Act.`
   String get tosSummary2 {
     return Intl.message(
-      '형법 제311조의 모욕죄와 별도로 정보통신망법에 사이버 모욕죄 조항',
+      'Apart from the contempt of Article 311 of the Criminal Act, the cyber insult clause in the Information and Communication Network Act.',
       name: 'tosSummary2',
       desc: '',
       args: [],
     );
   }
 
-  /// `1. 정의\n2008년 10월, 대한민국 정부는 사이버상 모욕 행위에 대해 형법 제311조의 모욕죄와 별도로 정보통신망법에 사이버 모욕죄 조항을 신설하는 것을 본격적으로 추진. 어떤 사람에 대한 사실이 아닌 내용을 많은 사람이 알 수 있도록 인터넷에 경멸적 감정을 담아 기재해 그 사람에 대한 사회적 평가를 훼손시킬 때 인정되는 죄\n\n2. 처벌\n형법 제311조(모욕)의 처벌과 동일(형법 제311조(모욕) 공연히 사람을 모욕한 자는 1년 이하의 징역이나 금고 또는 200만원 이하의 벌금에 처한다.)`
+  /// `In October 2008, the Korean government will make full-scale efforts to establish a new offense against cyber crimes in the Information and Communication Network Law, in addition to the offense under Criminal Code No. 311 as an offense against cyber crimes. Describing the internet with derogatory feelings for some people, as most people know it, not just for the sake of discouragement, to undermine corporate reputation for that person Sometimes recognized sin\n\nSame as punishment under Criminal Code No. 311 (Insult) (Penal Code No. 311 (Insult) A person who insults an open person shall be punished with imprisonment or imprisonment for not more than one year or a fine of not more than 2 million won.)\n''In October 2008, the Korean government will make full-scale efforts to establish a new offense against cyber crimes in the Information and Communication Network Law, in addition to the offense under Criminal Code No. 311 as an offense against cyber crimes. Describing the internet with derogatory feelings for some people, as most people know it, not just for the sake of discouragement, to undermine corporate reputation for that person Sometimes recognized sin\n\n\nSame as punishment under Criminal Code No. 311 (Insult) (Penal Code No. 311 (Insult) A person who insults an open person shall be punished with imprisonment or imprisonment for not more than one year or a fine of not more than 2 million won.)`
   String get tosDetail2 {
     return Intl.message(
-      '1. 정의\n2008년 10월, 대한민국 정부는 사이버상 모욕 행위에 대해 형법 제311조의 모욕죄와 별도로 정보통신망법에 사이버 모욕죄 조항을 신설하는 것을 본격적으로 추진. 어떤 사람에 대한 사실이 아닌 내용을 많은 사람이 알 수 있도록 인터넷에 경멸적 감정을 담아 기재해 그 사람에 대한 사회적 평가를 훼손시킬 때 인정되는 죄\n\n2. 처벌\n형법 제311조(모욕)의 처벌과 동일(형법 제311조(모욕) 공연히 사람을 모욕한 자는 1년 이하의 징역이나 금고 또는 200만원 이하의 벌금에 처한다.)',
+      'In October 2008, the Korean government will make full-scale efforts to establish a new offense against cyber crimes in the Information and Communication Network Law, in addition to the offense under Criminal Code No. 311 as an offense against cyber crimes. Describing the internet with derogatory feelings for some people, as most people know it, not just for the sake of discouragement, to undermine corporate reputation for that person Sometimes recognized sin\n\nSame as punishment under Criminal Code No. 311 (Insult) (Penal Code No. 311 (Insult) A person who insults an open person shall be punished with imprisonment or imprisonment for not more than one year or a fine of not more than 2 million won.)\n\'\'In October 2008, the Korean government will make full-scale efforts to establish a new offense against cyber crimes in the Information and Communication Network Law, in addition to the offense under Criminal Code No. 311 as an offense against cyber crimes. Describing the internet with derogatory feelings for some people, as most people know it, not just for the sake of discouragement, to undermine corporate reputation for that person Sometimes recognized sin\n\n\nSame as punishment under Criminal Code No. 311 (Insult) (Penal Code No. 311 (Insult) A person who insults an open person shall be punished with imprisonment or imprisonment for not more than one year or a fine of not more than 2 million won.)',
       name: 'tosDetail2',
       desc: '',
       args: [],
     );
   }
 
-  /// `사이버 폭력`
+  /// `Computer crime`
   String get tosName3 {
     return Intl.message(
-      '사이버 폭력',
+      'Computer crime',
       name: 'tosName3',
       desc: '',
       args: [],
     );
   }
 
-  /// `사이버 폭력(악성 댓글)에 의한 피해자의 심리적 피해`
+  /// `Article 314 of the Criminal Act (obstruction of business), Article 347-2 of the Criminal Act (fraud of using computers, etc.)`
   String get tosSummary3 {
     return Intl.message(
-      '사이버 폭력(악성 댓글)에 의한 피해자의 심리적 피해',
+      'Article 314 of the Criminal Act (obstruction of business), Article 347-2 of the Criminal Act (fraud of using computers, etc.)',
       name: 'tosSummary3',
       desc: '',
       args: [],
     );
   }
 
-  /// `- 사이버폭력의 피해자들은 사건 이후, 극심한 우울증을 보이고 극단적으로는 자살을 하는 등 심각한 결과를 초래한다.\n사이버폭력으로 인한 학생 피해자의 심리적인 영향은 학교를 결석하거나, 낮은 성적을 받고, 낮은 집중력을 보이는 것과 유의미한 상관이 나타났고 또한 사회 불안을 유의미하게 증가시킨다는 결과를 나타냈다. \n사이버폭력의 가해자를 아는 경우와 모르는 경우로 구분하여 심리사회적인 문제를 측정하였다. 그 결과 가해자를 아는 경우에는 공격적인 행동이나 사회적 문제에서 유의미한 결과가 나타났고, 가해자를 모르는 경우에는 사회적 문제와 우울에서 유의미한 결과를 나타냈다. 결국 가해자가 아는 사람이든 모르는 사람이든 피해자의 심리에 상당한 부정적 영향을 미치는 것으로 나타났다.`
+  /// `-No. 314 (Business interruption)\n1-1. Definition: Item (1): Method 313 or power that interferes with the work of a person\n1-2. Penalty: Imprisonment of up to 5 years or fine of up to 15 million won. <Revised December 29, 1995>\n\n2-1. Definition: (2): Damage to information storage such as computers and special media such as electronic storage, inputting information to the information storage or illegal commands, or obstructing the processing of other information. Those who interfere with the work of other people\n2-2. Penalty: The same as the type in paragraph 1. (Prison for 5 years or less or fine of 15 million won or less.) <New establishment December 29, 1995>\n\n -No. 347-2 (Scam that uses computer etc.)\n1. Definition: Entering information or illegal commands in a computer or other information device, or inputting unlimited information and updating it to obtain a profit on property, Person who decides to acquire a third party\n2. Penalty: imprisonment of 10 years or less or fine of 20 million won or less. [Full text revision December 29, 2001]`
   String get tosDetail3 {
     return Intl.message(
-      '- 사이버폭력의 피해자들은 사건 이후, 극심한 우울증을 보이고 극단적으로는 자살을 하는 등 심각한 결과를 초래한다.\n사이버폭력으로 인한 학생 피해자의 심리적인 영향은 학교를 결석하거나, 낮은 성적을 받고, 낮은 집중력을 보이는 것과 유의미한 상관이 나타났고 또한 사회 불안을 유의미하게 증가시킨다는 결과를 나타냈다. \n사이버폭력의 가해자를 아는 경우와 모르는 경우로 구분하여 심리사회적인 문제를 측정하였다. 그 결과 가해자를 아는 경우에는 공격적인 행동이나 사회적 문제에서 유의미한 결과가 나타났고, 가해자를 모르는 경우에는 사회적 문제와 우울에서 유의미한 결과를 나타냈다. 결국 가해자가 아는 사람이든 모르는 사람이든 피해자의 심리에 상당한 부정적 영향을 미치는 것으로 나타났다.',
+      '-No. 314 (Business interruption)\n1-1. Definition: Item (1): Method 313 or power that interferes with the work of a person\n1-2. Penalty: Imprisonment of up to 5 years or fine of up to 15 million won. <Revised December 29, 1995>\n\n2-1. Definition: (2): Damage to information storage such as computers and special media such as electronic storage, inputting information to the information storage or illegal commands, or obstructing the processing of other information. Those who interfere with the work of other people\n2-2. Penalty: The same as the type in paragraph 1. (Prison for 5 years or less or fine of 15 million won or less.) <New establishment December 29, 1995>\n\n -No. 347-2 (Scam that uses computer etc.)\n1. Definition: Entering information or illegal commands in a computer or other information device, or inputting unlimited information and updating it to obtain a profit on property, Person who decides to acquire a third party\n2. Penalty: imprisonment of 10 years or less or fine of 20 million won or less. [Full text revision December 29, 2001]',
       name: 'tosDetail3',
       desc: '',
       args: [],
     );
   }
 
-  /// `컴퓨터 범죄`
-  String get tosName4 {
-    return Intl.message(
-      '컴퓨터 범죄',
-      name: 'tosName4',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `형법 제314조(업무방해), 형법 제347조의2(컴퓨터 등 사용사기)`
-  String get tosSummary4 {
-    return Intl.message(
-      '형법 제314조(업무방해), 형법 제347조의2(컴퓨터 등 사용사기)',
-      name: 'tosSummary4',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `-  제314조(업무방해) \n1-1. 정의 : ①항 : 제313조의 방법 또는 위력으로써 사람의 업무를 방해한 자\n1-2. 처벌 : 5년 이하의 징역 또는 1천500만원 이하의 벌금에 처한다.  <개정 1995. 12. 29.>\n\n2-1. 정의 : ②항 : 컴퓨터등 정보처리장치 또는 전자기록등 특수매체기록을 손괴하거나 정보처리장치에 허위의 정보 또는 부정한 명령을 입력하거나 기타 방법으로 정보처리에 장애를 발생하게 하여 사람의 업무를 방해한 자\n2-2. 처벌 : 제1항의 형과 같다.(5년 이하의 징역 또는 1천500만원 이하의 벌금에 처한다.)                                                                <신설 1995. 12. 29.>\n\n- 제347조의2(컴퓨터등 사용사기)  \n1. 정의  : 컴퓨터등 정보처리장치에 허위의 정보 또는 부정한 명령을 입력하거나 권한 없이 정보를 입력ㆍ변경하여 정보처리를 하게 함으로써 재산상의 이익을 취득하거나 제3자로 하여금 취득하게 한 자\n2. 처벌 : 10년 이하의 징역 또는 2천만원 이하의 벌금에 처한다. [전문개정 2001. 12. 29.]`
-  String get tosDetail4 {
-    return Intl.message(
-      '-  제314조(업무방해) \n1-1. 정의 : ①항 : 제313조의 방법 또는 위력으로써 사람의 업무를 방해한 자\n1-2. 처벌 : 5년 이하의 징역 또는 1천500만원 이하의 벌금에 처한다.  <개정 1995. 12. 29.>\n\n2-1. 정의 : ②항 : 컴퓨터등 정보처리장치 또는 전자기록등 특수매체기록을 손괴하거나 정보처리장치에 허위의 정보 또는 부정한 명령을 입력하거나 기타 방법으로 정보처리에 장애를 발생하게 하여 사람의 업무를 방해한 자\n2-2. 처벌 : 제1항의 형과 같다.(5년 이하의 징역 또는 1천500만원 이하의 벌금에 처한다.)                                                                <신설 1995. 12. 29.>\n\n- 제347조의2(컴퓨터등 사용사기)  \n1. 정의  : 컴퓨터등 정보처리장치에 허위의 정보 또는 부정한 명령을 입력하거나 권한 없이 정보를 입력ㆍ변경하여 정보처리를 하게 함으로써 재산상의 이익을 취득하거나 제3자로 하여금 취득하게 한 자\n2. 처벌 : 10년 이하의 징역 또는 2천만원 이하의 벌금에 처한다. [전문개정 2001. 12. 29.]',
-      name: 'tosDetail4',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `본 서비스는 자살 유족들을 위한 소통 기능 및 정보를 제공합니다. 타인에게 과도한 불편함을 주는 표현은 삼가 주시길 바라며, 해당 내용은 신고 및 삭제 될 수 있습니다. 이용에 앞서, 서비스 관련 법률의 전문을 살펴보시기 바랍니다.`
+  /// `This service provides communication functions and information for families of suicide victims. Please refrain from expressing excessive inconvenience to others, and the contents may be reported and deleted. Prior to use, please review the full text of service-related laws.`
   String get tosPrecautions {
     return Intl.message(
-      '본 서비스는 자살 유족들을 위한 소통 기능 및 정보를 제공합니다. 타인에게 과도한 불편함을 주는 표현은 삼가 주시길 바라며, 해당 내용은 신고 및 삭제 될 수 있습니다. 이용에 앞서, 서비스 관련 법률의 전문을 살펴보시기 바랍니다.',
+      'This service provides communication functions and information for families of suicide victims. Please refrain from expressing excessive inconvenience to others, and the contents may be reported and deleted. Prior to use, please review the full text of service-related laws.',
       name: 'tosPrecautions',
       desc: '',
       args: [],

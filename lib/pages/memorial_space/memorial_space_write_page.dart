@@ -120,7 +120,7 @@ class _MemorialSpaceManagePageState
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: Text(
-                          S.of(context).register,
+                          S.of(context).send,
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             color: Colors.white,

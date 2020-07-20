@@ -277,7 +277,7 @@ class _StoryPageState extends State<StoryPage> {
                     height: 200.0,
                     child: Center(
                       child: Text(
-                        'This is a place where we talk together.\nLet\'s not write anything that makes you feel uncomfortable feelings to Other.',
+                        S.of(context).storyWriteWarning,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',

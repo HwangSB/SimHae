@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
+import 'package:solution_challenge/generated/l10n.dart';
 import 'package:solution_challenge/widgets/shadowed_wave.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -33,7 +34,7 @@ class InformationMapCommunityPage extends StatelessWidget {
                           child: Row(
                             children: <Widget>[
                               Text(
-                                'Online Cafe',
+                                S.of(context).onlineCafe,
                                 style: TextStyle(
                                   fontFamily: 'MapoFlowerIsland',
                                   fontSize: 16,
@@ -53,7 +54,7 @@ class InformationMapCommunityPage extends StatelessWidget {
                                 return Padding(
                                   padding: const EdgeInsets.only(top: 64.0),
                                   child: Text(
-                                    'Getting Community writings...',
+                                    S.of(context).communityLoading,
                                     style: TextStyle(
                                       fontFamily: 'MapoFlowerIsland',
                                       fontSize: 16,
@@ -148,7 +149,7 @@ class InformationMapCommunityPage extends StatelessWidget {
                           ),
                         ),
                         child: Text(
-                          'Community',
+                          S.of(context).community,
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             fontSize: 24,
