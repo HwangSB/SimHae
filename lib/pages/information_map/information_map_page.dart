@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:solution_challenge/generated/l10n.dart';
 import 'package:solution_challenge/pages/information_map/information_map_help_page.dart';
+import 'package:solution_challenge/pages/information_map/information_map_community_page.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
@@ -43,6 +44,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
     topRight: Radius.circular(24.0),
   );
 
+  bool checkDialog = false;
   MapData mapData;
 
   @override
@@ -63,6 +65,11 @@ class _InformationMapPageState extends State<InformationMapPage> {
 
   @override
   Widget build(BuildContext context) {
+    if (!checkDialog) {
+      Future.delayed(Duration.zero, () => showAlert(context));
+      checkDialog=true;
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SlidingUpPanel(
@@ -73,6 +80,27 @@ class _InformationMapPageState extends State<InformationMapPage> {
         boxShadow: [],
         panelBuilder: _scrollingPage,
         body: _bodyPage(context),
+      ),
+    );
+  }
+
+  void showAlert(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: Row(
+          children: <Widget>[
+            Expanded(
+              child: Text(
+                "How about trying to communicate and share them through 'Survivors meeting?",
+                style: TextStyle(
+                  fontFamily: 'MapoFlowerIsland',
+                  fontSize: 14,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -249,60 +277,106 @@ class _InformationMapPageState extends State<InformationMapPage> {
       child: Stack(
         children: <Widget>[
           _googleMap(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
             children: <Widget>[
-              Material(
-                color: Colors.transparent,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.arrow_back_ios,
-                      color: Color(0xFF8CD4D5),
-                    ),
-                    iconSize: 28.0,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
-                ),
-              ),
-              Material(
-                color: Colors.transparent,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: InkResponse(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => InformationMapHelpPage(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Material(
+                    color: Colors.transparent,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_ios,
+                          color: Color(0xFF8CD4D5),
                         ),
-                      );
-                    },
-                    child: Container(
-                      width: 40.0,
-                      height: 40.0,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF8CD4D5),
-                        shape: BoxShape.circle,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x29000000),
-                            blurRadius: 6.0,
-                            offset: Offset(0.0, 3.0),
-                          ),
-                        ],
-                      ),
-                      child: Icon(
-                        Icons.help,
-                        color: Colors.white,
-                        size: 40.0,
+                        iconSize: 28.0,
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
                       ),
                     ),
                   ),
-                ),
+                  Material(
+                    color: Colors.transparent,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: InkResponse(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => InformationMapHelpPage(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 40.0,
+                          height: 40.0,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF8CD4D5),
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x29000000),
+                                blurRadius: 6.0,
+                                offset: Offset(0.0, 3.0),
+                              ),
+                            ],
+                          ),
+                          child: Icon(
+                            Icons.help,
+                            color: Colors.white,
+                            size: 40.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Material(
+                    color: Colors.transparent,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: InkResponse(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  InformationMapCommunityPage(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          width: 40.0,
+                          height: 40.0,
+                          decoration: BoxDecoration(
+                            color: Color(0xFF8CD4D5),
+                            shape: BoxShape.circle,
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0x29000000),
+                                blurRadius: 6.0,
+                                offset: Offset(0.0, 3.0),
+                              ),
+                            ],
+                          ),
+                          child: Icon(
+                            Icons.public,
+                            color: Colors.white,
+                            size: 40.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

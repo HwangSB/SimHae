@@ -144,7 +144,7 @@ class _SplashPageState extends State<SplashPage> {
             .document(GlobalUserAccount.instance.uid)
             .get();
         if (snapshot == null || !snapshot.exists) {
-          Firestore.instance
+          await Firestore.instance
               .collection('Users')
               .document(GlobalUserAccount.instance.uid)
               .setData({'hasStory': false}, merge: true);

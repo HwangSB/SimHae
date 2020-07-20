@@ -39,6 +39,8 @@ class SettingsDatabase {
       'AppSettings',
     );
 
+    database.close();
+
     List<AppSetting> appSettings = List.generate(rawAppSettings.length, (i) {
       return AppSetting(
         key: rawAppSettings[i]['key'],
@@ -59,5 +61,7 @@ class SettingsDatabase {
       where: 'key = ?',
       whereArgs: [appSetting.key],
     );
+
+    database.close();
   }
 }
