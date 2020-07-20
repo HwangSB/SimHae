@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:solution_challenge/generated/l10n.dart';
 import 'package:solution_challenge/widgets/animated_wave.dart';
 import 'package:infinity_page_view/infinity_page_view.dart';
 import 'package:solution_challenge/pages/information_map/information_map_page.dart';
@@ -20,10 +21,10 @@ class StoryPage extends StatefulWidget {
 class _StoryPageState extends State<StoryPage> {
   PageController _pageController = PageController();
   List<String> _inducedPhrase = [
-    '우리는 저마다의 속도로 슬픔을 통과합니다.\n(브룩 노엘, 패멀라 D. 블레어)',
-    '소중한 누군가를 기억하고 얘기하는 당신이어서, 정말 고맙습니다.',
-    '함께 이야기하고, 기억해도 괜찮습니다.',
-    '저 깊은 심해에 마음을 털어놓는 건 어떨까요?',
+    S.current.inducedPhrase1,
+    S.current.inducedPhrase2,
+    S.current.inducedPhrase3,
+    S.current.inducedPhrase4,
   ];
 
   @override
@@ -371,11 +372,11 @@ class StoryStream extends StatelessWidget {
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Story(title: '편지를 가져오는중 오류가 발생했습니다');
+          return Story(title: S.of(context).letterLoadError);
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Story(title: '편지를 가져오는 중...');
+            return Story(title: S.of(context).letterLoading);
           default:
             List<DocumentSnapshot> documents = snapshot.data.documents;
             if (documents.isNotEmpty) {
@@ -384,8 +385,8 @@ class StoryStream extends StatelessWidget {
               return _storyStream(document);
             } else {
               return Story(
-                title: '인터넷 연결을 확인해주세요',
-                detail: '인터넷에 연결되어있지 않아 편지를 불러올 수 없습니다.',
+                title: S.of(context).checkInternet,
+                detail: S.of(context).checkInternetDescription,
               );
             }
         }
@@ -398,11 +399,11 @@ class StoryStream extends StatelessWidget {
       stream: document.reference.collection('Stories').snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Story(title: '편지를 가져오는중 오류가 발생했습니다');
+          return Story(title: S.of(context).letterLoadError);
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Story(title: '편지를 가져오는 중...');
+            return Story(title: S.of(context).letterLoading);
           default:
             List<DocumentSnapshot> documents = snapshot.data.documents;
             DocumentSnapshot document =

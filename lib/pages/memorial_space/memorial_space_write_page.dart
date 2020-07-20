@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:solution_challenge/generated/l10n.dart';
 import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/pages/memorial_space/memorial_space_loading_page.dart';
 
@@ -54,7 +55,7 @@ class _MemorialSpaceManagePageState
                 Padding(
                   padding: const EdgeInsets.only(left: 36.0),
                   child: Text(
-                    '당신의 이야기를 나눠주세요',
+                    S.of(context).memorialSpaceWriteDescription,
                     style: TextStyle(
                       fontFamily: 'MapoFlowerIsland',
                       fontSize: 21,
@@ -119,7 +120,7 @@ class _MemorialSpaceManagePageState
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: Text(
-                          '등록',
+                          S.of(context).register,
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             color: Colors.white,

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:solution_challenge/generated/l10n.dart';
 import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/widgets/shadowed_wave.dart';
 import 'package:solution_challenge/pages/story/story_manage_page.dart';
@@ -33,7 +34,7 @@ class StoryMyPage extends StatelessWidget {
                             image: AssetImage('assets/images/sent_story.png'),
                           ),
                           Text(
-                            '건너간 편지',
+                            S.of(context).sentLetters,
                             style: TextStyle(
                               fontFamily: 'MapoFlowerIsland',
                               fontSize: 18,
@@ -156,7 +157,7 @@ class StoryMyPage extends StatelessWidget {
                   child: Row(
                     children: <Widget>[
                       Text(
-                        '나의 바다',
+                        S.of(context).mySea,
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 24,
@@ -231,7 +232,7 @@ class MyStoryStream extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return Text(
-            '편지를 가져오는중 오류가 발생했습니다',
+            S.of(context).letterLoadError,
             style: TextStyle(
               fontFamily: 'MapoFlowerIsland',
               fontSize: 16,
@@ -242,7 +243,7 @@ class MyStoryStream extends StatelessWidget {
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
             return Text(
-              '편지를 가져오는 중...',
+              S.of(context).letterLoadError,
               style: TextStyle(
                 fontFamily: 'MapoFlowerIsland',
                 fontSize: 16,
@@ -259,7 +260,7 @@ class MyStoryStream extends StatelessWidget {
   _myStoryStream(List<DocumentSnapshot> documents) {
     if (documents.length == 0) {
       return Text(
-        '건너간 편지가 없습니다',
+        S.current.letterEmpty,
         style: TextStyle(
           fontFamily: 'MapoFlowerIsland',
           fontSize: 16,

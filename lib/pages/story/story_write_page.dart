@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:solution_challenge/generated/l10n.dart';
 import 'package:solution_challenge/global_user_account.dart';
 
 class StoryWritePage extends StatefulWidget {
@@ -33,6 +34,15 @@ class _StoryWritePageState extends State<StoryWritePage> {
     _titleController.text = widget.title ?? '';
     _detailController.text = widget.detail ?? '';
     _paletteColor = widget.color ?? _paletteColors[2];
+    // TODO: 주의사항 다이얼로그
+    // showDialog(
+    //   context: context,
+    //   builder: (context) {
+    //     return Container(
+    //       color: Colors.red,
+    //     );
+    //   }
+    // );
   }
 
   @override
@@ -207,7 +217,7 @@ class _StoryWritePageState extends State<StoryWritePage> {
                   padding: const EdgeInsets.symmetric(
                       horizontal: 14.0, vertical: 22.0),
                   child: Text(
-                    "오늘 '당신의 바다'는 무슨 색 인가요?",
+                    S.of(context).paletteColorTitle,
                     style: TextStyle(
                       fontFamily: 'MapoFlowerIsland',
                       fontSize: 14,
@@ -347,7 +357,7 @@ class _StoryWritePageState extends State<StoryWritePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    "기분, 감정, 날씨 어느 것이어도 좋아요",
+                    S.of(context).paletteColorDescription1,
                     style: TextStyle(
                       fontFamily: 'MapoFlowerIsland',
                       fontSize: 12,
@@ -369,7 +379,7 @@ class _StoryWritePageState extends State<StoryWritePage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 16.0),
                   child: Text(
-                    "오늘 당신의 바다 색을 정해보세요 :)",
+                    S.of(context).paletteColorDescription2,
                     style: TextStyle(
                       fontFamily: 'MapoFlowerIsland',
                       fontSize: 12,
@@ -398,16 +408,16 @@ class _StoryWritePageState extends State<StoryWritePage> {
         context: context,
         builder: (BuildContext context) {
           return CupertinoAlertDialog(
-            title: const Text("편지 작성"),
-            content: const Text("편지를 띄우시겠습니까?"),
+            title: Text(S.of(context).letterWrite),
+            content: Text(S.of(context).letterWriteApply),
             actions: <Widget>[
               CupertinoButton(
                 onPressed: () => Navigator.pop(context, true),
-                child: const Text("확인"),
+                child: Text(S.of(context).apply),
               ),
               CupertinoButton(
                 onPressed: () => Navigator.pop(context, false),
-                child: const Text("취소"),
+                child: Text(S.of(context).cancel),
               ),
             ],
           );

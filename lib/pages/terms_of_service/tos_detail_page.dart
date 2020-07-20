@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:solution_challenge/generated/l10n.dart';
 
 class TosDetailPage extends StatelessWidget {
   final String name;
@@ -25,7 +26,7 @@ class TosDetailPage extends StatelessWidget {
                 children: <Widget>[
                   MaterialButton(
                     child: Text(
-                      '취소',
+                      S.of(context).cancel,
                       style: TextStyle(
                         fontFamily: 'MapoFlowerIsland',
                         fontSize: 20,
@@ -101,7 +102,7 @@ class TosDetailPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 24.0),
                         child: Text(
-                          '인지하고 있습니다.',
+                          S.of(context).tosApply,
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             fontSize: 24,

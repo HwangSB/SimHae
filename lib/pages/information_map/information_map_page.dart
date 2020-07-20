@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:solution_challenge/generated/l10n.dart';
 import 'package:solution_challenge/pages/information_map/information_map_help_page.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -19,16 +20,15 @@ class MapData {
   final List<String> images;
 
   MapData({
-    this.name = '',
-    this.regionCity = '',
-    this.address = '',
-    this.time = '',
-    this.defaultActivity =
-        '모임을 통해 자살유가족들이 심리적·사회적 어려움과 고통속에서 벗어나 희망적인 삶을 되찾는 시간',
-    this.activity = '',
-    this.homepage = '',
-    this.telephone = '',
-    this.images = const ['logo_lg.png'],
+    @required this.name,
+    @required this.regionCity,
+    @required this.address,
+    @required this.time,
+    @required this.defaultActivity,
+    @required this.activity,
+    @required this.homepage,
+    @required this.telephone,
+    @required this.images,
   });
 }
 
@@ -48,7 +48,17 @@ class _InformationMapPageState extends State<InformationMapPage> {
   @override
   void initState() {
     super.initState();
-    mapData = MapData();
+    mapData = MapData(
+      name: S.current.informationMapDefaultName,
+      regionCity: S.current.informationMapDefaultRegionCity,
+      address: S.current.informationMapDefaultAddress,
+      time: S.current.informationMapDefaultTime,
+      defaultActivity: S.current.informationMapDefaultActivity,
+      activity: S.current.informationMapDefaultCurrentActivity,
+      homepage: S.current.informationMapDefaultHomepage,
+      telephone: S.current.informationMapDefaultTelephone,
+      images: const ['logo_lg.png'],
+    );
   }
 
   @override
@@ -212,7 +222,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
         if (snapshot.hasData) {
           child = Image.network(snapshot.data[index]);
         } else if (snapshot.connectionState == ConnectionState.waiting) {
-          child = Text('이미지를 가져오는 중...');
+          child = Text(S.of(context).informationMapImageLoading);
         }
 
         return Padding(
@@ -329,7 +339,8 @@ class _InformationMapPageState extends State<InformationMapPage> {
                       regionCity: document['region_city'],
                       address: document['address'],
                       time: document['time'],
-                      activity: document['activity'] ?? '홈페이지를 참고하세요',
+                      defaultActivity: S.current.informationMapDefaultActivity,
+                      activity: document['activity'] ?? S.of(context).informationMapDefaultCurrentActivity,
                       homepage: document['homepage'],
                       telephone: document['telephone'],
                       images: images,

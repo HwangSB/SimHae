@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:solution_challenge/generated/l10n.dart';
 import 'package:solution_challenge/pages/settings/settings_help_page.dart';
 import 'package:solution_challenge/pages/settings/settings_contact_page.dart';
 
 class SettingsPage extends StatelessWidget {
-  final List<String> data = ['도움말', '문의하기'];
+  final List<String> data = [S.current.help, S.current.contact];
   final List<Function> pressedFunctions = [
     (context) {
       Navigator.push(
@@ -60,7 +61,7 @@ class SettingsPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          '설정',
+                          S.of(context).settings,
                           style: TextStyle(
                             fontFamily: 'MapoFlowerIsland',
                             fontSize: 26,

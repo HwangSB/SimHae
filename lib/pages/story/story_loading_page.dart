@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/Material.dart';
+import 'package:solution_challenge/generated/l10n.dart';
 import 'package:solution_challenge/widgets/shadowed_wave.dart';
 import 'package:solution_challenge/pages/story/story_detail_page.dart';
 
@@ -34,7 +35,7 @@ class _StoryDetailLoadingPageState extends State<StoryDetailLoadingPage> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 172.0),
                 child: Text(
-                  '편지가 당신에게 오고 있습니다',
+                  S.of(context).storyIncomming,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 22,

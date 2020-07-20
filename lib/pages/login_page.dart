@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:solution_challenge/generated/l10n.dart';
 import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/settings_database.dart';
 import 'package:solution_challenge/pages/terms_of_service/tos_page.dart';
@@ -28,7 +29,7 @@ class LoginPage extends StatelessWidget {
                   child: Stack(
                     children: <Widget>[
                       Text(
-                        '심해(心海)',
+                        S.of(context).appTitle,
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 24,
@@ -39,7 +40,7 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '심해(心海)',
+                        S.of(context).appTitle,
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 24,
@@ -61,7 +62,7 @@ class LoginPage extends StatelessWidget {
                   child: Stack(
                     children: <Widget>[
                       Text(
-                        '우리의 마음이 머무는 바다.',
+                        S.of(context).appSubTitle,
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 18,
@@ -72,7 +73,7 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '우리의 마음이 머무는 바다.',
+                        S.of(context).appSubTitle,
                         style: TextStyle(
                           fontFamily: 'MapoFlowerIsland',
                           fontSize: 18,
@@ -106,7 +107,7 @@ class LoginPage extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Text(
-                      '시작하기',
+                      S.of(context).start,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontFamily: 'MapoFlowerIsland',

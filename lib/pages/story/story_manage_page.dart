@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:solution_challenge/generated/l10n.dart';
 import 'package:solution_challenge/global_user_account.dart';
 import 'package:solution_challenge/pages/story/story_write_page.dart';
 
@@ -118,11 +119,11 @@ class MyStoryStream extends StatelessWidget {
           .snapshots(),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return Text('편지를 가져오는중 오류가 발생했습니다');
+          return Text(S.of(context).letterLoadError);
         }
         switch (snapshot.connectionState) {
           case ConnectionState.waiting:
-            return Text('편지를 가져오는 중...');
+            return Text(S.of(context).letterLoading);
           default:
             return _myStoryStream(snapshot.data.documents);
         }
@@ -134,7 +135,7 @@ class MyStoryStream extends StatelessWidget {
     if (documents.length == 0) {
       return Center(
         child: Text(
-          '건너간 편지가 없습니다',
+          S.current.letterEmpty,
           style: TextStyle(
             fontFamily: 'MapoFlowerIsland',
             fontSize: 16,
@@ -169,7 +170,7 @@ class MyStoryStream extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    '수정',
+                    S.of(context).edit,
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'MapoFlowerIsland',
@@ -191,7 +192,7 @@ class MyStoryStream extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Text(
-                    '삭제',
+                    S.of(context).delete,
                     style: TextStyle(
                       color: Colors.white,
                       fontFamily: 'MapoFlowerIsland',
@@ -214,8 +215,8 @@ class MyStoryStream extends StatelessWidget {
                 context: context,
                 builder: (BuildContext context) {
                   return CupertinoAlertDialog(
-                    title: const Text("편지 수정"),
-                    content: const Text("글을 수정하시겠습니까?"),
+                    title: Text(S.of(context).letterEdit),
+                    content: Text(S.of(context).editCheck),
                     actions: <Widget>[
                       CupertinoButton(
                         onPressed: () {
@@ -232,11 +233,11 @@ class MyStoryStream extends StatelessWidget {
                             ),
                           );
                         },
-                        child: const Text("수정"),
+                        child: Text(S.of(context).edit),
                       ),
                       CupertinoButton(
                         onPressed: () => Navigator.pop(context, false),
-                        child: const Text("취소"),
+                        child: Text(S.of(context).cancel),
                       ),
                     ],
                   );
@@ -247,16 +248,16 @@ class MyStoryStream extends StatelessWidget {
                 context: context,
                 builder: (BuildContext context) {
                   return CupertinoAlertDialog(
-                    title: const Text("편지 삭제"),
-                    content: const Text("정말 삭제하시겠습니까?"),
+                    title: Text(S.of(context).letterDelete),
+                    content: Text(S.of(context).deleteCheck),
                     actions: <Widget>[
                       CupertinoButton(
                         onPressed: () => Navigator.pop(context, true),
-                        child: const Text("삭제"),
+                        child: Text(S.of(context).delete),
                       ),
                       CupertinoButton(
                         onPressed: () => Navigator.pop(context, false),
-                        child: const Text("취소"),
+                        child: Text(S.of(context).cancel),
                       ),
                     ],
                   );
