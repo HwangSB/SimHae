@@ -242,7 +242,9 @@ class TosPageState extends State<TosPage> {
     );
 
     if (result != null) {
-      _termsOfService[index]['agree'] = result;
+      setState(() {
+        _termsOfService[index]['agree'] = result;
+      });
     }
   }
 

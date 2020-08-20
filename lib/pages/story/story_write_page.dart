@@ -34,15 +34,6 @@ class _StoryWritePageState extends State<StoryWritePage> {
     _titleController.text = widget.title ?? '';
     _detailController.text = widget.detail ?? '';
     _paletteColor = widget.color ?? _paletteColors[2];
-    // TODO: 주의사항 다이얼로그
-    // showDialog(
-    //   context: context,
-    //   builder: (context) {
-    //     return Container(
-    //       color: Colors.red,
-    //     );
-    //   }
-    // );
   }
 
   @override
