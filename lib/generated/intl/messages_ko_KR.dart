@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "informationMapDefaultTelephone" : MessageLookupByLibrary.simpleMessage(""),
     "informationMapDefaultTime" : MessageLookupByLibrary.simpleMessage(""),
     "informationMapImageLoading" : MessageLookupByLibrary.simpleMessage("이미지를 가져오는중..."),
+    "informationMapWarning" : MessageLookupByLibrary.simpleMessage("자조모임에서 당신의 생각을 공유하고 이야기해보는게 어떨까요?"),
     "letterDelete" : MessageLookupByLibrary.simpleMessage("편지 삭제"),
     "letterEdit" : MessageLookupByLibrary.simpleMessage("편지 수정"),
     "letterEmpty" : MessageLookupByLibrary.simpleMessage("건너간 편지가 없습니다"),

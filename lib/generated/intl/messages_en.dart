@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "informationMapDefaultTelephone" : MessageLookupByLibrary.simpleMessage(""),
     "informationMapDefaultTime" : MessageLookupByLibrary.simpleMessage(""),
     "informationMapImageLoading" : MessageLookupByLibrary.simpleMessage("Loading image..."),
+    "informationMapWarning" : MessageLookupByLibrary.simpleMessage("How about trying to communicate and share them through \'Survivors meeting\'?"),
     "letterDelete" : MessageLookupByLibrary.simpleMessage("Delete letter"),
     "letterEdit" : MessageLookupByLibrary.simpleMessage("Edit letter"),
     "letterEmpty" : MessageLookupByLibrary.simpleMessage("There are not floated letters"),

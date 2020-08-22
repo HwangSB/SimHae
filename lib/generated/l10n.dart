@@ -183,6 +183,16 @@ class S {
     );
   }
 
+  /// `How about trying to communicate and share them through 'Survivors meeting'?`
+  String get informationMapWarning {
+    return Intl.message(
+      'How about trying to communicate and share them through \'Survivors meeting\'?',
+      name: 'informationMapWarning',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Click a position and confirm the information.`
   String get informationMapDefaultName {
     return Intl.message(

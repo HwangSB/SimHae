@@ -67,7 +67,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
   Widget build(BuildContext context) {
     if (!checkDialog) {
       Future.delayed(Duration.zero, () => showAlert(context));
-      checkDialog=true;
+      checkDialog = true;
     }
 
     return Scaffold(
@@ -75,7 +75,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
       body: SlidingUpPanel(
         controller: PanelController(),
         minHeight: 100.0,
-        maxHeight: 700.0,
+        maxHeight: MediaQuery.of(context).size.height * 0.85,
         color: Colors.transparent,
         boxShadow: [],
         panelBuilder: _scrollingPage,
@@ -92,7 +92,7 @@ class _InformationMapPageState extends State<InformationMapPage> {
           children: <Widget>[
             Expanded(
               child: Text(
-                "How about trying to communicate and share them through 'Survivors meeting?",
+                S.current.informationMapWarning,
                 style: TextStyle(
                   fontFamily: 'MapoFlowerIsland',
                   fontSize: 14,
@@ -414,7 +414,8 @@ class _InformationMapPageState extends State<InformationMapPage> {
                       address: document['address'],
                       time: document['time'],
                       defaultActivity: S.current.informationMapDefaultActivity,
-                      activity: document['activity'] ?? S.of(context).informationMapDefaultCurrentActivity,
+                      activity: document['activity'] ??
+                          S.of(context).informationMapDefaultCurrentActivity,
                       homepage: document['homepage'],
                       telephone: document['telephone'],
                       images: images,
