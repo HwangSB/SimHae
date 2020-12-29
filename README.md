@@ -256,17 +256,9 @@ implemented using sqflite package.
 
 # Preview
 
-|||||||||
-| --- | --- | --- | --- | --- | --- | --- | --- |
-|![image](https://user-images.githubusercontent.com/8086407/80313389-9a2c8d80-8825-11ea-89cd-b67a0acad4d7.png)
-|![image](https://user-images.githubusercontent.com/8086407/80313435-deb82900-8825-11ea-9370-e485bdb313de.png)
-|![image](https://user-images.githubusercontent.com/8086407/80313468-fee7e800-8825-11ea-9dde-4ba96beb7cce.png)
-|![image](https://user-images.githubusercontent.com/8086407/80313497-20e16a80-8826-11ea-962b-968516edeef6.png)
-|![image](https://user-images.githubusercontent.com/8086407/80313561-87ff1f00-8826-11ea-93db-7cb935b44d0b.png)
-|![image](https://user-images.githubusercontent.com/8086407/80313583-acf39200-8826-11ea-85f3-9130b2d2eb8b.png)
-|![image](https://user-images.githubusercontent.com/8086407/80313583-acf39200-8826-11ea-85f3-9130b2d2eb8b.png)
-|![preview8](https://lh3.googleusercontent.com/Gb57omLQX1D6u18KdSrVwQGJyE3MMD_xJeoIzk0Ipyk285LQuEyKNqmkgkfyp9ats1E=w1600-h708-rw)|
-
+| ![image](https://user-images.githubusercontent.com/8086407/80313389-9a2c8d80-8825-11ea-89cd-b67a0acad4d7.png) | ![image](https://user-images.githubusercontent.com/8086407/80313435-deb82900-8825-11ea-9370-e485bdb313de.png) | ![image](https://user-images.githubusercontent.com/8086407/80313468-fee7e800-8825-11ea-9dde-4ba96beb7cce.png) | ![image](https://user-images.githubusercontent.com/8086407/80313497-20e16a80-8826-11ea-962b-968516edeef6.png) |
+|-|-|-|-|
+| ![image](https://user-images.githubusercontent.com/8086407/80313561-87ff1f00-8826-11ea-93db-7cb935b44d0b.png) | ![image](https://user-images.githubusercontent.com/8086407/80313583-acf39200-8826-11ea-85f3-9130b2d2eb8b.png) | ![image](https://user-images.githubusercontent.com/8086407/80313583-acf39200-8826-11ea-85f3-9130b2d2eb8b.png) | ![preview8](https://lh3.googleusercontent.com/Gb57omLQX1D6u18KdSrVwQGJyE3MMD_xJeoIzk0Ipyk285LQuEyKNqmkgkfyp9ats1E=w1600-h708-rw) |
 
 
 # Contributer
